@@ -58,7 +58,25 @@ const TravelerForm = ({ values, errors, touched, status }) => {
             {touched.phone && errors.phone && (
                <p className='errors'>{errors.phone}</p>
             )}
+
+            <button type='submit'>Submit</button>
          </Form>
+
+         {travelers.map(traveler => {
+            return (
+               <ul key={traveler.lname}>
+                  <li>{traveler.fname}</li>
+                  <li>{traveler.lname}</li>
+                  <li>{traveler.email}</li>
+                  <li>{traveler.password}</li>
+                  <li>{traveler.address}</li>
+                  <li>{traveler.city_state}</li>
+                  <li>{traveler.zip}</li>
+                  <li>{traveler.phone}</li>
+                  <li>{traveler.airport}</li>
+               </ul>
+            );
+            })}
       </div>
    );
 };
