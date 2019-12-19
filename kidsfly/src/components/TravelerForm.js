@@ -8,7 +8,7 @@ const TravelerForm = ({ values, errors, touched, status }) => {
 
    useEffect(() => {
       console.log('status has changed', status);
-      status && setTravelers(travelers => [...travelers, status]);
+      status && setTravelers(traveler => [...travelers, status]);
    }, [status]);
 
    return (
@@ -121,6 +121,6 @@ const FormikTravelerForm = withFormik({
       })
       .catch(err => console.log('NOOOOO!!!', err.response));
    },
-})(UseForm);
+})(TravelerForm);
 
 export default FormikTravelerForm;
