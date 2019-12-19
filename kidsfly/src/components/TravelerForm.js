@@ -62,3 +62,65 @@ const TravelerForm = ({ values, errors, touched, status }) => {
       </div>
    );
 };
+
+const FormikTravelerForm = withFormik({
+   mapPropsToValues(props) {
+      return {
+         email: props.email || '',
+         password: props.password || '',
+         fname: props.fname || '',
+         lname: props.lname || '',
+         address: props.address || '',
+         city_state: props.city_state || '',
+         zip: props.zip || '',
+         airport: props.airport || '',
+         phone: props.phone || '',
+      };
+   },
+
+   validationSchema: Yup.object().shape({
+      email: Yup
+         .string()
+         .required('please enter your email'),
+      password: Yup
+         .string()
+         .min(6, 'your password must be 6 characters or longer')
+         .required('please enter a password'),
+      fname: Yup
+         .string()
+         .required('please enter your first name'),
+      lname: Yup
+         .string()
+         .required('please enter your last name'),
+      address: Yup
+         .string()
+         .required('please enter your address'),
+      city_state: Yup
+         .string()
+         .required('please enter your city and state'),
+      zip: Yup
+         .string()
+         .required('please enter your zip code'),
+      airport: Yup
+         .string()
+         .max(3)
+         .required("please enter your home airport's 3-letter code"),
+      phone: Yup
+         .string()
+         .required('please enter your phone number')
+   }),
+
+   handleSubmit(values, { setStatus, resetForm }) {
+      console.log('submitting', values);
+      axios
+      .post('https://reqres.in/api/users', values)
+      .then(res => {
+         console.log('success', res);
+         setStatus(res.data);
+         resetForm();
+      })
+      .catch(err => console.log('NOOOOO!!!', err.response));
+   },
+})(UseForm);
+
+export default FormikTravelerForm;
