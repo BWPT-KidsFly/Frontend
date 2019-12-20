@@ -3,16 +3,16 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
 
-const TravelerForm = ({ values, errors, touched, status }) => {
-   const [travelers, setTravelers] = useState([]);
+const RegistrationForm = ({ values, errors, touched, status }) => {
+   const [users, setUsers] = useState([]);
 
    useEffect(() => {
       console.log('status has changed', status);
-      status && setTravelers(traveler => [...travelers, status]);
+      status && setUsers(user => [...users, status]);
    }, [status]);
 
    return (
-      <div className='traveler-form'>
+      <div className='registration-form'>
          <Form>
             <Field type='email' name='email' placeholder='email' />
             {touched.email && errors.email && (
@@ -62,18 +62,18 @@ const TravelerForm = ({ values, errors, touched, status }) => {
             <button type='submit'>Submit</button>
          </Form>
 
-         {travelers.map(traveler => {
+         {users.map(user => {
             return (
-               <ul key={traveler.lname}>
-                  <li>{traveler.fname}</li>
-                  <li>{traveler.lname}</li>
-                  <li>{traveler.email}</li>
-                  <li>{traveler.password}</li>
-                  <li>{traveler.address}</li>
-                  <li>{traveler.city_state}</li>
-                  <li>{traveler.zip}</li>
-                  <li>{traveler.phone}</li>
-                  <li>{traveler.airport}</li>
+               <ul key={user.lname}>
+                  <li>{user.fname}</li>
+                  <li>{user.lname}</li>
+                  <li>{user.email}</li>
+                  <li>{user.password}</li>
+                  <li>{user.address}</li>
+                  <li>{user.city_state}</li>
+                  <li>{user.zip}</li>
+                  <li>{user.phone}</li>
+                  <li>{user.airport}</li>
                </ul>
             );
             })}
@@ -81,7 +81,7 @@ const TravelerForm = ({ values, errors, touched, status }) => {
    );
 };
 
-const FormikTravelerForm = withFormik({
+const FormikRegistrationForm = withFormik({
    mapPropsToValues(props) {
       return {
          email: props.email || '',
@@ -139,6 +139,6 @@ const FormikTravelerForm = withFormik({
       })
       .catch(err => console.log('NOOOOO!!!', err.response));
    },
-})(TravelerForm);
+})(RegistrationForm);
 
-export default FormikTravelerForm;
+export default FormikRegistrationForm;
