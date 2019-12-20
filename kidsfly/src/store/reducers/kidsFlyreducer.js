@@ -14,3 +14,7 @@ const initialState={
 
 
 }
+
+export const kidsFlyReducer = (initialState=state,action)=>{
+    switch
+} 
