@@ -1,3 +1,6 @@
+import { ADD_FLIGHT_SUCCESS, ERROR, LOGIN_SUCCESS, START } from '../actions'
+
+
 const initialState = {
     currentUser: "",
     isLoading: false,
@@ -15,10 +18,31 @@ const initialState = {
 
 }
 
- const kidsFlyreducer = (state = initialState, action) => {
+
+const kidsFlyreducer = (state = initialState, action) => {
     switch (action.type) {
+        case START: {
+            return { ...state, isLoading: true }
+        }
+        case ERROR: {
+            return { ...state, isLoading: false, isError: true, error: action.payload }
+        }
+        case ADD_FLIGHT_SUCCESS: {
+            return {
+                ...state,
+                isLoading: false,
+                upcomingFlightsList: [...state.upcomingFlightsList, action.payload],
+            }
+        }
+        case LOGIN_SUCCESS: {
+            window.localStorage.setItem("token",action.payload)
+            return {
+                ...state,isLoading:false,
+            }
+        }
         default: return { ...state }
     }
-} 
+}
 
-export { kidsFlyreducer  } 
+
+export { kidsFlyreducer } 
