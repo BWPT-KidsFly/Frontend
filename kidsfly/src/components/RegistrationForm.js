@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
-import { TravelerSignUpWrapper, TravelerField } from './styles';
+import { TravelerSignUpWrapper } from './styles';
 
 const RegistrationForm = ({ values, errors, touched, status }) => {
    const [users, setUsers] = useState([]);
@@ -10,13 +10,21 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
    const halfWidth = {
       width: '45%',
       height: '35px',
-      marginTop: '10px',
+      marginTop: '20px',
    }
 
    const fullWidth = {
       width: '95%',
       height: '35px',
-      marginTop: '10px',
+      marginTop: '20px',
+   }
+
+   const formFlex = {
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      flexWrap: 'wrap',
    }
 
    useEffect(() => {
@@ -29,7 +37,7 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
    return (
       <div>
          <TravelerSignUpWrapper>
-            <Form>  
+            <Form style={formFlex}>  
                <Field style={halfWidth} type='text' name='fname' placeholder='first name' />
                {touched.fname && errors.fname && (
                   <p className='errors'>{errors.fname}</p>
