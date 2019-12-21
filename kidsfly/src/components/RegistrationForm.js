@@ -8,7 +8,7 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
 
    useEffect(() => {
       console.log('status has changed', status);
-      status && setUsers(user => [...users, status]);
+      status && setUsers(users => [...users, status]);
    }, [status]);
 
    return (
