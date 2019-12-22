@@ -47,4 +47,7 @@ Features
 6. Authenticated "KidsFlyConnection" can view their active assigned trips, with the option to sort them by departure time, airline or both, as well as a list of complete/archived trips. (mobile)
 
 
-__***[mindmap](https://whimsical.com/TSMp7jvc3T4xxSDpJWHZMK#2Ux7TurymMwXxjvp977S "materialize mindmap")***__
+__***[travler mindmap](https://whimsical.com/TSMp7jvc3T4xxSDpJWHZMK#2Ux7TurymMwXxjvp977S "materialize mindmap")***__
+
+__***[admin mindmap](https://whimsical.com/F3CrHUA4wzXUvCjvR8Sfnw#2Ux7TurymNPz7waZCPzG "materialize mindmap")***__
+
