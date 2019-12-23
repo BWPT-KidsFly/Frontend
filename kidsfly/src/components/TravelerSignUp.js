@@ -4,8 +4,8 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { TravelerSignUpWrapper } from './styles';
 
-const RegistrationForm = ({ values, errors, touched, status }) => {
-   const [users, setUsers] = useState([]);
+const TravelerSignUp = ({ values, errors, touched, status }) => {
+   const [travelers, setTravelers] = useState([]);
 
    const halfWidth = {
       width: '45%',
@@ -29,7 +29,7 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
 
    useEffect(() => {
       console.log('status has changed', status);
-      status && setUsers(users => [...users, status]);
+      status && setTravelers(travelers => [...travelers, status]);
    }, [status]);
 
 
@@ -97,19 +97,19 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
             </Form>
          </TravelerSignUpWrapper>
 
-         {users.map(user => {
+         {travelers.map(traveler => {
             return (
-               <ul key={user.lname}>
-                  <li>{user.fname}</li>
-                  <li>{user.lname}</li>
-                  <li>{user.email}</li>
-                  <li>{user.password}</li>
-                  <li>{user.address1}</li>
-                  <li>{user.address2}</li>
-                  <li>{user.city_state}</li>
-                  <li>{user.zip}</li>
-                  <li>{user.phone}</li>
-                  <li>{user.airport}</li>
+               <ul key={traveler.lname}>
+                  <li>{traveler.fname}</li>
+                  <li>{traveler.lname}</li>
+                  <li>{traveler.email}</li>
+                  <li>{traveler.password}</li>
+                  <li>{traveler.address1}</li>
+                  <li>{traveler.address2}</li>
+                  <li>{traveler.city_state}</li>
+                  <li>{traveler.zip}</li>
+                  <li>{traveler.phone}</li>
+                  <li>{traveler.airport}</li>
                </ul>
             );
          })}
@@ -117,7 +117,7 @@ const RegistrationForm = ({ values, errors, touched, status }) => {
    );
 };
 
-const FormikRegistrationForm = withFormik({
+const FormikTravelerSignUp = withFormik({
    mapPropsToValues(props) {
       return {
          fname: props.fname || '',
@@ -183,6 +183,6 @@ const FormikRegistrationForm = withFormik({
       })
       .catch(err => console.log('NOOOOO!!!', err.response));
    },
-})(RegistrationForm);
+})(TravelerSignUp);
 
-export default FormikRegistrationForm;
+export default FormikTravelerSignUp;

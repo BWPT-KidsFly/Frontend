@@ -1,10 +1,10 @@
 import React from 'react';
-import RegistrationForm from './RegistrationForm';
+import TravelerSignUp from './TravelerSignUp';
 
 function App() {
   return (
     <div className="App">
-      <RegistrationForm />
+      <TravelerSignUp />
     </div>
   );
 }
