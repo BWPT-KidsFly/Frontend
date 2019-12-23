@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const TravelerSignUpWrapper = styled.div`
-   width: 40%;
+   width: 35%;
    margin: 0 auto;
 `;
 
