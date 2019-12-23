@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
-import { TravelerSignUpWrapper } from './styles';
+import { TravelerSignUpWrapper, SubmitBtn, SubmitWrapper } from './styles';
+
 
 const TravelerSignUp = ({ values, errors, touched, status }) => {
    const [travelers, setTravelers] = useState([]);
@@ -38,62 +39,76 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
       <div>
          <TravelerSignUpWrapper>
             <Form style={formFlex}>  
-               <Field style={halfWidth} type='text' name='fname' placeholder='first name' />
+               <Field style={halfWidth} type='text' name='fname' placeholder='First Name' />
                {touched.fname && errors.fname && (
                   <p className='errors'>{errors.fname}</p>
                )}
 
-               <Field style={halfWidth} type='text' name='lname' placeholder='last name' />
+               <Field style={halfWidth} type='text' name='lname' placeholder='Last Name' />
                {touched.lname && errors.lname && (
                   <p className='errors'>{errors.lname}</p>
                )} 
 
-               <Field style={fullWidth} type='email' name='email' placeholder='email' />
+               <Field style={fullWidth} type='email' name='email' placeholder='Email' />
                {touched.email && errors.email && (
                   <p className='errors'>{errors.email}</p>
                )}
                        
-               <Field style={fullWidth} type='password' name='password' placeholder='password' />
+               <Field style={fullWidth} type='password' name='password' placeholder='Password' />
                {touched.password && errors.password && (
                   <p className='errors'>{errors.password}</p>
                )}
             
-               <Field style={fullWidth} type='password' name='confirm' placeholder='confirm password' />
+               <Field style={fullWidth} type='password' name='confirm' placeholder='Confirm Password' />
                {touched.confirm && errors.confirm && (
                   <p className='errors'>{errors.confirm}</p>
                )}
 
-               <Field style={fullWidth} type='text' name='address1' placeholder='address 1' />
+               <Field style={fullWidth} type='text' name='address1' placeholder='Address 1' />
                {touched.address1 && errors.address1 && (
                   <p className='errors'>{errors.address1}</p>
                )}
 
-               <Field style={fullWidth} type='text' name='address2' placeholder='address 2' />
+               <Field style={fullWidth} type='text' name='address2' placeholder='Address 2' />
                {touched.address2 && errors.address2 && (
                   <p className='errors'>{errors.address2}</p>
                )}
 
-               <Field style={halfWidth} type='text' name='city_state' placeholder='city, state' />
+               <Field style={halfWidth} type='text' name='city_state' placeholder='City, State' />
                {touched.city_state && errors.city_state && (
                   <p className='errors'>{errors.city_state}</p>
                )}
 
-               <Field style={halfWidth} type='text' name='zip' placeholder='zip code' />
+               <Field style={halfWidth} type='text' name='zip' placeholder='Zip Code' />
                {touched.zip && errors.zip && (
                   <p className='errors'>{errors.zip}</p>
                )}
 
-               <Field style={halfWidth} type='text' name='airport' placeholder='home airport code' />
+               <Field style={halfWidth} type='text' name='airport' placeholder='Home Airport Code' />
                {touched.airport && errors.airport && (
                   <p className='errors'>{errors.airport}</p>
                )}
 
-               <Field style={halfWidth} type='tel' name='phone' placeholder='phone number' />
+               <Field style={halfWidth} type='tel' name='phone' placeholder='Phone Number' />
                {touched.phone && errors.phone && (
                   <p className='errors'>{errors.phone}</p>
                )}
 
-               <button type='submit'>Submit</button>
+               <SubmitWrapper>
+                  <label className='checkbox-container'>
+                  
+                     <Field type='checkbox' name='tos' checked={values.tos} />
+                     {touched.tos && errors.tos && (
+                        <p className='errors'>{errors.tos}</p>
+                     )}
+
+                     Terms of Service
+
+                     <span className='checkmark' />
+                  </label>
+
+                  <SubmitBtn type='submit'>Submit</SubmitBtn>
+               </SubmitWrapper>
             </Form>
          </TravelerSignUpWrapper>
 
@@ -131,6 +146,7 @@ const FormikTravelerSignUp = withFormik({
          zip: props.zip || '',
          airport: props.airport || '',
          phone: props.phone || '',
+         tos: props.tos || false,
       };
    },
 
@@ -169,7 +185,11 @@ const FormikTravelerSignUp = withFormik({
          .required("please enter your home airport's 3-letter code"),
       phone: Yup
          .string()
-         .required('please enter your phone number')
+         .required('please enter your phone number'),
+      tos: Yup
+         .bool()
+         .oneOf([true], 'You must accept the terms of service to continue')
+         .required()
    }),
 
    handleSubmit(values, { setStatus, resetForm }) {
