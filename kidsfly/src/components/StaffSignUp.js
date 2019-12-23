@@ -3,6 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
 import { SignUpWrapper, SubmitBtn, SubmitWrapper } from './styles';
+import SignUpAs from "./SignUpAs";
 
 
 const StaffSignUp = ({ values, errors, touched, status }) => {
@@ -37,6 +38,7 @@ const StaffSignUp = ({ values, errors, touched, status }) => {
 
    return (
       <div>
+         <SignUpAs />
          <SignUpWrapper>
             <Form style={formFlex}>  
                <Field style={halfWidth} type='text' name='fname' placeholder='First Name' />
