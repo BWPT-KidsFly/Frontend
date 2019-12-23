@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+export const SignUpHeader = styled.div`
+   width: 35%;
+   margin: 0 auto;
+   margin-bottom: 50px;
+   text-align: center;
+`;
+
 export const SignUpWrapper = styled.div`
    width: 35%;
    margin: 0 auto;
