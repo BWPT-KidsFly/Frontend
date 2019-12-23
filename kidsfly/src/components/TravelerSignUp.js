@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
-import { TravelerSignUpWrapper, SubmitBtn, SubmitWrapper } from './styles';
+import { SignUpWrapper, SubmitBtn, SubmitWrapper } from './styles';
 
 
 const TravelerSignUp = ({ values, errors, touched, status }) => {
@@ -37,7 +37,7 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
 
    return (
       <div>
-         <TravelerSignUpWrapper>
+         <SignUpWrapper>
             <Form style={formFlex}>  
                <Field style={halfWidth} type='text' name='fname' placeholder='First Name' />
                {touched.fname && errors.fname && (
@@ -110,7 +110,7 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
                   <SubmitBtn type='submit'>Submit</SubmitBtn>
                </SubmitWrapper>
             </Form>
-         </TravelerSignUpWrapper>
+         </SignUpWrapper>
 
          {travelers.map(traveler => {
             return (
