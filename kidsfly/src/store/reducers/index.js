@@ -1,1 +1,3 @@
-export { kidsFlyreducer as rootReducer }  from './kidsFlyreducer.js' 
+import kidsFlyreducer from './kidsFlyreducer'
+
+export  {kidsFlyreducer as rootReducer}  

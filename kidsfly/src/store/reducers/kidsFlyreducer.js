@@ -21,7 +21,10 @@ const initialState = {
 
 const kidsFlyreducer = (state = initialState, action) => {
     switch (action.type) {
+
         case START: {
+        console.log("case:START in reducer fired")
+        
             return { ...state, isLoading: true }
         }
         case ERROR: {
@@ -45,4 +48,4 @@ const kidsFlyreducer = (state = initialState, action) => {
 }
 
 
-export { kidsFlyreducer } 
+export default  kidsFlyreducer  

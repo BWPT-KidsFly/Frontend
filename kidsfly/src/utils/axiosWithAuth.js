@@ -4,9 +4,9 @@ export const axiosWithAuth = () => {
     const token = localStorage.getItem('token')
 
     return axios.create({
-        baseURL: "https://reqres.in/api",
+        baseURL: "http://localhost:5000/api",
         headers: {
-          'Authorization': token,
+            'Authorization': token,
             'Content-Type': 'application/json',
         },
     })

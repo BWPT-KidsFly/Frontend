@@ -1,11 +1,13 @@
 import React from 'react';
 import RegistrationForm from './RegistrationForm';
+import CreateTrip from './Trips/CreateTrip';
 
 
 function App() {
   return (
     <div className="App">
-      <RegistrationForm />
+      {/* <RegistrationForm /> */}
+      <CreateTrip/>
     </div>
   );
 }
