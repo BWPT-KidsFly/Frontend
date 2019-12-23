@@ -70,12 +70,6 @@ const StaffSignUp = ({ values, errors, touched, status }) => {
                   <li>{employee.lname}</li>
                   <li>{employee.email}</li>
                   <li>{employee.password}</li>
-                  <li>{employee.address1}</li>
-                  <li>{employee.address2}</li>
-                  <li>{employee.city_state}</li>
-                  <li>{employee.zip}</li>
-                  <li>{employee.phone}</li>
-                  <li>{employee.airport}</li>
                </ul>
             );
          })}
@@ -91,12 +85,6 @@ const FormikStaffSignUp = withFormik({
          email: props.email || '',
          password: props.password || '',
          confirm: props.confirm || '',
-         address1: props.address1 || '',
-         address2: props.address2 || '',
-         city_state: props.city_state || '',
-         zip: props.zip || '',
-         airport: props.airport || '',
-         phone: props.phone || '',
          tos: props.tos || false,
       };
    },
@@ -119,24 +107,6 @@ const FormikStaffSignUp = withFormik({
          .string()
          .min(6, 'your password must be 6 characters or longer')
          .required('please confirm your password'),
-      address1: Yup
-         .string()
-         .required('please enter your address'),
-      address2: Yup
-         .string(),
-      city_state: Yup
-         .string()
-         .required('please enter your city and state'),
-      zip: Yup
-         .string()
-         .required('please enter your zip code'),
-      airport: Yup
-         .string()
-         .max(3)
-         .required("please enter your home airport's 3-letter code"),
-      phone: Yup
-         .string()
-         .required('please enter your phone number'),
       tos: Yup
          .bool()
          .oneOf([true], 'You must accept the terms of service to continue')
