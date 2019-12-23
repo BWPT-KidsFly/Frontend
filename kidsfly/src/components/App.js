@@ -7,9 +7,6 @@ import SignUpAs from './SignUpAs';
 function App() {
   return (
     <div className="App">
-      {/* <TravelerSignUp />
-      <StaffSignUp /> */}
-
       <Route exact path='/sign-up' component={SignUpAs}/>
       <Route path='/sign-up/traveler' component={TravelerSignUp} />
       <Route path='/sign-up/staff' component={StaffSignUp} />
