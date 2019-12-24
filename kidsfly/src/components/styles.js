@@ -20,21 +20,6 @@ export const SubmitWrapper = styled.div`
    align-items: center;
 `;
 
-export const SignUpAsBtn = styled.button`
-   height: 40px;
-   width: 160px;
-   margin-right: 8%;
-   border-radius: 5px;
-   background: gray;
-   box-shadow: 0px 0px 0px transparent;
-   border: 0px solid transparent;
-   text-shadow: 0px 0px 0px transparent;
-   color: white;
-   background-color: #1653b5;
-   font-size: 1rem;
-`;
-
-
 export const SubmitBtn = styled.button`
    height: 40px;
    width: 80px;

@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-import { SignUpWrapper, SignUpAsBtn, formFlex, SignUpHeader } from './styles';
+import { NavLink } from 'react-router-dom';
+import { SignUpWrapper, formFlex, SignUpHeader } from './styles';
 
 const SignUpAs = () => {
    return (
@@ -10,13 +10,13 @@ const SignUpAs = () => {
             <h3>Please complete this form to create an account</h3>
          </SignUpHeader>
          <SignUpWrapper style={formFlex}>
-            <Link to='/sign-up/traveler'>
-               <SignUpAsBtn>Traveler</SignUpAsBtn>
-            </Link>
+            <NavLink className='sign-up-btn' activeClassName='active' to='/sign-up/traveler'>
+               Traveler
+            </NavLink>
 
-            <Link to='/sign-up/staff'>
-               <SignUpAsBtn>KidsFly Connect</SignUpAsBtn>
-            </Link>
+            <NavLink className='sign-up-btn' activeClassName='active' to='/sign-up/staff'>
+               KidsFly Connect
+            </NavLink>
          </SignUpWrapper>
       </div>
    );
