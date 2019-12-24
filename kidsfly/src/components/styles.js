@@ -53,3 +53,9 @@ export const formFlex = {
    justifyContent: 'space-around',
    flexWrap: 'wrap',
 }
+
+export const btnFlex = {
+   display: 'flex',
+   alignItems: 'center',
+   justifyContent: 'space-around',
+}
