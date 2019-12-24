@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import TravelerSignUp from './TravelerSignUp';
 import StaffSignUp from './StaffSignUp';
 import SignUpAs from './SignUpAs';
+import LogIn from './LogIn';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Route exact path='/sign-up' component={SignUpAs}/>
       <Route path='/sign-up/traveler' component={TravelerSignUp} />
       <Route path='/sign-up/staff' component={StaffSignUp} />
+      <Route path='/log-in' component={LogIn} />
     </div>
   );
 }
