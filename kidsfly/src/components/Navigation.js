@@ -4,13 +4,19 @@ import Styled from "styled-components";
 
 const Navigation = () => {
   let NavBar = Styled.div`
-  width: 900px;
+  width: 65%;
+  height: 60px;
+  margin: 0 auto;
+  margin-bottom: 40px;
   `;
 
   let NavContainer = Styled.div`
   width: 100%;
+  height: 100%;
+  border-bottom: 1px solid gray;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   `;
 
   let NavigationLinks = Styled(NavLink)`
