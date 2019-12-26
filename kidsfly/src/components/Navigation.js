@@ -23,7 +23,7 @@ const Navigation = () => {
   text-decoration: none;
   padding: 3px 20px;
   color: black;
-  border-radius: 10px;
+  border-radius: 7px;
 
   &:hover{
     color: white;

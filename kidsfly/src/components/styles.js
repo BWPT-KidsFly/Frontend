@@ -36,7 +36,7 @@ export const SubmitBtn = styled.button`
    height: 40px;
    width: 80px;
    margin-right: 8%;
-   border-radius: 5px;
+   border-radius: 7px;
    background: gray;
    box-shadow: 0px 0px 0px transparent;
    border: 0px solid transparent;
@@ -52,7 +52,7 @@ export const SubmitBtn = styled.button`
 export const LogInBtn = styled.button`
    height: 40px;
    width: 80px;
-   border-radius: 5px;
+   border-radius: 7px;
    background: gray;
    box-shadow: 0px 0px 0px transparent;
    border: 0px solid transparent;
