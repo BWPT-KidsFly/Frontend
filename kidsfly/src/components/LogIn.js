@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
-import { LogInWrapper, fullWidth, formFlex, LogInBtn } from './styles';
+import { LogInWrapper, fullWidth, formFlex, LogInBtn, RedirectWrap } from './styles';
 import LogInAs from "./LogInAs";
 
 
@@ -32,6 +33,10 @@ const LogIn = ({ values, errors, touched, status }) => {
                <LogInBtn style={fullWidth} type='submit'>Log In</LogInBtn>
             </Form>
          </LogInWrapper>
+
+         <RedirectWrap>
+            <div>If you don't already have an account, please <Link to='/sign-up'>Sign Up here</Link></div>
+         </RedirectWrap>
 
          {member.map(member => {
             return (

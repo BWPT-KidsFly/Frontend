@@ -7,6 +7,13 @@ export const SignUpHeader = styled.div`
    text-align: center;
 `;
 
+export const RedirectWrap = styled.div`
+   width: 35%;
+   margin: 0 auto;
+   margin-top: 50px;
+   text-align: center;
+`;
+
 export const SignUpWrapper = styled.div`
    width: 35%;
    margin: 0 auto;
