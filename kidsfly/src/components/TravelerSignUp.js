@@ -2,42 +2,23 @@ import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
-import { TravelerSignUpWrapper, SubmitBtn, SubmitWrapper } from './styles';
+import { SignUpWrapper, SubmitBtn, SubmitWrapper,
+   halfWidth, fullWidth, formFlex } from './styles';
+import SignUpAs from "./SignUpAs";
 
 
 const TravelerSignUp = ({ values, errors, touched, status }) => {
    const [travelers, setTravelers] = useState([]);
-
-   const halfWidth = {
-      width: '45%',
-      height: '35px',
-      marginTop: '20px',
-   }
-
-   const fullWidth = {
-      width: '95%',
-      height: '35px',
-      marginTop: '20px',
-   }
-
-   const formFlex = {
-      boxSizing: 'border-box',
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      flexWrap: 'wrap',
-   }
 
    useEffect(() => {
       console.log('status has changed', status);
       status && setTravelers(travelers => [...travelers, status]);
    }, [status]);
 
-
-
    return (
       <div>
-         <TravelerSignUpWrapper>
+         <SignUpAs />
+         <SignUpWrapper>
             <Form style={formFlex}>  
                <Field style={halfWidth} type='text' name='fname' placeholder='First Name' />
                {touched.fname && errors.fname && (
@@ -110,7 +91,7 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
                   <SubmitBtn type='submit'>Submit</SubmitBtn>
                </SubmitWrapper>
             </Form>
-         </TravelerSignUpWrapper>
+         </SignUpWrapper>
 
          {travelers.map(traveler => {
             return (

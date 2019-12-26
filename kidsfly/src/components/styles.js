@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
-export const TravelerSignUpWrapper = styled.div`
+export const SignUpHeader = styled.div`
+   width: 35%;
+   margin: 0 auto;
+   margin-bottom: 50px;
+   text-align: center;
+`;
+
+export const SignUpWrapper = styled.div`
    width: 35%;
    margin: 0 auto;
 `;
@@ -26,3 +33,29 @@ export const SubmitBtn = styled.button`
    background-color: #1653b5;
    font-size: 1rem;
 `;
+
+export const halfWidth = {
+   width: '45%',
+   height: '35px',
+   marginTop: '20px',
+}
+
+export const fullWidth = {
+   width: '95%',
+   height: '35px',
+   marginTop: '20px',
+}
+
+export const formFlex = {
+   boxSizing: 'border-box',
+   display: 'flex',
+   flexDirection: 'row',
+   justifyContent: 'space-around',
+   flexWrap: 'wrap',
+}
+
+export const btnFlex = {
+   display: 'flex',
+   alignItems: 'center',
+   justifyContent: 'space-around',
+}
