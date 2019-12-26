@@ -7,8 +7,20 @@ export const SignUpHeader = styled.div`
    text-align: center;
 `;
 
+export const RedirectWrap = styled.div`
+   width: 35%;
+   margin: 0 auto;
+   margin-top: 50px;
+   text-align: center;
+`;
+
 export const SignUpWrapper = styled.div`
    width: 35%;
+   margin: 0 auto;
+`;
+
+export const LogInWrapper = styled.div`
+   width: 20%;
    margin: 0 auto;
 `;
 
@@ -32,6 +44,25 @@ export const SubmitBtn = styled.button`
    color: white;
    background-color: #1653b5;
    font-size: 1rem;
+   &:hover {
+      cursor: pointer;
+   }
+`;
+
+export const LogInBtn = styled.button`
+   height: 40px;
+   width: 80px;
+   border-radius: 5px;
+   background: gray;
+   box-shadow: 0px 0px 0px transparent;
+   border: 0px solid transparent;
+   text-shadow: 0px 0px 0px transparent;
+   color: white;
+   background-color: #1653b5;
+   font-size: 1rem;
+   &:hover {
+      cursor: pointer;
+   }
 `;
 
 export const halfWidth = {
@@ -58,4 +89,11 @@ export const btnFlex = {
    display: 'flex',
    alignItems: 'center',
    justifyContent: 'space-around',
+}
+
+export const logInAsFlex = {
+   display: 'flex',
+   alignItems: 'center',
+   justifyContent: 'space-evenly',
+   marginBottom: '30px',
 }

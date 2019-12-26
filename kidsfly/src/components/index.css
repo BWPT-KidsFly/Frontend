@@ -33,3 +33,8 @@ code {
 .active {
   background: #1653b5;
 }
+
+.errors {
+  color: red;
+  font-size: 12px;
+}

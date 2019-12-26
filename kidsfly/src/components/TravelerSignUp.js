@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
 import { SignUpWrapper, SubmitBtn, SubmitWrapper,
-   halfWidth, fullWidth, formFlex } from './styles';
+   halfWidth, fullWidth, formFlex, RedirectWrap } from './styles';
 import SignUpAs from "./SignUpAs";
 
 
@@ -92,6 +93,10 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
                </SubmitWrapper>
             </Form>
          </SignUpWrapper>
+
+         <RedirectWrap>
+            <div>If you already have an account, please <Link to='/log-in'>Log-In here</Link></div>
+         </RedirectWrap>
 
          {travelers.map(traveler => {
             return (
