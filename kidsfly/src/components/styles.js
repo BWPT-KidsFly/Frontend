@@ -44,6 +44,9 @@ export const SubmitBtn = styled.button`
    color: white;
    background-color: #1653b5;
    font-size: 1rem;
+   &:hover {
+      cursor: pointer;
+   }
 `;
 
 export const LogInBtn = styled.button`
@@ -57,6 +60,9 @@ export const LogInBtn = styled.button`
    color: white;
    background-color: #1653b5;
    font-size: 1rem;
+   &:hover {
+      cursor: pointer;
+   }
 `;
 
 export const halfWidth = {
