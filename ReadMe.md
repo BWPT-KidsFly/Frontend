@@ -45,3 +45,9 @@ Features
 5. Authenticated "traveler" can view their created "trips", info about their "KidsFlyConnection" (think Uber and Lyft), update or cancel/delete a "trip", and a button to indicate when they are 5 minutes from arrival at the airport that alerts the assigned "KidsFlyConnection" when pressed. This button should then change state and allow for a second press upon arrival, which alerts the "KidsFlyConnection". (mobile) **This MVP requirement has an associated _Stretch Goal_.**
 
 6. Authenticated "KidsFlyConnection" can view their active assigned trips, with the option to sort them by departure time, airline or both, as well as a list of complete/archived trips. (mobile)
+
+
+__***[travler mindmap](https://whimsical.com/TSMp7jvc3T4xxSDpJWHZMK#2Ux7TurymMwXxjvp977S "materialize mindmap")***__
+
+__***[admin mindmap](https://whimsical.com/F3CrHUA4wzXUvCjvR8Sfnw#2Ux7TurymNPz7waZCPzG "materialize mindmap")***__
+

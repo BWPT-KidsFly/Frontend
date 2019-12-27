@@ -7,7 +7,8 @@ import kidsFlyreducer from './store/reducers/kidsFlyreducer'
 import App from './components/App';
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
-import './index.css';
+
+import './components/index.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -21,4 +22,5 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 );
+
 
