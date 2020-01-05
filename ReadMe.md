@@ -51,3 +51,5 @@ __***[travler mindmap](https://whimsical.com/TSMp7jvc3T4xxSDpJWHZMK#2Ux7TurymMwX
 
 __***[admin mindmap](https://whimsical.com/F3CrHUA4wzXUvCjvR8Sfnw#2Ux7TurymNPz7waZCPzG "materialize mindmap")***__
 
+__***[UX-prototype](https://www.figma.com/file/4w0MtUVrEjWHmD59EWjmTK/Kidsfly-board?node-id=0%3A1 "figma UX prototype")***__
+
