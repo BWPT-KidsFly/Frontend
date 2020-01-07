@@ -31,7 +31,8 @@ code {
 }
 
 .active {
-  background: #1653b5;
+  background: #0070B7;
+  color: white;
 }
 
 .errors {
