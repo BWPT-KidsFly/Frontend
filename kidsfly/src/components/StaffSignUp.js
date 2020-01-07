@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link, Redirect} from 'react-router-dom';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -124,6 +124,7 @@ const FormikStaffSignUp = withFormik({
       .post('https://reqres.in/api/users', values)
       .then(res => {
          console.log('success', res);
+         Redirect("/dashboard")
          setStatus(res.data);
          resetForm();
       })

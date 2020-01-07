@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Styled from "styled-components";
 
+import { connect } from 'react-redux'
+
 const Navigation = () => {
   let NavBar = Styled.div`
   width: 65%;
@@ -52,5 +54,12 @@ const Navigation = () => {
     </NavBar>
   );
 };
+function mapStateToProps(state) { 
+  return { 
+    isAdmin: state.isAdmin,
+    isStaff: state.isStaff,
+    isTraveler: state.isTraveler, 
 
-export default Navigation;
+  } 
+}
+export default connect()(Navigation);

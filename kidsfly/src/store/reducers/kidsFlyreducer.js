@@ -5,6 +5,8 @@ const initialState = {
     currentUser: "",
     isLoading: false,
     isAdmin: false,
+    isStaff:false,
+    isTraveler:false,
     isError: false,
     error: "",
     adminList: [],
