@@ -47,18 +47,6 @@ const StaffSignUp = ({ values, errors, touched, status }) => {
                )}
 
                <SubmitWrapper>
-                  <label className='checkbox-container'>
-                  
-                     <Field type='checkbox' name='tos' checked={values.tos} />
-                     {touched.tos && errors.tos && (
-                        <p className='errors'>{errors.tos}</p>
-                     )}
-
-                     Terms of Service
-
-                     <span className='checkmark' />
-                  </label>
-
                   <SubmitBtn type='submit'>Apply</SubmitBtn>
                </SubmitWrapper>
             </Form>

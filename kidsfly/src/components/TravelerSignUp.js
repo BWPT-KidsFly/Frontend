@@ -21,19 +21,19 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
          <SignUpAs />
          <SignUpWrapper>
             <Form style={formFlex}>  
-               <Field style={halfWidth} type='text' name='fname' placeholder='First Name' />
-               {touched.fname && errors.fname && (
-                  <p className='errors'>{errors.fname}</p>
+               <Field style={halfWidth} type='text' name='first_name' placeholder='First Name' />
+               {touched.first_name && errors.first_name && (
+                  <p className='errors'>{errors.first_name}</p>
                )}
 
-               <Field style={halfWidth} type='text' name='lname' placeholder='Last Name' />
-               {touched.lname && errors.lname && (
-                  <p className='errors'>{errors.lname}</p>
+               <Field style={halfWidth} type='text' name='last_name' placeholder='Last Name' />
+               {touched.last_name && errors.last_name && (
+                  <p className='errors'>{errors.last_name}</p>
                )} 
 
-               <Field style={fullWidth} type='email' name='email' placeholder='Email' />
-               {touched.email && errors.email && (
-                  <p className='errors'>{errors.email}</p>
+               <Field style={fullWidth} type='email' name='username' placeholder='Email' />
+               {touched.username && errors.username && (
+                  <p className='errors'>{errors.username}</p>
                )}
                        
                <Field style={fullWidth} type='password' name='password' placeholder='Password' />
@@ -41,24 +41,24 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
                   <p className='errors'>{errors.password}</p>
                )}
             
-               <Field style={fullWidth} type='password' name='confirm' placeholder='Confirm Password' />
-               {touched.confirm && errors.confirm && (
+               {/* <Field style={fullWidth} type='password' name='confirm' placeholder='Confirm Password' /> */}
+               {/* {touched.confirm && errors.confirm && (
                   <p className='errors'>{errors.confirm}</p>
+               )} */}
+
+               <Field style={halfWidth} type='text' name='street_address' placeholder='Street Address' />
+               {touched.street_address && errors.street_address && (
+                  <p className='errors'>{errors.street_address}</p>
                )}
 
-               <Field style={fullWidth} type='text' name='address1' placeholder='Address 1' />
-               {touched.address1 && errors.address1 && (
-                  <p className='errors'>{errors.address1}</p>
+               <Field style={halfWidth} type='text' name='city' placeholder='City' />
+               {touched.city && errors.city && (
+                  <p className='errors'>{errors.city}</p>
                )}
 
-               <Field style={fullWidth} type='text' name='address2' placeholder='Address 2' />
-               {touched.address2 && errors.address2 && (
-                  <p className='errors'>{errors.address2}</p>
-               )}
-
-               <Field style={halfWidth} type='text' name='city_state' placeholder='City, State' />
-               {touched.city_state && errors.city_state && (
-                  <p className='errors'>{errors.city_state}</p>
+               <Field style={halfWidth} type='text' name='state' placeholder='State' />
+               {touched.state && errors.state && (
+                  <p className='errors'>{errors.state}</p>
                )}
 
                <Field style={halfWidth} type='text' name='zip' placeholder='Zip Code' />
@@ -66,29 +66,17 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
                   <p className='errors'>{errors.zip}</p>
                )}
 
-               <Field style={halfWidth} type='text' name='airport' placeholder='Home Airport Code' />
-               {touched.airport && errors.airport && (
-                  <p className='errors'>{errors.airport}</p>
+               <Field style={halfWidth} type='text' name='home_airport' placeholder='Home Airport Code' />
+               {touched.home_airport && errors.home_airport && (
+                  <p className='errors'>{errors.home_airport}</p>
                )}
 
-               <Field style={halfWidth} type='tel' name='phone' placeholder='Phone Number' />
-               {touched.phone && errors.phone && (
-                  <p className='errors'>{errors.phone}</p>
+               <Field style={halfWidth} type='tel' name='phone_number' placeholder='Phone Number' />
+               {touched.phone_number && errors.phone_number && (
+                  <p className='errors'>{errors.phone_number}</p>
                )}
 
                <SubmitWrapper>
-                  <label className='checkbox-container'>
-                  
-                     <Field type='checkbox' name='tos' checked={values.tos} />
-                     {touched.tos && errors.tos && (
-                        <p className='errors'>{errors.tos}</p>
-                     )}
-
-                     Terms of Service
-
-                     <span className='checkmark' />
-                  </label>
-
                   <SubmitBtn type='submit'>Submit</SubmitBtn>
                </SubmitWrapper>
             </Form>
@@ -100,17 +88,17 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
 
          {travelers.map(traveler => {
             return (
-               <ul key={traveler.lname}>
-                  <li>{traveler.fname}</li>
-                  <li>{traveler.lname}</li>
-                  <li>{traveler.email}</li>
+               <ul key={traveler.last_name}>
+                  <li>{traveler.first_name}</li>
+                  <li>{traveler.last_name}</li>
+                  <li>{traveler.username}</li>
                   <li>{traveler.password}</li>
-                  <li>{traveler.address1}</li>
-                  <li>{traveler.address2}</li>
-                  <li>{traveler.city_state}</li>
+                  <li>{traveler.street_address}</li>
+                  <li>{traveler.city}</li>
+                  <li>{traveler.state}</li>
                   <li>{traveler.zip}</li>
-                  <li>{traveler.phone}</li>
-                  <li>{traveler.airport}</li>
+                  <li>{traveler.phone_number}</li>
+                  <li>{traveler.home_airport}</li>
                </ul>
             );
          })}
@@ -121,55 +109,57 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
 const FormikTravelerSignUp = withFormik({
    mapPropsToValues(props) {
       return {
-         fname: props.fname || '',
-         lname: props.lname || '',
-         email: props.email || '',
+         first_name: props.first_name || '',
+         last_name: props.last_name || '',
+         username: props.username || '',
          password: props.password || '',
-         confirm: props.confirm || '',
-         address1: props.address1 || '',
-         address2: props.address2 || '',
-         city_state: props.city_state || '',
+         // confirm: props.confirm || '',
+         street_address: props.street_address || '',
+         city: props.city || '',
+         state: props.state || '',
          zip: props.zip || '',
-         airport: props.airport || '',
-         phone: props.phone || '',
+         home_airport: props.home_airport || '',
+         phone_number: props.phone_number || '',
          tos: props.tos || false,
       };
    },
 
    validationSchema: Yup.object().shape({
-      fname: Yup
+      first_name: Yup
          .string()
          .required('please enter your first name'),
-      lname: Yup
+      last_name: Yup
          .string()
          .required('please enter your last name'),
-      email: Yup
+      username: Yup
          .string()
          .required('please enter your email'),
       password: Yup
          .string()
          .min(6, 'your password must be 6 characters or longer')
          .required('please enter a password'),
-      confirm: Yup
-         .string()
-         .min(6, 'your password must be 6 characters or longer')
-         .required('please confirm your password'),
-      address1: Yup
+      // confirm: Yup
+      //    .string()
+      //    .oneOf([Yup.ref('password'), 'this must match the password you entered'])
+      //    .min(6, 'your password must be 6 characters or longer')
+      //    .required('please confirm your password'),
+      street_address: Yup
          .string()
          .required('please enter your address'),
-      address2: Yup
-         .string(),
-      city_state: Yup
+      city: Yup
+         .string()
+         .required('please enter your city and state'),
+      state: Yup
          .string()
          .required('please enter your city and state'),
       zip: Yup
          .string()
          .required('please enter your zip code'),
-      airport: Yup
+      home_airport: Yup
          .string()
          .max(3)
          .required("please enter your home airport's 3-letter code"),
-      phone: Yup
+      phone_number: Yup
          .string()
          .required('please enter your phone number'),
       tos: Yup
