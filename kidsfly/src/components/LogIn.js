@@ -20,9 +20,9 @@ const LogIn = ({ values, errors, touched, status }) => {
          <LogInAs />
          <LogInWrapper>
             <Form style={formFlex}>  
-               <Field style={fullWidth} type='email' name='email' placeholder='Username (Email)' />
-               {touched.email && errors.email && (
-                  <p className='errors'>{errors.email}</p>
+               <Field style={fullWidth} type='email' name='username' placeholder='Username (Email)' />
+               {touched.username && errors.username && (
+                  <p className='errors'>{errors.username}</p>
                )}
                        
                <Field style={fullWidth} type='password' name='password' placeholder='Password' />
@@ -38,14 +38,14 @@ const LogIn = ({ values, errors, touched, status }) => {
             <div>If you don't already have an account, please <Link to='/sign-up'>Sign Up here</Link></div>
          </RedirectWrap>
 
-         {member.map(member => {
+         {/* {member.map(member => {
             return (
                <ul key={member.lname}>
-                  <li>{member.email}</li>
+                  <li>{member.username}</li>
                   <li>{member.password}</li>
                </ul>
             );
-         })}
+         })} */}
       </div>
    );
 };
@@ -53,13 +53,13 @@ const LogIn = ({ values, errors, touched, status }) => {
 const FormikLogIn = withFormik({
    mapPropsToValues(props) {
       return {
-         email: props.email || '',
+         username: props.username || '',
          password: props.password || '',
       };
    },
 
    validationSchema: Yup.object().shape({
-      email: Yup
+      username: Yup
          .string()
          .required('please enter your email'),
       password: Yup
@@ -71,7 +71,7 @@ const FormikLogIn = withFormik({
    handleSubmit(values, { setStatus, resetForm }) {
       console.log('submitting', values);
       axios
-      .post('https://reqres.in/api/users', values)
+      .post('https://bw-kids-fly.herokuapp.com/api/auth/login/user', values)
       .then(res => {
          console.log('success', res);
          setStatus(res.data);

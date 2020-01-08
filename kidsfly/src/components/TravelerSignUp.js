@@ -41,10 +41,10 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
                   <p className='errors'>{errors.password}</p>
                )}
             
-               {/* <Field style={fullWidth} type='password' name='confirm' placeholder='Confirm Password' /> */}
-               {/* {touched.confirm && errors.confirm && (
+               <Field style={fullWidth} type='password' name='confirm' placeholder='Confirm Password' />
+               {touched.confirm && errors.confirm && (
                   <p className='errors'>{errors.confirm}</p>
-               )} */}
+               )}
 
                <Field style={halfWidth} type='text' name='street_address' placeholder='Street Address' />
                {touched.street_address && errors.street_address && (
@@ -86,7 +86,7 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
             <div>If you already have an account, please <Link to='/log-in'>Log-In here</Link></div>
          </RedirectWrap>
 
-         {travelers.map(traveler => {
+         {/* {travelers.map(traveler => {
             return (
                <ul key={traveler.last_name}>
                   <li>{traveler.first_name}</li>
@@ -101,7 +101,7 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
                   <li>{traveler.home_airport}</li>
                </ul>
             );
-         })}
+         })} */}
       </div>
    );
 };
@@ -113,14 +113,13 @@ const FormikTravelerSignUp = withFormik({
          last_name: props.last_name || '',
          username: props.username || '',
          password: props.password || '',
-         // confirm: props.confirm || '',
+         confirm: props.confirm || '',
          street_address: props.street_address || '',
          city: props.city || '',
          state: props.state || '',
          zip: props.zip || '',
          home_airport: props.home_airport || '',
          phone_number: props.phone_number || '',
-         tos: props.tos || false,
       };
    },
 
@@ -138,11 +137,11 @@ const FormikTravelerSignUp = withFormik({
          .string()
          .min(6, 'your password must be 6 characters or longer')
          .required('please enter a password'),
-      // confirm: Yup
-      //    .string()
-      //    .oneOf([Yup.ref('password'), 'this must match the password you entered'])
-      //    .min(6, 'your password must be 6 characters or longer')
-      //    .required('please confirm your password'),
+      confirm: Yup
+         .string()
+         .oneOf([Yup.ref('password'), 'this must match the password you entered'])
+         .min(6, 'your password must be 6 characters or longer')
+         .required('please confirm your password'),
       street_address: Yup
          .string()
          .required('please enter your address'),
@@ -161,11 +160,7 @@ const FormikTravelerSignUp = withFormik({
          .required("please enter your home airport's 3-letter code"),
       phone_number: Yup
          .string()
-         .required('please enter your phone number'),
-      tos: Yup
-         .bool()
-         .oneOf([true], 'You must accept the terms of service to continue')
-         .required()
+         .required('please enter your phone number')
    }),
 
    handleSubmit(values, { setStatus, resetForm }) {
