@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link ,useHistory} from 'react-router-dom';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -7,31 +7,53 @@ import { LogInWrapper, fullWidth, formFlex, LogInBtn, RedirectWrap } from './sty
 import LogInAs from "./LogInAs";
 
 
-const LogIn = ({ values, errors, touched, status }) => {
+const LogIn = ({ values, errors, touched, status,setStatus,resetForm },props) => {
    const [member, setMember] = useState([]);
+   const history=useHistory()
+// console.log("props",props)
+// console.log("values",values)
+// console.log("props.email",props.email)
+// console.log("history",history,)
+useEffect(() => {
+   // console.log('status has changed', status);
+   status && setMember(member => [...member, status]);
+}, [status]);
 
-   useEffect(() => {
-      console.log('status has changed', status);
-      status && setMember(member => [...member, status]);
-   }, [status]);
 
-   return (
-      <div>
+const handleSubmit=(e, setStatus, resetForm )=> {
+e.preventDefault()
+   console.log('submitting', values);
+
+   axios
+   .post('https://reqres.in/api/login', values)
+   .then(res => {
+      console.log('success', res);
+      setStatus(res.data);
+      resetForm();
+      history.push('/dashboard')
+   })
+   .catch(err => console.log('NOOOOO!!!', err.response)
+   ,history.push('/dashboard')
+   );
+}
+
+return (
+   <div>
          <LogInAs />
          <LogInWrapper>
-            <Form style={formFlex}>  
+            <Form onSubmit={(e)=>handleSubmit(e)} style={formFlex}>  
                <Field style={fullWidth} type='email' name='email' placeholder='Username (Email)' />
                {touched.email && errors.email && (
                   <p className='errors'>{errors.email}</p>
-               )}
+                  )}
                        
                <Field style={fullWidth} type='password' name='password' placeholder='Password' />
                {touched.password && errors.password && (
                   <p className='errors'>{errors.password}</p>
-               )}
+                  )}
 
                <LogInBtn style={fullWidth} type='submit'>Log In</LogInBtn>
-            </Form>
+            </Form >
          </LogInWrapper>
 
          <RedirectWrap>
@@ -57,28 +79,18 @@ const FormikLogIn = withFormik({
          password: props.password || '',
       };
    },
-
+   
    validationSchema: Yup.object().shape({
       email: Yup
-         .string()
-         .required('please enter your email'),
+      .string()
+      .required('please enter your email'),
       password: Yup
-         .string()
-         .min(6, 'your password must be 6 characters or longer')
-         .required('please enter a password'),
+      .string()
+      .min(6, 'your password must be 6 characters or longer')
+      .required('please enter a password'),
    }),
-
-   handleSubmit(values, { setStatus, resetForm }) {
-      console.log('submitting', values);
-      axios
-      .post('https://reqres.in/api/users', values)
-      .then(res => {
-         console.log('success', res);
-         setStatus(res.data);
-         resetForm();
-      })
-      .catch(err => console.log('NOOOOO!!!', err.response));
-   },
+   
+  
 })(LogIn);
 
 export default FormikLogIn;
