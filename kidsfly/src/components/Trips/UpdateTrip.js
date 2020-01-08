@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { login,addFlight } from "../../store/actions";
+import { updateFlight } from "../../store/actions";
 import axios from 'axios'
 import { bindActionCreators } from "redux"
 import { axiosWithAuth } from "../../utils";
 
-const CreateTrip = props => {
-  console.log("addFlight()========>>>",
-    addFlight())
+const UpdateTrip = props => {
+  
   const initialTrip = {
     name: "",
     date: "",
@@ -133,6 +132,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return { dispatch, ...bindActionCreators({ login, addFlight }  }
+  return { dispatch, ...bindActionCreators({ login, addFlight }, dispatch) }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CreateTrip);

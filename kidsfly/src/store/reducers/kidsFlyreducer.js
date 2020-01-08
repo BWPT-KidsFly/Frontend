@@ -1,4 +1,12 @@
-import { ADD_FLIGHT_SUCCESS, ERROR, LOGIN_SUCCESS, START } from '../actions'
+import { 
+    GETALLTRIPS_SUCCESS,
+    ADD_FLIGHT_SUCCESS, 
+    LOGIN_STAFF_SUCCESS, 
+    LOGIN_USER_SUCCESS, 
+    GETAIRPORTBYCOORDS_SUCCESS,
+    START,
+    ERROR, 
+     } from '../actions'
 
 
 const initialState = {
@@ -14,6 +22,7 @@ const initialState = {
     incomingTravelersList: [],
     arrivedTravelersList: [],
     homeAirport: "",
+    closestAirport:'',
     upcomingFlightsList: [],
     kidsConnectionStaffList: [],
 
@@ -39,10 +48,30 @@ const kidsFlyreducer = (state = initialState, action) => {
                 upcomingFlightsList: [...state.upcomingFlightsList, action.payload],
             }
         }
-        case LOGIN_SUCCESS: {
+        case GETALLTRIPS_SUCCESS: {
+            return {
+                ...state,
+                isLoading: false,
+                upcomingFlightsList: [...state.upcomingFlightsList, action.payload],
+            }
+        }
+        case GETAIRPORTBYCOORDS_SUCCESS: {
+            return {
+                ...state,
+                isLoading: false,
+                closestAirport: [action.payload],
+            }
+        }
+        case LOGIN_USER_SUCCESS: {
             window.localStorage.setItem("token",action.payload)
             return {
-                ...state,isLoading:false,
+                ...state,isLoading:false,currentUser:action.id||action.username
+            }
+        }
+        case LOGIN_STAFF_SUCCESS: {
+            window.localStorage.setItem("token",action.payload)
+            return {
+                ...state,isLoading:false,currentUser:action.id||action.username
             }
         }
         default: return { ...state }

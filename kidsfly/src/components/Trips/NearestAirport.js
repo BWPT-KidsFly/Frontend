@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { login,addFlight } from "../../store/actions";
+import { getAiportByCoords } from "../../store/actions";
 import axios from 'axios'
 import { bindActionCreators } from "redux"
 import { axiosWithAuth } from "../../utils";
 
-const CreateTrip = props => {
-  console.log("addFlight()========>>>",
-    addFlight())
-  const initialTrip = {
+const nearestAirport = props => {
+  
+  const initialAirport = {
     name: "",
-    date: "",
-    time: "",
-    airport: "",
-    numpassengers: ""
+    distance: "",
+  
   };
+  const [airport,setairport]=useState({initialAirport})
+
 function findnearestAirport(){
   window.onload = function() {
     var startPos;
@@ -60,8 +59,6 @@ function findnearestAirport(){
 
 }
 
-
-
 nearestAirport(){navigator.geolocation.getCurrentPosition(function(position) {
   const getAirportByCoords=()=>{
     axiosWithAuth().get"https://aerodatabox.p.rapidapi.com/airports/search/location/51.511142/-0.103869/km/100/16");
@@ -71,68 +68,21 @@ nearestAirport(){navigator.geolocation.getCurrentPosition(function(position) {
 
 
 });
-  const [trip, setTrip] = useState(initialTrip);
+ return(
+     <>
 
-  const handleChange = event => {
-    setTrip({ ...trip, [event.target.name]: event.target.value });
-  };
- 
-  const handleSubmit = e => {
-    e.preventDefault();
-    props.addFlight(trip);
-    setTrip(initialTrip);
-  };
+<div>{props.nearestAirport}</div>
 
-  return (
-    <div>
-      <form>
-        <input
-          name="name"
-          value={trip.name}
-          placholder="name"
-          onChange={handleChange}
-          type="text"
-        />
-        <input
-          name="date"
-          value={trip.date}
-          placholder="date"
-          onChange={handleChange}
-          type="text"
-        />
-        <input
-          name="time"
-          value={trip.time}
-          placholder="time"
-          onChange={handleChange}
-          type="text"
-        />
-        <input
-          name="airport"
-          value={trip.airport}
-          placholder="airport"
-          onChange={handleChange}
-          type="text"
-        />
-        <input
-          name="numpassengers"
-          value={trip.numpassengers}
-          placholder="number of passengers"
-          onChange={handleChange}
-          type="text"
-        />
-        <button onClick={handleSubmit}>
-          create trip
-        </button>
-      </form>
-    </div>
+     </>
+
+  
   );
 };
 const mapStateToProps = state => {
-  return { flights: state.upcomingFlightsList };
+  return { nearestAirport: state.neartestAirport };
 };
 
 const mapDispatchToProps = dispatch => {
-  return { dispatch, ...bindActionCreators({ login, addFlight }  }
+  return { dispatch, ...bindActionCreators({  }, dispatch) }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CreateTrip);
