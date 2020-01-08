@@ -181,7 +181,7 @@ const FormikTravelerSignUp = withFormik({
    handleSubmit(values, { setStatus, resetForm }) {
       console.log('submitting', values);
       axios
-      .post('https://reqres.in/api/users', values)
+      .post('https://bw-kids-fly.herokuapp.com/api/auth/register/user', values)
       .then(res => {
          console.log('success', res);
          setStatus(res.data);
