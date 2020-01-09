@@ -57,10 +57,10 @@ const Navigation = () => {
             :
             <>
               <div>
-                <NavigationLinks to="/Dashboard/MyTrips">My Trips</NavigationLinks>
+                <NavigationLinks to="/dashboard/mytrips">My Trips</NavigationLinks>
               </div>
               <div>
-                <NavigationLinks to="/Dashboard">Sign Up</NavigationLinks>
+                <NavigationLinks to="/dashboard">Home</NavigationLinks>
               </div>
               <Logout>Logout</Logout>
             </>
