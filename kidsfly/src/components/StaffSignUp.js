@@ -31,9 +31,9 @@ const StaffSignUp = ({ values, errors, touched, status }) => {
                   <p className='errors'>{errors.last_name}</p>
                )} 
 
-               <Field style={fullWidth} id='username' type='email' name='username' placeholder='Email' />
-               {touched.username && errors.username && (
-                  <p className='errors'>{errors.username}</p>
+               <Field style={fullWidth} id='email' type='email' name='email' placeholder='Email' />
+               {touched.email && errors.email && (
+                  <p className='errors'>{errors.email}</p>
                )}
                        
                <Field style={fullWidth} id='password' type='password' name='password' placeholder='Password' />
@@ -61,7 +61,7 @@ const StaffSignUp = ({ values, errors, touched, status }) => {
                <ul key={employee.last_name}>
                   <li>{employee.first_name}</li>
                   <li>{employee.last_name}</li>
-                  <li>{employee.username}</li>
+                  <li>{employee.email}</li>
                   <li>{employee.password}</li>
                </ul>
             );
@@ -75,7 +75,7 @@ const FormikStaffSignUp = withFormik({
       return {
          first_name: props.first_name || '',
          last_name: props.last_name || '',
-         username: props.username || '',
+         email: props.email || '',
          password: props.password || '',
          confirm: props.confirm || '',
       };
@@ -88,7 +88,7 @@ const FormikStaffSignUp = withFormik({
       last_name: Yup
          .string()
          .required('please enter your last name'),
-      username: Yup
+      email: Yup
          .string()
          .required('please enter your email'),
       password: Yup
