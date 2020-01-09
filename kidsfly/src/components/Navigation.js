@@ -32,7 +32,7 @@ const Navigation = () => {
     background-color: #0070B7;
   }
   `;
-
+ 
   return (
     <NavBar className="navbar">
       <NavContainer>

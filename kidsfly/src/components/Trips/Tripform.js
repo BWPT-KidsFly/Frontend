@@ -12,7 +12,8 @@ const Tripform = props => {
     date: "",
     time: "",
     airport: "",
-    numpassengers: ""
+    numpassengers: "",
+    userid:"",
   };
   
   const handleChange = event => {

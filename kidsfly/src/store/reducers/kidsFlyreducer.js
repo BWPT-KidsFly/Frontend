@@ -1,8 +1,12 @@
 import { 
     GETALLTRIPS_SUCCESS,
     ADD_FLIGHT_SUCCESS, 
+    EDIT_FLIGHT_SUCCESS, 
+    DELETE_FLIGHT_SUCCESS, 
     LOGIN_STAFF_SUCCESS, 
     LOGIN_USER_SUCCESS, 
+    REGISTER_STAFF_SUCCESS, 
+    REGISTER_USER_SUCCESS, 
     GETAIRPORTBYCOORDS_SUCCESS,
     START,
     ERROR, 
@@ -46,6 +50,23 @@ const kidsFlyreducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 upcomingFlightsList: [...state.upcomingFlightsList, action.payload],
+
+            }
+        }
+        case EDIT_FLIGHT_SUCCESS: {
+            return {
+                ...state,
+                isLoading: false,
+                upcomingFlightsList: [...state.upcomingFlightsList, action.payload],
+
+            }
+        }
+        case DELETE_FLIGHT_SUCCESS: {
+            return {
+                ...state,
+                isLoading: false,
+                upcomingFlightsList: [...state.upcomingFlightsList, action.payload],
+
             }
         }
         case GETALLTRIPS_SUCCESS: {
@@ -65,10 +86,24 @@ const kidsFlyreducer = (state = initialState, action) => {
         case LOGIN_USER_SUCCESS: {
             window.localStorage.setItem("token",action.payload)
             return {
-                ...state,isLoading:false,currentUser:action.id||action.username
+                ...state,isLoading:false,currentUser:action.id||action.username,
+                
             }
         }
         case LOGIN_STAFF_SUCCESS: {
+            window.localStorage.setItem("token",action.payload)
+            return {
+                ...state,isLoading:false,currentUser:action.id||action.username
+            }
+        }
+        case REGISTER_USER_SUCCESS: {
+            window.localStorage.setItem("token",action.payload)
+            return {
+                ...state,isLoading:false,currentUser:action.id||action.username,
+
+            }
+        }
+        case REGISTER_STAFF_SUCCESS: {
             window.localStorage.setItem("token",action.payload)
             return {
                 ...state,isLoading:false,currentUser:action.id||action.username

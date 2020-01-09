@@ -12,7 +12,8 @@ const CreateTrip = props => {
     date: "",
     time: "",
     airport: "",
-    numpassengers: ""
+    numpassengers: "",
+    user_id:Number(window.localStoarage.getItem('user_id'))
   };
 
   const [trip, setTrip] = useState(initialTrip);
