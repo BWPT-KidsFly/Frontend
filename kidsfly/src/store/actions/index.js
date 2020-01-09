@@ -92,7 +92,7 @@ export const applySTAFF = (credentials) => dispatch => {
     dispatch({ type: START })
     axiosWithAuth
         .post(`/apps`, credentials)
-        .then(res => dispatch({ type: APPLY_STAFF_SUCCESS, payload:{...res.data,...credentials} }))
+        .then(res => dispatch({ type: APPLY_STAFF_SUCCESS, payload: { ...res.data, ...credentials } }))
         .catch(err => dispatch({ type: ERROR, payload: err }))
 }
 
