@@ -8,7 +8,7 @@ import { axiosWithAuth } from "../../utils";
 const CreateTrip = props => {
   
   const initialTrip = {
-    {   airport_name: "SFO",        airline: "1255",        flight_number: "25",        departure_time: "12PM",
+       airport_name: "SFO",        airline: "1255",        flight_number: "25",        departure_time: "12PM",
     carryon_items: "3",        checked_items: "1",        children: "10",        special_needs: "We have a stroller",
     user_id:Number(window.localStoarage.getItem('user_id'))
   };

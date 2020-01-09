@@ -6,70 +6,12 @@ import { bindActionCreators } from "redux"
 import { axiosWithAuth } from "../../utils";
 
 const UpdateTrip = props => {
-  
   const initialTrip = {
-    name: "",
-    date: "",
-    time: "",
-    airport: "",
-    numpassengers: ""
+       airport_name: "SFO",        airline: "1255",        flight_number: "25",        departure_time: "12PM",
+    carryon_items: "3",        checked_items: "1",        children: "10",        special_needs: "We have a stroller",
+    user_id:Number(window.localStoarage.getItem('user_id'))
   };
-function findnearestAirport(){
-  window.onload = function() {
-    var startPos;
-    var geoOptions = {
-      enableHighAccuracy: true
-    }
-  
-    var geoSuccess = function(position) {
-      startPos = position;
-      document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-      document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-    };
-    var geoError = function(error) {
-      console.log('Error occurred. Error code: ' + error.code);
-      // error.code can be:
-      //   0: unknown error
-      //   1: permission denied
-      //   2: position unavailable (error response from location provider)
-      //   3: timed out
-    };
-  
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
-  };var options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-  };
-  
-  function success(pos) {
-    var crd = pos.coords;
-  
-    console.log('Your current position is:');
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
-  }
-  
-  function error(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
-  }
-  
-  navigator.geolocation.getCurrentPosition(success, error, options);
 
-}
-
-
-
-nearestAirport(){navigator.geolocation.getCurrentPosition(function(position) {
-  const getAirportByCoords=()=>{
-    axiosWithAuth().get"https://aerodatabox.p.rapidapi.com/airports/search/location/51.511142/-0.103869/km/100/16");
-  }
-
-  getAirportByCoords(position.coords.latitude, position.coords.longitude);
-
-
-});
   const [trip, setTrip] = useState(initialTrip);
 
   const handleChange = event => {
@@ -86,37 +28,58 @@ nearestAirport(){navigator.geolocation.getCurrentPosition(function(position) {
     <div>
       <form>
         <input
-          name="name"
-          value={trip.name}
-          placholder="name"
+          name="airport_name"
+          value={trip.airport_name}
+          placholder="airport name"
           onChange={handleChange}
           type="text"
         />
         <input
-          name="date"
-          value={trip.date}
-          placholder="date"
+          name=" airline"
+          value={trip. airline}
+          placholder=" airline"
+          onChange={handleChange}
+          type="text"
+        />
+          <input
+            name="flight_number"
+            value={trip.flight_number}
+            placholder="flight number"
+            onChange={handleChange}
+            type="text"
+          />
+        <input
+          name="departure_time"
+          value={trip.departure_time}
+          placholder="departure time"
           onChange={handleChange}
           type="text"
         />
         <input
-          name="time"
-          value={trip.time}
-          placholder="time"
+          name="carryon_items"
+          value={trip.carryon_items}
+          placholder="carryon items"
+          onChange={handleChange}
+          type="text"
+        />
+          <input
+            name="checked_items"
+            value={trip.checked_items}
+            placholder="checked items"
+            onChange={handleChange}
+            type="text"
+          />
+        <input
+          name="children"
+          value={trip.children}
+          placholder="children"
           onChange={handleChange}
           type="text"
         />
         <input
-          name="airport"
-          value={trip.airport}
-          placholder="airport"
-          onChange={handleChange}
-          type="text"
-        />
-        <input
-          name="numpassengers"
-          value={trip.numpassengers}
-          placholder="number of passengers"
+          name="special_needs"
+          value={trip.special_needs}
+          placholder="special needs"
           onChange={handleChange}
           type="text"
         />
@@ -132,6 +95,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return { dispatch, ...bindActionCreators({ login, addFlight }, dispatch) }
+  return { dispatch, ...bindActionCreators({  addFlight },dispatch ) }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(CreateTrip);
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateTrip)
