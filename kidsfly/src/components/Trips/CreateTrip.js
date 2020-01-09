@@ -8,11 +8,8 @@ import { axiosWithAuth } from "../../utils";
 const CreateTrip = props => {
   
   const initialTrip = {
-    name: "",
-    date: "",
-    time: "",
-    airport: "",
-    numpassengers: "",
+    {   airport_name: "SFO",        airline: "1255",        flight_number: "25",        departure_time: "12PM",
+    carryon_items: "3",        checked_items: "1",        children: "10",        special_needs: "We have a stroller",
     user_id:Number(window.localStoarage.getItem('user_id'))
   };
 
@@ -32,37 +29,58 @@ const CreateTrip = props => {
     <div>
       <form>
         <input
-          name="name"
-          value={trip.name}
-          placholder="name"
+          name="airport_name"
+          value={trip.airport_name}
+          placholder="airport name"
           onChange={handleChange}
           type="text"
         />
         <input
-          name="date"
-          value={trip.date}
-          placholder="date"
+          name=" airline"
+          value={trip. airline}
+          placholder=" airline"
+          onChange={handleChange}
+          type="text"
+        />
+          <input
+            name="flight_number"
+            value={trip.flight_number}
+            placholder="flight number"
+            onChange={handleChange}
+            type="text"
+          />
+        <input
+          name="departure_time"
+          value={trip.departure_time}
+          placholder="departure time"
           onChange={handleChange}
           type="text"
         />
         <input
-          name="time"
-          value={trip.time}
-          placholder="time"
+          name="carryon_items"
+          value={trip.carryon_items}
+          placholder="carryon items"
+          onChange={handleChange}
+          type="text"
+        />
+          <input
+            name="checked_items"
+            value={trip.checked_items}
+            placholder="checked items"
+            onChange={handleChange}
+            type="text"
+          />
+        <input
+          name="children"
+          value={trip.children}
+          placholder="children"
           onChange={handleChange}
           type="text"
         />
         <input
-          name="airport"
-          value={trip.airport}
-          placholder="airport"
-          onChange={handleChange}
-          type="text"
-        />
-        <input
-          name="numpassengers"
-          value={trip.numpassengers}
-          placholder="number of passengers"
+          name="special_needs"
+          value={trip.special_needs}
+          placholder="special needs"
           onChange={handleChange}
           type="text"
         />
