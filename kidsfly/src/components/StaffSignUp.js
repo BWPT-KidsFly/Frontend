@@ -21,27 +21,27 @@ const StaffSignUp = ({ values, errors, touched, status }) => {
          <SignUpAs />
          <SignUpWrapper>
             <Form style={formFlex}>  
-               <Field style={halfWidth} type='text' name='first_name' placeholder='First Name' />
+               <Field style={halfWidth} id='first_name' type='text' name='first_name' placeholder='First Name' />
                {touched.first_name && errors.first_name && (
                   <p className='errors'>{errors.first_name}</p>
                )}
 
-               <Field style={halfWidth} type='text' name='last_name' placeholder='Last Name' />
+               <Field style={halfWidth} id='last_name' type='text' name='last_name' placeholder='Last Name' />
                {touched.last_name && errors.last_name && (
                   <p className='errors'>{errors.last_name}</p>
                )} 
 
-               <Field style={fullWidth} type='email' name='username' placeholder='username' />
+               <Field style={fullWidth} id='username' type='email' name='username' placeholder='username' />
                {touched.username && errors.username && (
                   <p className='errors'>{errors.username}</p>
                )}
                        
-               <Field style={fullWidth} type='password' name='password' placeholder='Password' />
+               <Field style={fullWidth} id='password' type='password' name='password' placeholder='Password' />
                {touched.password && errors.password && (
                   <p className='errors'>{errors.password}</p>
                )}
             
-               <Field style={fullWidth} type='password' name='confirm' placeholder='Confirm Password' />
+               <Field style={fullWidth} id='confirm' type='password' name='confirm' placeholder='Confirm Password' />
                {touched.confirm && errors.confirm && (
                   <p className='errors'>{errors.confirm}</p>
                )}

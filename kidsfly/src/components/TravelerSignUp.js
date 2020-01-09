@@ -21,57 +21,57 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
          <SignUpAs />
          <SignUpWrapper>
             <Form style={formFlex}>  
-               <Field style={halfWidth} type='text' name='first_name' placeholder='First Name' />
+               <Field style={halfWidth} id='first_name' type='text' name='first_name' placeholder='First Name' />
                {touched.first_name && errors.first_name && (
                   <p className='errors'>{errors.first_name}</p>
                )}
 
-               <Field style={halfWidth} type='text' name='last_name' placeholder='Last Name' />
+               <Field style={halfWidth} id='last_name' type='text' name='last_name' placeholder='Last Name' />
                {touched.last_name && errors.last_name && (
                   <p className='errors'>{errors.last_name}</p>
                )} 
 
-               <Field style={fullWidth} type='email' name='username' placeholder='Email' />
+               <Field style={fullWidth} id='username' type='email' name='username' placeholder='Email' />
                {touched.username && errors.username && (
                   <p className='errors'>{errors.username}</p>
                )}
                        
-               <Field style={fullWidth} type='password' name='password' placeholder='Password' />
+               <Field style={fullWidth} id='password' type='password' name='password' placeholder='Password' />
                {touched.password && errors.password && (
                   <p className='errors'>{errors.password}</p>
                )}
             
-               <Field style={fullWidth} type='password' name='confirm' placeholder='Confirm Password' />
+               <Field style={fullWidth} id='confirm' type='password' name='confirm' placeholder='Confirm Password' />
                {touched.confirm && errors.confirm && (
                   <p className='errors'>{errors.confirm}</p>
                )}
 
-               <Field style={halfWidth} type='text' name='street_address' placeholder='Street Address' />
+               <Field style={halfWidth} id='street_address' type='text' name='street_address' placeholder='Street Address' />
                {touched.street_address && errors.street_address && (
                   <p className='errors'>{errors.street_address}</p>
                )}
 
-               <Field style={halfWidth} type='text' name='city' placeholder='City' />
+               <Field style={halfWidth} id='city' type='text' name='city' placeholder='City' />
                {touched.city && errors.city && (
                   <p className='errors'>{errors.city}</p>
                )}
 
-               <Field style={halfWidth} type='text' name='state' placeholder='State' />
+               <Field style={halfWidth} id='state' type='text' name='state' placeholder='State' />
                {touched.state && errors.state && (
                   <p className='errors'>{errors.state}</p>
                )}
 
-               <Field style={halfWidth} type='text' name='zip' placeholder='Zip Code' />
+               <Field style={halfWidth} id='zip' type='text' name='zip' placeholder='Zip Code' />
                {touched.zip && errors.zip && (
                   <p className='errors'>{errors.zip}</p>
                )}
 
-               <Field style={halfWidth} type='text' name='home_airport' placeholder='Home Airport Code' />
+               <Field style={halfWidth} id='home_airport' type='text' name='home_airport' placeholder='Home Airport Code' />
                {touched.home_airport && errors.home_airport && (
                   <p className='errors'>{errors.home_airport}</p>
                )}
 
-               <Field style={halfWidth} type='tel' name='phone_number' placeholder='Phone Number' />
+               <Field style={halfWidth} id='phone_number' type='tel' name='phone_number' placeholder='Phone Number' />
                {touched.phone_number && errors.phone_number && (
                   <p className='errors'>{errors.phone_number}</p>
                )}

@@ -20,12 +20,12 @@ const LogIn = ({ values, errors, touched, status }) => {
          <LogInAs />
          <LogInWrapper>
             <Form style={formFlex}>  
-               <Field style={fullWidth} type='email' name='username' placeholder='Username (Email)' />
+               <Field style={fullWidth} id='username' type='email' name='username' placeholder='Username (Email)' />
                {touched.username && errors.username && (
                   <p className='errors'>{errors.username}</p>
                )}
                        
-               <Field style={fullWidth} type='password' name='password' placeholder='Password' />
+               <Field style={fullWidth} id='password' type='password' name='password' placeholder='Password' />
                {touched.password && errors.password && (
                   <p className='errors'>{errors.password}</p>
                )}
