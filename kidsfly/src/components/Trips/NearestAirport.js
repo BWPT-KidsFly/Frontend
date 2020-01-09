@@ -1,88 +1,71 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { getAiportByCoords } from "../../store/actions";
-import axios from 'axios'
 import { bindActionCreators } from "redux"
+import { getAiportByCoords } from "../../store/actions";
+import { Redirect } from "react-router-dom"
+import axios from 'axios'
 import { axiosWithAuth } from "../../utils";
 
-const nearestAirport = props => {
-  
-  const initialAirport = {
-    name: "",
-    distance: "",
-  
-  };
-  const [airport,setairport]=useState({initialAirport})
+const NearestAirport = props => {
 
-function findnearestAirport(){
-  window.onload = function() {
-    var startPos;
-    var geoOptions = {
-      enableHighAccuracy: true
+    const initialAirport = { name: "", distance: "" };
+    const [airport, setAirport] = useState({ initialAirport });
+    const [position, setPosition] = useState();
+
+    const success = (pos) => {
+        const { latitude, longitude, accuracy } = pos.coords;
+        console.log('Your current position is:');
+        console.log(`Latitude : ${latitude}`);
+        console.log(`Longitude: ${longitude}`);
+        console.log(`More or less ${accuracy} meters.`);
+
+        setPosition({ latitude: latitude, longitude: longitude, accuracy: accuracy })
+        return (console.log("position", position))
     }
-  
-    var geoSuccess = function(position) {
-      startPos = position;
-      document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-      document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+
+    const error = (err) => {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+    const options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };
+
+
+
+    const browserCoordsII = () => {
+        navigator.geolocation.getCurrentPosition(success, error, options);
+        //returns the browser coordinates for the airport by distance api as object position{}
+    }
+position&&answer()
+    const answer = async () => {
+        // const position = await browserCoordsII()
+        const airport = await getnearestAirport(position)
+        setAirport(airport)
+        console.log("airport", airport)
+
+    }
+ 
+    const getnearestAirport = (position) => {
+        const { latitude, longitude } = position;
+        const getAirportByCoords = (latitude, longitude) => {
+            (localStorage.getItem("token")) ?
+                (axios
+                    .get(`https://aerodatabox.p.rapidapi.com/airports/search/location/${longitude}/${latitude}/km/100/16`)
+                    .then(res => console.log(res))
+                    .catch(err => console.error(err))) : (Redirect("/login"))
+        };
+        return getAirportByCoords(latitude, longitude);
     };
-    var geoError = function(error) {
-      console.log('Error occurred. Error code: ' + error.code);
-      // error.code can be:
-      //   0: unknown error
-      //   1: permission denied
-      //   2: position unavailable (error response from location provider)
-      //   3: timed out
-    };
-  
-    navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
-  };var options = {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-  };
-  
-  function success(pos) {
-    var crd = pos.coords;
-  
-    console.log('Your current position is:');
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
-  }
-  
-  function error(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
-  }
-  
-  navigator.geolocation.getCurrentPosition(success, error, options);
+    return (
+        <>
+            <div>nearest Airport{props.nearestAirport}</div>
+        </>
 
-}
-
-nearestAirport(){navigator.geolocation.getCurrentPosition(function(position) {
-  const getAirportByCoords=()=>{
-    axiosWithAuth().get"https://aerodatabox.p.rapidapi.com/airports/search/location/51.511142/-0.103869/km/100/16");
-  }
-
-  getAirportByCoords(position.coords.latitude, position.coords.longitude);
-
-
-});
- return(
-     <>
-
-<div>{props.nearestAirport}</div>
-
-     </>
-
-  
-  );
+    );
 };
 const mapStateToProps = state => {
-  return { nearestAirport: state.neartestAirport };
+    return { nearestAirport: state.neartestAirport };
 };
 
 const mapDispatchToProps = dispatch => {
-  return { dispatch, ...bindActionCreators({  }, dispatch) }
+    return { dispatch, ...bindActionCreators({}, dispatch) }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(CreateTrip);
+export default connect(mapStateToProps, mapDispatchToProps)(NearestAirport);

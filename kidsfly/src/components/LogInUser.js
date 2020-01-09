@@ -33,8 +33,8 @@ e.preventDefault();
       console.log('success', res);
       setStatus(res.data);
      localStorage.setItem(`token`,res.data.payload)
-      history.push('/dashboard')
-   })
+    })
+    .then(_=>history.push('/dashboard'))
    .catch(err => console.error(err, err.response),
    history.push('/dashboard')
    );

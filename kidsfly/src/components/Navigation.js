@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Styled from "styled-components";
-import {Logout }from './Logout'
-import { connect } from 'react-redux'
+import { Logout } from './Logout'
+
 
 const Navigation = () => {
   let NavBar = Styled.div`
@@ -36,34 +36,38 @@ const Navigation = () => {
   return (
     <NavBar className="navbar">
       <NavContainer>
-        <div>
-          <NavigationLinks exact to="/">
-            Home
+        {
+          !localStorage.getItem("token") ?
+            <>
+              <div>
+                <NavigationLinks exact to="/">
+                  Home
           </NavigationLinks>
-        </div>
-        <div>
-          <NavigationLinks to="/about-us">About Us</NavigationLinks>
-        </div>
-        {!localStorage.getItem('token')?<>
-        <div>
-          <NavigationLinks to="/log-in">Log In</NavigationLinks>
-        </div>
-        <div>
-          <NavigationLinks to="/sign-up">Sign Up</NavigationLinks>
-        </div>
-        </>
-      : <Logout>Logout</Logout>
+              </div>
+              <div>
+                <NavigationLinks to="/about-us">About Us</NavigationLinks>
+              </div>
+              <div>
+                <NavigationLinks to="/log-in">Log In</NavigationLinks>
+              </div>
+              <div>
+                <NavigationLinks to="/sign-up">Sign Up</NavigationLinks>
+              </div>
+            </>
+            :
+            <>
+              <div>
+                <NavigationLinks to="/Dashboard/MyTrips">My Trips</NavigationLinks>
+              </div>
+              <div>
+                <NavigationLinks to="/Dashboard">Sign Up</NavigationLinks>
+              </div>
+              <Logout>Logout</Logout>
+            </>
         }
       </NavContainer>
     </NavBar>
   );
 };
-function mapStateToProps(state) { 
-  return { 
-    isAdmin: state.isAdmin,
-    isStaff: state.isStaff,
-    isTraveler: state.isTraveler, 
 
-  } 
-}
-export default connect()(Navigation);
+export default (Navigation);
