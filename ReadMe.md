@@ -1,55 +1,68 @@
-KidsFly
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Any parent who has ever traveled solo with multiple children in tow know the struggle all too well - 
-balancing a squirming baby in one arm a while also juggling your own luggage, the diaper bag, the toddler's luggage, 
-the carseat, the stroller, your boarding passes, everyone's passports in the other, all while trying to keep tabs on multiple 
-children's orbits in a sea of unfamiliar people. It can be physically and mentally exhausting and turn the most exciting vacation 
-plans into a living nightmare. The good news is that with KidsFly, you'll never dread another trip to the airport. 
-KidsFly is an app that alerts one our fully-vetted "KidsFlyConnect" staff of your estimated arrival so that someone will be 
-waiting for you curbside when you arrive - flight details, luggage type and quantity, number of passengers and any special needs are 
-just a few examples of information you can provide pre-arrival to your KidsFlyConnection using our simple, 
-intuitive mobile app, so that we can curate the most pleasant check-in and boarding experience possible.
+## Available Scripts
 
+In the project directory, you can run:
 
-Proposal
+### `yarn start`
 
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-- What problem does your app solve? 
+### `yarn test`
 
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-	Simplifies airport onboarding process for parents who are traveling with young children.
+### `yarn build`
 
-- Be as specific as possible; how does your app solve the problem? 	
-Provide an assistant to help manage their stuff, including kids.
-Someone to greet you as you arrive at the airport and help you through the ticketing and security process.
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-- What is the mission statement? 
-	-Safe, stress-free family travel...
-	-stress free, convenient family travel
--We’ll carry your luggage, so you can carry your kids…
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-Features
+### `yarn eject`
 
-- What features are required for your minimum viable product?
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-	1. User can signup/register as a "traveler". At a minimum, you must require an email address(username) and password at signup/registration, and a full name, address, home airport and phone number before using the service for the first time. (mobile, web)
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-2. An "Admin" account type that grants approved users full CRUD permissions. (web)
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-3. User can signup/apply as a "KidsFlyConnection". At a minimum, you must require an email address(username) and password at signup/application.(mobile, web) **This MVP requirement has an associated _Stretch Goal_.**
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-4. Authenticated "traveler" can create an "trip" by inputting an Airport Name, Airline, Flight Number, Departure Time, Number of carryon/checked items, number of children accompanying the parent, and optionally, any special needs or other requirements. (mobile) **This MVP requirement has an associated _Stretch Goal_.**
+## Learn More
 
-5. Authenticated "traveler" can view their created "trips", info about their "KidsFlyConnection" (think Uber and Lyft), update or cancel/delete a "trip", and a button to indicate when they are 5 minutes from arrival at the airport that alerts the assigned "KidsFlyConnection" when pressed. This button should then change state and allow for a second press upon arrival, which alerts the "KidsFlyConnection". (mobile) **This MVP requirement has an associated _Stretch Goal_.**
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-6. Authenticated "KidsFlyConnection" can view their active assigned trips, with the option to sort them by departure time, airline or both, as well as a list of complete/archived trips. (mobile)
+To learn React, check out the [React documentation](https://reactjs.org/).
 
+### Code Splitting
 
-__***[travler mindmap](https://whimsical.com/TSMp7jvc3T4xxSDpJWHZMK#2Ux7TurymMwXxjvp977S "materialize mindmap")***__
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-__***[admin mindmap](https://whimsical.com/F3CrHUA4wzXUvCjvR8Sfnw#2Ux7TurymNPz7waZCPzG "materialize mindmap")***__
+### Analyzing the Bundle Size
 
-__***[UX-prototype](https://www.figma.com/file/4w0MtUVrEjWHmD59EWjmTK/Kidsfly-board?node-id=0%3A1 "figma UX prototype")***__
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `yarn build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
