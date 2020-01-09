@@ -2,6 +2,7 @@ import { axiosWithAuth } from "../../utils"
 import axios from "axios"
 
 export const START = "START"
+export const APPLY_STAFF_SUCCESS = "APPLY_STAFF_SUCCESS"
 export const LOGIN_STAFF_SUCCESS = "LOGIN_STAFF_SUCCESS"
 export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS"
 export const REGISTER_STAFF_SUCCESS = "REGISTER_STAFF_SUCCESS"
@@ -72,6 +73,26 @@ export const registerSTAFF = (credentials) => dispatch => {
     axiosWithAuth
         .post(`/adminauth/register/admin`, credentials)
         .then(res => dispatch({ type: REGISTER_STAFF_SUCCESS, payload: res.data }))
+        .catch(err => dispatch({ type: ERROR, payload: err }))
+}
+
+{/**Submitting an application
+POST to https://bw-kids-fly.herokuapp.com/api/apps
+
+{
+	{email: 'LambdaStudent365@Lambda.edu'},
+    {password: 'password'},
+    {confirm: 'password'}
+    {first_name: 'Heather'},
+    {last_name: 'Ridgill'},
+    
+}
+Example Output: { "message": "You have now applied to be a KidsFlyConnection Staff Member!" } */}
+export const applySTAFF = (credentials) => dispatch => {
+    dispatch({ type: START })
+    axiosWithAuth
+        .post(`/apps`, credentials)
+        .then(res => dispatch({ type: APPLY_STAFF_SUCCESS, payload:{...res.data,...credentials} }))
         .catch(err => dispatch({ type: ERROR, payload: err }))
 }
 
