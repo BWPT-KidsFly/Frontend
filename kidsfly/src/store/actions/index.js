@@ -57,7 +57,7 @@ Example Output:
 export const registerUser = (credentials) => dispatch => {
     dispatch({ type: START })
     axiosWithAuth
-        .post(`/register`, credentials)
+        .post(`//auth/register/user`, credentials)
         .then(res => dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data }))
         .catch(err => dispatch({ type: ERROR, payload: err }))
 }
@@ -122,7 +122,7 @@ export const gettrips = (user) => dispatch => {
 export const addFlight = (flightObj) => dispatch => {
     dispatch({ type: START })
     axiosWithAuth
-        .post(`/user/addflight`, flightObj)
+        .post(`/trips/trip`, flightObj)
         .then(res => dispatch({ type: ADD_FLIGHT_SUCCESS, payload: res.data }))
         .catch(err => dispatch({ type: ERROR, payload: err }))
 }
