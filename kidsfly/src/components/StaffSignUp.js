@@ -31,7 +31,7 @@ const StaffSignUp = ({ values, errors, touched, status }) => {
                   <p className='errors'>{errors.last_name}</p>
                )} 
 
-               <Field style={fullWidth} id='username' type='email' name='username' placeholder='username' />
+               <Field style={fullWidth} id='username' type='email' name='username' placeholder='Email' />
                {touched.username && errors.username && (
                   <p className='errors'>{errors.username}</p>
                )}
