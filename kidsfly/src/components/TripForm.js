@@ -113,7 +113,7 @@ const TripForm = ({ values, errors, touched, status }) => {
       </Form>
       {trip.map(props => {
         return (
-          <div key={props.departure_time}>
+          <div className='tripCard' key={props.departure_time}>
             <h3>{props.airline}</h3>
             <p>{props.flight_number}</p>
           </div>
@@ -148,7 +148,7 @@ const FormikTripForm = withFormik({
   handleSubmit(values, { setStatus, resetForm }) {
     console.log("Submitting... ", values);
     axios
-      .post("https://reqres.in/api/users/", values)
+      .post("https://bw-kids-fly.herokuapp.com/api/trips/trip", values)
       .then(res => {
         console.log("Success: ", res);
         setStatus(res.data);
