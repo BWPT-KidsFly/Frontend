@@ -48,7 +48,7 @@ return (
                   <p className='errors'>{errors.email}</p>
                   )}
                        
-               <Field style={fullWidth} type='password' name='password' placeholder='Password' />
+               <Field style={fullWidth} id='password' type='password' name='password' placeholder='Password' />
                {touched.password && errors.password && (
                   <p className='errors'>{errors.password}</p>
                   )}
@@ -59,16 +59,17 @@ return (
 
          <RedirectWrap>
             <div>If you don't already have an account, please <Link to='/sign-up'>Sign Up here</Link></div>
+            <div className='admin-redirect'>ADMIN, please <Link to='/log-in/admin'>Log-In here</Link></div>
          </RedirectWrap>
 
-         {member.map(member => {
+         {/* {member.map(member => {
             return (
                <ul key={member.lname}>
-                  <li>{member.email}</li>
+                  <li>{member.username}</li>
                   <li>{member.password}</li>
                </ul>
             );
-         })}
+         })} */}
       </div>
    );
 };
@@ -76,7 +77,7 @@ return (
 const FormikLogIn = withFormik({
    mapPropsToValues(props) {
       return {
-         email: props.email || '',
+         username: props.username || '',
          password: props.password || '',
       };
    },
@@ -90,8 +91,7 @@ const FormikLogIn = withFormik({
       .min(6, 'your password must be 6 characters or longer')
       .required('please enter a password'),
    }),
-   
-  
+
 })(LogIn);
 
 export default FormikLogIn;

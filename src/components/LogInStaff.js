@@ -11,12 +11,10 @@ import { axiosWithAuth } from "../utils";
 const LogIn = ({ values, errors, touched, status,setStatus,resetForm },props) => {
    const [member, setMember] = useState([]);
    const history=useHistory()
-// console.log("props",props)
-// console.log("values",values)
-// console.log("props.email",props.email)
+
 console.log("history",history,)
 useEffect(() => {
-   // console.log('status has changed', status);
+ 
    status && setMember(member => [...member, status]);
 }, [status]);
 

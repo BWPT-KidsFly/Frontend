@@ -9,6 +9,7 @@ import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
 import './components/index.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
