@@ -85,6 +85,21 @@ const TripForm = ({ values, errors, touched, status }) => {
           <option value="9">9</option>
           <option value="10">10+</option>
         </Field>
+        <Field className="formFields" as="select" name="checked_items">
+          <option selected disabled>
+            Checked Items
+          </option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10+</option>
+        </Field>
         <Field className="formFields" as="select" name="children">
           <option selected disabled>
             Number of Kids
@@ -111,14 +126,6 @@ const TripForm = ({ values, errors, touched, status }) => {
           Submit
         </button>
       </Form>
-      {trip.map(props => {
-        return (
-          <div className='tripCard' key={props.departure_time}>
-            <h3>{props.airline}</h3>
-            <p>{props.flight_number}</p>
-          </div>
-        );
-      })}
     </div>
   );
 };
@@ -131,6 +138,7 @@ const FormikTripForm = withFormik({
       flight_number: props.flight_number || "",
       departure_time: props.departure_time || "",
       carryon_items: props.carryon_items || "",
+      checked_items: props.checked_items || '',
       children: props.children || "",
       special_needs: props.special_needs || ""
     };
@@ -142,6 +150,7 @@ const FormikTripForm = withFormik({
     flight_number: Yup.string().required("A Flight is Required."),
     departure_time: Yup.string().required("Please select a Date and Time."),
     carryon_items: Yup.string().required("Luggage Amount is required."),
+    checked_items: Yup.string().required('Did you check in any items?'),
     children: Yup.string().required("How many kids will be joining you?")
   }),
 
