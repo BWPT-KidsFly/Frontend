@@ -53,7 +53,8 @@ const StaffSignUp = ({ values, errors, touched, status }) => {
          </SignUpWrapper>
 
          <RedirectWrap>
-            <div>If you already have an account, please <Link to='/log-in'>Log-In here</Link></div>
+            <div>If you already have an account, please <Link to='/log-in'>log in here</Link></div>
+            <div className='admin-redirect'>ADMIN, please <Link to='/log-in/admin'>log in here</Link></div>
          </RedirectWrap>
 
          {/* {staff.map(employee => {
