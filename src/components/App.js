@@ -6,6 +6,9 @@ import StaffSignUp from './StaffSignUp';
 import SignUpAs from './SignUpAs';
 import LogIn from './LogIn';
 import LogInAs from './LogInAs';
+import AdminSignUp from './AdminSignUp';
+import AdminLogIn from './AdminLogIn';
+import Dash from './Dashboard';
 
 function App() {
   return (
@@ -20,7 +23,7 @@ function App() {
       <Route path='/log-in/traveler' component={LogIn} />
       <Route path='/log-in/staff' component={LogIn} />
       <Route path='/log-in/admin' component={AdminLogIn} />
-      <Route exact path='/dashboard' component={TravelerList} />
+      <Route exact path='/dashboard' component={Dash} />
     </div>
   );
 }
