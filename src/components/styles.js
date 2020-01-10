@@ -28,14 +28,13 @@ export const SubmitWrapper = styled.div`
    margin-top: 20px;
    width: 70%;
    display: flex;
-   justify-content: space-between;
+   justify-content: space-around;
    align-items: center;
 `;
 
 export const SubmitBtn = styled.button`
    height: 40px;
-   width: 80px;
-   margin-right: 8%;
+   width: 40%;
    border-radius: 7px;
    background: gray;
    box-shadow: 0px 0px 0px transparent;
