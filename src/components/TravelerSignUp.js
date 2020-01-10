@@ -41,7 +41,7 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
                {touched.password && errors.password && (
                   <p className='errors'>{errors.password}</p>
                )}
-            
+
                <Field style={fullWidth} id='confirm' type='password' name='confirm' placeholder='Confirm Password' />
                {touched.confirm && errors.confirm && (
                   <p className='errors'>{errors.confirm}</p>

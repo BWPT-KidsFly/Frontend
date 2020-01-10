@@ -7,14 +7,12 @@ import SignUpAs from './SignUpAs';
 import LogInStaff from './LogInStaff';
 import LogInUser from './LogInUser';
 import LogInAs from './LogInAs';
-import TravelerList from './TravelerList';
-import AdminLogIn from './AdminLogIn';
 import AdminSignUp from './AdminSignUp';
-import Dashboard from './Dashboard/Dashboard';
 import MyTrips from './Trips/MyTrips';
 import { PrivateRoute } from '../utils';
 import LogIn from "./LogIn";
-
+import AdminLogIn from './AdminLogIn';
+import Dash from './Dashboard';
 
 
 function App() {
@@ -38,7 +36,8 @@ function App() {
       <Route path='/log-in/traveler' component={LogInUser} />
       <PrivateRoute exact path='/dashboard' component={Dashboard} />
       <PrivateRoute path='/dashboard/mytrips' component={MyTrips} />
-      <PrivateRoute path='/dashboard/:tripid/edit' component={Dashboard} />
+      <PrivateRoute path='/dashboard/:tripid/edit' component={Dash} />
+
 
 
     </div>
