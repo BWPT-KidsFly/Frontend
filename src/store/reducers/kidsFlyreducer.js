@@ -4,6 +4,7 @@ import {
     EDIT_FLIGHT_SUCCESS, 
     DELETE_FLIGHT_SUCCESS, 
     LOGIN_USER_SUCCESS, 
+    LOGOUT, 
     LOGIN_STAFF_SUCCESS, 
     APPLY_STAFF_SUCCESS,
     REGISTER_STAFF_SUCCESS, 
@@ -12,6 +13,7 @@ import {
     START,
     ERROR, 
      } from '../actions'
+import { Redirect } from 'react-router-dom'
 
 
 const initialState = {
@@ -97,6 +99,15 @@ const kidsFlyreducer = (state = initialState, action) => {
             console.log("action.payload",action.payload)
             return {
                 ...state,isLoading:false,currentUser:action.id,token:action.payload.token
+                
+            }
+        }
+        case LOGOUT: {
+            window.localStorage.removeItem("token")
+            console.log("action.payload",action.payload)
+        
+            return {
+                ...state,isLoading:false,currentUser:null,token:null
                 
             }
         }

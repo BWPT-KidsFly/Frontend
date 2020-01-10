@@ -36,7 +36,7 @@ function App() {
       <Route exact path='/log-in' component={LogInAs} />
       <Route path='/log-in/staff' component={LogInStaff} />
       <Route path='/log-in/traveler' component={LogInUser} />
-      <PrivateRoute path='/dashboard' component={Dashboard} />
+      <PrivateRoute exact path='/dashboard' component={Dashboard} />
       <PrivateRoute path='/dashboard/mytrips' component={MyTrips} />
       <PrivateRoute path='/dashboard/:tripid/edit' component={Dashboard} />
 
