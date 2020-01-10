@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import {connect} from 'react-redux'
+import {loginUser} from "../store/actions"
 import { Link ,useHistory} from 'react-router-dom';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
@@ -14,44 +16,46 @@ const LogIn = ({ values, errors, touched, status,setStatus,resetForm },props) =>
 // console.log("props",props)
 // console.log("values",values)
 // console.log("props.email",props.email)
-console.log("history",history,)
+// console.log("history",history,loginUser)
 useEffect(() => {
    // console.log('status has changed', status);
    status && setMember(member => [...member, status]);
 }, [status]);
 
 
-const handleSubmit=(e, setStatus, resetForm )=> {
-e.preventDefault()
+const handleSubmit=(e )=> {
+e.preventDefault();
    console.log('submitting', values);
 
    axiosWithAuth()
-   .post(`/adminauth/login/admin`, values)
+   .post(`/login`, values)
    .then(res => {
       console.log('success', res);
       setStatus(res.data);
-      resetForm();
-      history.push('/dashboard')
-   })
-   .catch(err => console.log('NOOOOO!!!', err.response),
+     localStorage.setItem(`token`,res.data.payload)
+    })
+    .then(_=>history.push('/dashboard'))
+   .catch(err => console.error(err, err.response),
    history.push('/dashboard')
    );
+//  (loginUser(values));
+//  localStorage.getItem("token")&&history.push("/dashboard");
+ 
+
+
 }
 
 return (
    <div>
          <LogInAs />
          <LogInWrapper>
-
             <Form onSubmit={(e)=>handleSubmit(e)} style={formFlex}>  
-    
-               <Field style={fullWidth} id='username' type='email' name='username' placeholder='Username (Email)' />
-               {touched.username && errors.username && (
-                  <p className='errors'>{errors.username}</p>
-               )}
-
+               <Field style={fullWidth} type='email' name='email' placeholder='Username (Email)' />
+               {touched.email && errors.email && (
+                  <p className='errors'>{errors.email}</p>
+                  )}
                        
-               <Field style={fullWidth} id='password' type='password' name='password' placeholder='Password' />
+               <Field style={fullWidth} type='password' name='password' placeholder='Password' />
                {touched.password && errors.password && (
                   <p className='errors'>{errors.password}</p>
                   )}
@@ -62,17 +66,16 @@ return (
 
          <RedirectWrap>
             <div>If you don't already have an account, please <Link to='/sign-up'>Sign Up here</Link></div>
-            <div className='admin-redirect'>ADMIN, please <Link to='/log-in/admin'>Log-In here</Link></div>
          </RedirectWrap>
 
-         {/* {member.map(member => {
+         {member.map(member => {
             return (
                <ul key={member.lname}>
-                  <li>{member.username}</li>
+                  <li>{member.email}</li>
                   <li>{member.password}</li>
                </ul>
             );
-         })} */}
+         })}
       </div>
    );
 };
@@ -80,8 +83,7 @@ return (
 const FormikLogIn = withFormik({
    mapPropsToValues(props) {
       return {
-
-         username: props.username || '',
+         email: props.email || '',
          password: props.password || '',
       };
    },
@@ -95,7 +97,9 @@ const FormikLogIn = withFormik({
       .min(6, 'your password must be 6 characters or longer')
       .required('please enter a password'),
    }),
-
+   
+  
 })(LogIn);
 
-export default FormikLogIn;
+
+export default connect(null,{loginUser})( FormikLogIn);

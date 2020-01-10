@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
+import{ axiosWithAuth} from '../utils/axiosWithAuth';
 import axios from 'axios';
 import { SignUpWrapper, SubmitBtn, SubmitWrapper,
    halfWidth, fullWidth, formFlex, RedirectWrap } from './styles';
@@ -166,6 +167,8 @@ const FormikTravelerSignUp = withFormik({
 
    handleSubmit(values, { setStatus, resetForm }) {
       console.log('submitting', values);
+      axiosWithAuth()
+      .post('/auth/register/user', values)
       axios
       .post('https://bw-kids-fly.herokuapp.com/api/auth/register/user', values)
       .then(res => {

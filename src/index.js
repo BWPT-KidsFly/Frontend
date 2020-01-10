@@ -1,12 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './components/index.css';
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router } from 'react-router-dom';
+import { createStore, compose, applyMiddleware } from 'redux'
+import kidsFlyreducer from './store/reducers/kidsFlyreducer'
 import App from './components/App';
-import {BrowserRouter as Router} from 'react-router-dom';
+import logger from 'redux-logger'
+import thunk from 'redux-thunk'
+
 import './components/index.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-ReactDOM.render(<Router><App /></Router>, document.getElementById('root'));
+const stores = createStore(kidsFlyreducer,/*preloadedState,*/ composeEnhancers(applyMiddleware(thunk, logger)))
+
+ReactDOM.render(
+    <Provider store={stores}>
+        <Router>
+            <App />
+        </Router>
+    </Provider>,
+    document.getElementById('root')
+);
 
 

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link, Redirect} from 'react-router-dom';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
 import { SignUpWrapper, SubmitBtn, SubmitWrapper,
    halfWidth, fullWidth, formFlex, RedirectWrap } from './styles';
 import SignUpAs from "./SignUpAs";
+import { axiosWithAuth } from "../utils";
 
 
 const StaffSignUp = ({ values, errors, touched, status }) => {
@@ -104,10 +105,15 @@ const FormikStaffSignUp = withFormik({
 
    handleSubmit(values, { setStatus, resetForm }) {
       console.log('submitting', values);
-      axios
-      .post('https://bw-kids-fly.herokuapp.com/api/apps', values)
+
+     
+
+      axiosWithAuth()
+      .post('adminauth/register/admin', values)
+
       .then(res => {
          console.log('success', res);
+         Redirect("/dashboard")
          setStatus(res.data);
          resetForm();
       })

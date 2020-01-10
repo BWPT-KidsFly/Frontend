@@ -1,9 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Styled from "styled-components";
-import logo from '../assets/kidsfly-logo.png'
 
-const Navigation = () => {
+import { Logout } from './Logout'
+
+
+import logo from '../assets/kidsfly-logo.png'
+import { connect } from "react-redux";
+
+
+
+const Navigation = ({token}) => {
   let NavBar = Styled.div`
   width: 65%;
   height: 60px;
@@ -33,32 +40,53 @@ const Navigation = () => {
   }
   `;
 
+
   let ImageContainer = Styled.div`
   max-height: 400px;
   `;
+
   return (
     <NavBar className="navbar">
       <NavContainer>
-        <div>
-          <NavigationLinks exact to="/">
-            Home
+        {
+          !token?
+            <>
+              <div>
+                <NavigationLinks exact to="/">
+                  Home
           </NavigationLinks>
-        </div>
-        <div>
-          <NavigationLinks to="/about-us">About Us</NavigationLinks>
-        </div>
-        <ImageContainer>
-          <img src={logo} style={{maxWidth: 400}} />
-        </ImageContainer>
-        <div>
-          <NavigationLinks to="/log-in">Log In</NavigationLinks>
-        </div>
-        <div>
-          <NavigationLinks to="/sign-up">Sign Up</NavigationLinks>
-        </div>
+
+              </div>
+              <div>
+                <NavigationLinks to="/about-us">About Us</NavigationLinks>
+              </div>
+              <ImageContainer>
+                <img src={logo} style={{ maxWidth: 400 }} />
+              </ImageContainer>
+              <div>
+                <NavigationLinks to="/log-in">Log In</NavigationLinks>
+              </div>
+              <div>
+                <NavigationLinks to="/sign-up">Sign Up</NavigationLinks>
+              </div>
+
+
+            </>
+            :
+            <>
+              <div>
+                <NavigationLinks to="/dashboard/mytrips">My Trips</NavigationLinks>
+              </div>
+              <div>
+                <NavigationLinks to="/dashboard">Home</NavigationLinks>
+              </div>
+              <Logout>Logout</Logout>
+            </>
+        }
+
       </NavContainer>
-    </NavBar>
+    </NavBar >
   );
 };
-
-export default Navigation;
+const mapStateToProps = (state) => { return { token: state.token } }
+export default connect(mapStateToProps, {})(Navigation);
