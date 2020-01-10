@@ -96,3 +96,14 @@ code {
 .createBtn:hover {
   filter: opacity(1);
 }
+
+/* Dashboard Styling */
+
+.dashContainer {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.dashHeader {
+  text-align: center;
+}
