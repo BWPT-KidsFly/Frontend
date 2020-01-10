@@ -83,7 +83,8 @@ const TravelerSignUp = ({ values, errors, touched, status }) => {
          </SignUpWrapper>
 
          <RedirectWrap>
-            <div>If you already have an account, please <Link to='/log-in'>Log-In here</Link></div>
+            <div>If you already have an account, please <Link to='/log-in'>log in here</Link></div>
+            <div className='admin-redirect'>To register as an ADMIN, please <Link to='/sign-up/admin'>sign up here</Link></div>
          </RedirectWrap>
 
          {/* {travelers.map(traveler => {

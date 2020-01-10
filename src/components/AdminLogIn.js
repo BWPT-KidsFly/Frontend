@@ -3,21 +3,23 @@ import { Link } from 'react-router-dom';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
-import { LogInWrapper, fullWidth, formFlex, LogInBtn, RedirectWrap } from './styles';
-import LogInAs from "./LogInAs";
+import { LogInWrapper, fullWidth, formFlex, LogInBtn, RedirectWrap, SignUpHeader } from './styles';
+
 
 
 const LogIn = ({ values, errors, touched, status }) => {
-   const [member, setMember] = useState([]);
+   const [admin, setAdmin] = useState([]);
 
    useEffect(() => {
       console.log('status has changed', status);
-      status && setMember(member => [...member, status]);
+      status && setAdmin(admin => [...admin, status]);
    }, [status]);
 
    return (
       <div>
-         <LogInAs />
+         <SignUpHeader>
+            <h3>Please log into your ADMIN account below</h3>
+         </SignUpHeader>
          <LogInWrapper>
             <Form style={formFlex}>  
                <Field style={fullWidth} id='username' type='email' name='username' placeholder='Username (Email)' />
@@ -35,15 +37,14 @@ const LogIn = ({ values, errors, touched, status }) => {
          </LogInWrapper>
 
          <RedirectWrap>
-            <div>If you don't already have an account, please <Link to='/sign-up'>Sign Up here</Link></div>
-            <div className='admin-redirect'>ADMIN, please <Link to='/log-in/admin'>Log-In here</Link></div>
+            <div>If you don't already have an ADMIN account, please <Link to='/sign-up/admin'>register here</Link></div>
          </RedirectWrap>
 
-         {/* {member.map(member => {
+         {/* {admin.map(admin => {
             return (
-               <ul key={member.lname}>
-                  <li>{member.username}</li>
-                  <li>{member.password}</li>
+               <ul key={admin.lname}>
+                  <li>{admin.username}</li>
+                  <li>{admin.password}</li>
                </ul>
             );
          })} */}
@@ -72,7 +73,7 @@ const FormikLogIn = withFormik({
    handleSubmit(values, { setStatus, resetForm }) {
       console.log('submitting', values);
       axios
-      .post('https://bw-kids-fly.herokuapp.com/api/auth/login/user', values)
+      .post('https://bw-kids-fly.herokuapp.com/api/adminauth/login/admin', values)
       .then(res => {
          console.log('success', res);
          setStatus(res.data);
