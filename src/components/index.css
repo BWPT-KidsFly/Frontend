@@ -110,8 +110,21 @@ code {
 }
 
 .tripCard {
-  background-color: silver;
-  margin: 0 auto;
-  width:600px;
+  background-color: #0070b7;
+  margin: 2% auto;
+  width:30%;
   border-radius: 10px;
+}
+
+.cardText {
+  color: white;
+  text-align: center;
+  padding: 1px;
+}
+
+.cardContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
 }
