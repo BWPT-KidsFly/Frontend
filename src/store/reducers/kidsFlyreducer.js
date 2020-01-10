@@ -96,7 +96,7 @@ const kidsFlyreducer = (state = initialState, action) => {
             window.localStorage.setItem("token",action.payload.token)
             console.log("action.payload",action.payload)
             return {
-                ...state,isLoading:false,currentUser:action.id,
+                ...state,isLoading:false,currentUser:action.id,token:action.payload.token
                 
             }
         }

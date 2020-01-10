@@ -6,7 +6,7 @@ import { Logout } from './Logout'
 
 
 import logo from '../assets/kidsfly-logo.png'
-import { connect } from "formik";
+import { connect } from "react-redux";
 
 
 
