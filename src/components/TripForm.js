@@ -126,15 +126,6 @@ const TripForm = ({ values, errors, touched, status }) => {
           Submit
         </button>
       </Form>
-      {// {trip.map(props => {
-      //   return (
-      //     <div className='tripCard' key={props.departure_time}>
-      //       <h3>{props.airline}</h3>
-      //       <p>{props.flight_number}</p>
-      //     </div>
-      //   );
-      // })}
-      }
     </div>
   );
 };
