@@ -35,7 +35,6 @@ export const SubmitWrapper = styled.div`
 export const SubmitBtn = styled.button`
    height: 40px;
    width: 40%;
-   
    border-radius: 7px;
    background: gray;
    box-shadow: 0px 0px 0px transparent;

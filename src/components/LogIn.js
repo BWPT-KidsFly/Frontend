@@ -42,11 +42,14 @@ return (
    <div>
          <LogInAs />
          <LogInWrapper>
+
             <Form onSubmit={(e)=>handleSubmit(e)} style={formFlex}>  
-               <Field style={fullWidth} type='email' name='email' placeholder='Username (Email)' />
-               {touched.email && errors.email && (
-                  <p className='errors'>{errors.email}</p>
-                  )}
+    
+               <Field style={fullWidth} id='username' type='email' name='username' placeholder='Username (Email)' />
+               {touched.username && errors.username && (
+                  <p className='errors'>{errors.username}</p>
+               )}
+
                        
                <Field style={fullWidth} id='password' type='password' name='password' placeholder='Password' />
                {touched.password && errors.password && (
@@ -77,6 +80,7 @@ return (
 const FormikLogIn = withFormik({
    mapPropsToValues(props) {
       return {
+
          username: props.username || '',
          password: props.password || '',
       };
