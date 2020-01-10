@@ -20,6 +20,7 @@ const LogIn = ({ values, errors, touched, status }) => {
          <LogInAs />
          <LogInWrapper>
             <Form style={formFlex}>  
+
                <Field style={fullWidth} id='username' type='email' name='username' placeholder='Username (Email)' />
                {touched.username && errors.username && (
                   <p className='errors'>{errors.username}</p>
@@ -54,6 +55,7 @@ const LogIn = ({ values, errors, touched, status }) => {
 const FormikLogIn = withFormik({
    mapPropsToValues(props) {
       return {
+
          username: props.username || '',
          password: props.password || '',
       };

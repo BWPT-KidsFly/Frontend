@@ -6,9 +6,6 @@ import StaffSignUp from './StaffSignUp';
 import SignUpAs from './SignUpAs';
 import LogIn from './LogIn';
 import LogInAs from './LogInAs';
-import TravelerList from './TravelerList';
-import AdminLogIn from './AdminLogIn';
-import AdminSignUp from './AdminSignUp';
 
 function App() {
   return (
