@@ -29,12 +29,17 @@ const Dash = () => {
       <div className="tripContainer">
         <h3>Trips</h3>
         <TripForm />
+        <div className='cardContainer'>
         {tripCard.map((value, index) => {
           return (<div className='tripCard' key={index}>
-              <h3>{value.airline}</h3>
-              <p>{value.flight_number}</p>
+            <div className='cardText'>
+              <h3>Airport: {value.airport_name} <br/> Airline: {value.airline}</h3>
+              <p>Date: {value.departure_time}</p>
+              <p>Flight Number: {value.flight_number}</p>
+            </div>
               </div>)
         })}
+        </div>
       </div>
     </div>
   );
