@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import Styled from "styled-components";
 
 const TripForm = ({ values, errors, touched, status }) => {
-//   console.log("Values: ", values);
-//   console.log("Errors: ", errors);
-//   console.log("Touched: ", touched);
+  console.log("Values: ", values);
+  console.log("Errors: ", errors);
+  console.log("Touched: ", touched);
 
   const [trip, setTrip] = useState([]);
 
@@ -17,35 +16,16 @@ const TripForm = ({ values, errors, touched, status }) => {
     status && setTrip(trip => [...trip, status]);
   }, [status]);
 
-  let Container = Styled.div`
-  width: 1000px;
-  margin: 0 auto;
-  `;
-
-  let FormContainer = Styled(Form)`
-  width: 70%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  `;
-
-  let FieldInputs = Styled(Field)`
-  width: 100%
-  height: 30px;
-  align-content: stretch;
-  margin-bottom: 3%;
-  `;
-
   return (
-    <Container>
-      <FormContainer>
+    <div className="formBox">
+      <Form className="formContainer">
         <label htmlFor="airport">
           Airport
           {touched.airport && errors.airport && (
             <p className="errorMssg">{errors.airport}</p>
           )}
           <Field
+            className="formFields"
             id="airport"
             type="text"
             name="airport"
@@ -58,6 +38,7 @@ const TripForm = ({ values, errors, touched, status }) => {
             <p className="errorMssg">{errors.airline}</p>
           )}
           <Field
+            className="formFields"
             id="airline"
             type="text"
             name="airline"
@@ -70,6 +51,7 @@ const TripForm = ({ values, errors, touched, status }) => {
             <p className="errorMssg">{errors.flight}</p>
           )}
           <Field
+            className="formFields"
             id="flight"
             type="text"
             name="flight"
@@ -81,10 +63,15 @@ const TripForm = ({ values, errors, touched, status }) => {
           {touched.dateTime && errors.dateTime && (
             <p className="errorMssg">{errors.dateTime}</p>
           )}
-          <Field id="dateTime" type="datetime-local" name="dateTime" />
+          <Field
+            className="formFields"
+            id="dateTime"
+            type="datetime-local"
+            name="dateTime"
+          />
         </label>
-        <Field as="select" name="luggage">
-          <option disabled selected>
+        <Field className="formFields" as="select" name="luggage">
+          <option selected disabled>
             Amount of Luggage
           </option>
           <option value="1">1</option>
@@ -98,8 +85,8 @@ const TripForm = ({ values, errors, touched, status }) => {
           <option value="9">9</option>
           <option value="10">10+</option>
         </Field>
-        <Field as="select" name="kids">
-          <option disabled selected>
+        <Field className="formFields" as="select" name="kids">
+          <option selected disabled>
             Amount of Kids
           </option>
           <option value="1">1</option>
@@ -114,22 +101,25 @@ const TripForm = ({ values, errors, touched, status }) => {
           <option value="10">10+</option>
         </Field>
         <Field
+          className="formFields"
           as="textarea"
           type="text"
           name="requests"
           placeholder="Special Requests"
         />
-        <button type="submit">Submit</button>
-      </FormContainer>
+        <button type="submit" className="submitBtn">
+          Submit
+        </button>
+      </Form>
       {trip.map(props => {
-          return (
-              <div key={props.dateTime}>
-              <h3>{props.airline}</h3>
-              <p>{props.flight}</p>
-              </div>
-          )
+        return (
+          <div key={props.dateTime}>
+            <h3>{props.airline}</h3>
+            <p>{props.flight}</p>
+          </div>
+        );
       })}
-    </Container>
+    </div>
   );
 };
 
