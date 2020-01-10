@@ -19,16 +19,16 @@ const TripForm = ({ values, errors, touched, status }) => {
   return (
     <div className="formBox">
       <Form className="formContainer">
-        <label htmlFor="airport">
+        <label htmlFor="airport_name">
           Airport
-          {touched.airport && errors.airport && (
-            <p className="errorMssg">{errors.airport}</p>
+          {touched.airport_name && errors.airport_name && (
+            <p className="errorMssg">{errors.airport_name}</p>
           )}
           <Field
             className="formFields"
-            id="airport"
+            id="airport_name"
             type="text"
-            name="airport"
+            name="airport_name"
             placeholder="Airport"
           />
         </label>
@@ -45,34 +45,34 @@ const TripForm = ({ values, errors, touched, status }) => {
             placeholder="Airline"
           />
         </label>
-        <label htmlFor="flight">
+        <label htmlFor="flight_number">
           Flight Number
-          {touched.flight && errors.flight && (
-            <p className="errorMssg">{errors.flight}</p>
+          {touched.flight_number && errors.flight_number && (
+            <p className="errorMssg">{errors.flight_number}</p>
           )}
           <Field
             className="formFields"
-            id="flight"
+            id="flight_number"
             type="text"
-            name="flight"
+            name="flight_number"
             placeholder="Flight Number"
           />
         </label>
-        <label htmlFor="dateTime">
+        <label htmlFor="departure_time">
           Date & Departure Time
-          {touched.dateTime && errors.dateTime && (
-            <p className="errorMssg">{errors.dateTime}</p>
+          {touched.departure_time && errors.departure_time && (
+            <p className="errorMssg">{errors.departure_time}</p>
           )}
           <Field
             className="formFields"
-            id="dateTime"
+            id="departure_time"
             type="datetime-local"
-            name="dateTime"
+            name="departure_time"
           />
         </label>
-        <Field className="formFields" as="select" name="luggage">
+        <Field className="formFields" as="select" name="carryon_items">
           <option selected disabled>
-            Amount of Luggage
+            Number of Carry-On Items
           </option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -85,9 +85,9 @@ const TripForm = ({ values, errors, touched, status }) => {
           <option value="9">9</option>
           <option value="10">10+</option>
         </Field>
-        <Field className="formFields" as="select" name="kids">
+        <Field className="formFields" as="select" name="children">
           <option selected disabled>
-            Amount of Kids
+            Number of Kids
           </option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -104,7 +104,7 @@ const TripForm = ({ values, errors, touched, status }) => {
           className="formFields"
           as="textarea"
           type="text"
-          name="requests"
+          name="special_needs"
           placeholder="Special Requests"
         />
         <button type="submit" className="submitBtn">
@@ -113,9 +113,9 @@ const TripForm = ({ values, errors, touched, status }) => {
       </Form>
       {trip.map(props => {
         return (
-          <div key={props.dateTime}>
+          <div key={props.departure_time}>
             <h3>{props.airline}</h3>
-            <p>{props.flight}</p>
+            <p>{props.flight_number}</p>
           </div>
         );
       })}
@@ -126,23 +126,23 @@ const TripForm = ({ values, errors, touched, status }) => {
 const FormikTripForm = withFormik({
   mapPropsToValues(props) {
     return {
-      airport: props.airport || "",
+      airport_name: props.airport_name || "",
       airline: props.airline || "",
-      flight: props.flight || "",
-      dateTime: props.dateTime || "",
-      luggage: props.luggage || "",
-      kids: props.kids || "",
-      requests: props.requests || ""
+      flight_number: props.flight_number || "",
+      departure_time: props.departure_time || "",
+      carryon_items: props.carryon_items || "",
+      children: props.children || "",
+      special_needs: props.special_needs || ""
     };
   },
 
   validationSchema: Yup.object().shape({
-    airport: Yup.string().required("An Airport is Required."),
+    airport_name: Yup.string().required("An Airport is Required."),
     airline: Yup.string().required("An Airline is Required."),
-    flight: Yup.string().required("A Flight is Required."),
-    dateTime: Yup.string().required("Please select a Date and Time."),
-    luggage: Yup.string().required("Luggage Amount is required."),
-    kids: Yup.string().required("How many kids will be joining you?")
+    flight_number: Yup.string().required("A Flight is Required."),
+    departure_time: Yup.string().required("Please select a Date and Time."),
+    carryon_items: Yup.string().required("Luggage Amount is required."),
+    children: Yup.string().required("How many kids will be joining you?")
   }),
 
   handleSubmit(values, { setStatus, resetForm }) {
