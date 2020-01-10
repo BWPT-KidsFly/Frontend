@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { updateFlight } from "../../store/actions";
+import { editFlight } from "../../store/actions";
 import axios from 'axios'
 import { bindActionCreators } from "redux"
 import { axiosWithAuth } from "../../utils";
@@ -20,7 +20,7 @@ const UpdateTrip = props => {
  
   const handleSubmit = e => {
     e.preventDefault();
-    props.addFlight(trip);
+    props.editFlight(trip);
     setTrip(initialTrip);
   };
 
@@ -94,7 +94,5 @@ const mapStateToProps = state => {
   return { flights: state.upcomingFlightsList };
 };
 
-const mapDispatchToProps = dispatch => {
-  return { dispatch, ...bindActionCreators({  addFlight },dispatch ) }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(UpdateTrip)
+
+export default connect(mapStateToProps, {  editFlight })(UpdateTrip)

@@ -1,27 +1,25 @@
 import React from 'react'
+import { deleteFlight, editFlight } from '../../store/actions'
+import {connect} from 'react-redux'
 
-export default function Trip(props){
+function Trip(props,{trip,dispatch}){
 
 
 
 
     return(
-        const initialTrip = {
-               airport_name: "SFO",        airline: "1255",        flight_number: "25",        departure_time: "12PM",
-            carryon_items: "3",        checked_items: "1",        children: "10",        special_needs: "We have a stroller",
-            user_id:Number(window.localStoarage.getItem('user_id'))
-          };
-f        
+        
 
-        <>
-        trip?  trip.map(details=><ul>
-            <li>details.name</li>
-            <li>details.time</li>
-            <li>details.checkeditmes</li>
-            <li>details.airline</li>
-        </ul>):no trips? 
+      
+       
+    {trip?<ul> Object.values(trip).map(v=><li>`${v}`</li>)</ul><button onClick={dispatch(editFlight())}>edit</button><button onClick={dispatch(deleteFlight())}>delete</button>
+        
+        :"no trips?"}
+       
         
         
-        </>
+      
     )
 }
+
+export default connect()(Trip)
