@@ -6,10 +6,11 @@ import { Logout } from './Logout'
 
 
 import logo from '../assets/kidsfly-logo.png'
+import { connect } from "formik";
 
 
 
-const Navigation = () => {
+const Navigation = ({token}) => {
   let NavBar = Styled.div`
   width: 65%;
   height: 60px;
@@ -48,37 +49,28 @@ const Navigation = () => {
     <NavBar className="navbar">
       <NavContainer>
         {
-          !localStorage.getItem("token") ?
+          !token?
             <>
               <div>
                 <NavigationLinks exact to="/">
                   Home
           </NavigationLinks>
 
-        </div>
-        <div>
-          <NavigationLinks to="/about-us">About Us</NavigationLinks>
-        </div>
-        <ImageContainer>
-          <img src={logo} style={{maxWidth: 400}} />
-        </ImageContainer>
-        <div>
-          <NavigationLinks to="/log-in">Log In</NavigationLinks>
-        </div>
-        <div>
-          <NavigationLinks to="/sign-up">Sign Up</NavigationLinks>
-        </div>
-
               </div>
               <div>
                 <NavigationLinks to="/about-us">About Us</NavigationLinks>
               </div>
+              <ImageContainer>
+                <img src={logo} style={{ maxWidth: 400 }} />
+              </ImageContainer>
               <div>
                 <NavigationLinks to="/log-in">Log In</NavigationLinks>
               </div>
               <div>
                 <NavigationLinks to="/sign-up">Sign Up</NavigationLinks>
               </div>
+
+
             </>
             :
             <>
@@ -93,8 +85,8 @@ const Navigation = () => {
         }
 
       </NavContainer>
-    </NavBar>
+    </NavBar >
   );
 };
-
-export default (Navigation);
+const mapStateToProps = (state) => { return { token: state.token } }
+export default connect(mapStateToProps, {})(Navigation);

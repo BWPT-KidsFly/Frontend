@@ -10,9 +10,10 @@ import LogInAs from './LogInAs';
 import TravelerList from './TravelerList';
 import AdminLogIn from './AdminLogIn';
 import AdminSignUp from './AdminSignUp';
-import Dashboard from './Dashboard/Dashboard'
-import MyTrips from './Trips/MyTrips'
-import { PrivateRoute } from '../utils'
+import Dashboard from './Dashboard/Dashboard';
+import MyTrips from './Trips/MyTrips';
+import { PrivateRoute } from '../utils';
+import LogIn from "./LogIn";
 
 
 
@@ -24,14 +25,14 @@ function App() {
       <Route exact path='/sign-up' component={SignUpAs} />
       <Route path='/sign-up/traveler' component={TravelerSignUp} />
       <Route path='/sign-up/staff' component={StaffSignUp} />
-
       <Route path='/sign-up/admin' component={AdminSignUp} />
-      <Route exact path='/log-in' component={LogInAs}/>
+
+      {/* <Route exact path='/log-in' component={LogInAs}/>
       <Route path='/log-in/traveler' component={LogIn} />
-      <Route path='/log-in/staff' component={LogIn} />
-      <Route path='/log-in/admin' component={AdminLogIn} />
+      <Route path='/log-in/staff' component={LogIn} /> */}
       {/* <Route exact path='/dashboard' component={TravelerList} /> */}
 
+      <Route path='/log-in/admin' component={AdminLogIn} />
       <Route exact path='/log-in' component={LogInAs} />
       <Route path='/log-in/staff' component={LogInStaff} />
       <Route path='/log-in/traveler' component={LogInUser} />

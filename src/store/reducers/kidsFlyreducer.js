@@ -93,14 +93,15 @@ const kidsFlyreducer = (state = initialState, action) => {
             }
         }
         case LOGIN_USER_SUCCESS: {
-            window.localStorage.setItem("token",action.payload)
+            window.localStorage.setItem("token",action.payload.token)
+            console.log("action.payload",action.payload)
             return {
                 ...state,isLoading:false,currentUser:action.id,
                 
             }
         }
         case LOGIN_STAFF_SUCCESS: {
-            window.localStorage.setItem("token",action.payload)
+            window.localStorage.setItem("token",action.payload.token)
             return {
                 ...state,isLoading:false,currentUser:action.id||action.username
             }
