@@ -109,7 +109,7 @@ const FormikStaffSignUp = withFormik({
      
 
       axiosWithAuth()
-      .post('adminauth/register/admin', values)
+      .post('https://bw-kids-fly.herokuapp.com/api/apps', values)
 
       .then(res => {
          console.log('success', res);
