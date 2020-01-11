@@ -4,13 +4,15 @@ import { LOGOUT } from '../store/actions'
 import { Redirect, Link } from 'react-router-dom'
 
 
-const Logout = ({ token,logout}) => {
-
- 
+const Logout = ({ logout,dispatch}) => {
+const logoutandclear=()=>{
+  window.localStorage.removeItem(`token`);
+  dispatch({ type: "LOGOUT" })
+}
   return (
-    <Link to="/log-in" onClick={() => logout}>Logout </Link>
+    <Link to="/log-in" onClick={logoutandclear}>Logout </Link>
   )
 };
 const mapState = state => { return { token: state.token } }
-const mapDispatch = dispatch => { return { logout: () => dispatch({ type: "LOGOUT" }) } }
-export default connect(mapState, { mapDispatch })(Logout)
+
+export default connect(mapState)(Logout)

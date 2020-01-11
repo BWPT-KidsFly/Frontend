@@ -24,7 +24,7 @@ POST to https://bw-kids-fly.herokuapp.com/api/auth/login/user
 input:{   "username": "LambdaStudent247",    "password": "password"}
 Example Output:
 
-{ "message": "Welcome LambdaStudent247!", "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoiTGFtYmRhU3R1ZGVudDI0NyIsInJvbGVzIjoidXNlciIsImlhdCI6MTU3ODM3MTE5NCwiZXhwIjoxNTc4NDU3NTk0fQ.N1XJpSGk2n33FdnMGaLn4TGf-P2C8XS6II8G_KqyWJc" } */}
+{ "message": "Welcome LambdaStudent247!", "token": trixr4kids@yum.net "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoiTGFtYmRhU3R1ZGVudDI0NyIsInJvbGVzIjoidXNlciIsImlhdCI6MTU3ODM3MTE5NCwiZXhwIjoxNTc4NDU3NTk0fQ.N1XJpSGk2n33FdnMGaLn4TGf-P2C8XS6II8G_KqyWJc" } */}
 export const loginUser = (credentials,history) => dispatch => {
     
     dispatch({ type: START })
@@ -47,7 +47,7 @@ export const loginSTAFF = (credentials,history) => dispatch => {
         .post(`/adminauth/login/admin`, credentials)
         .then(res => dispatch({ type: LOGIN_STAFF_SUCCESS, payload: res.data }))
         .then(_ => history.push("/dashboard"))
-        .catch(err => dispatch({ type: ERROR, payload: err }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
 }
 
 
@@ -66,7 +66,7 @@ export const registerUser = (credentials,history) => dispatch => {
         .post(`/auth/register/user`, credentials)
         .then(res => dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data }))
         .then(_ => history.push("/dashboard"))
-        .catch(err => dispatch({ type: ERROR, payload: err }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
 }
 {/**Register New Admin
 POST to https://bw-kids-fly.herokuapp.com/api/adminauth/register/admin
@@ -81,7 +81,7 @@ export const registerSTAFF = (credentials,history) => dispatch => {
         .post(`/adminauth/register/admin`, credentials)
         .then(res => dispatch({ type: REGISTER_STAFF_SUCCESS, payload: res.data }))
         .then(_ => history.push("/dashboard"))
-        .catch(err => dispatch({ type: ERROR, payload: err }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
 }
 
 {/**Submitting an application
@@ -101,7 +101,7 @@ export const applySTAFF = (credentials) => dispatch => {
     axiosWithAuth()
         .post(`/apps`, credentials)
         .then(res => dispatch({ type: APPLY_STAFF_SUCCESS, payload: { ...res.data, ...credentials } }))
-        .catch(err => dispatch({ type: ERROR, payload: err }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
 }
 
 
@@ -115,7 +115,7 @@ export const gettrips = (user) => dispatch => {
         .get(`trips`)
         .then(res => dispatch({ type: GETALLTRIPS_SUCCESS, payload: res.data }) && console.log(res))
 
-        .catch(err => dispatch({ type: ERROR, payload: err }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
 
 }
 
@@ -132,7 +132,7 @@ export const addFlight = (flightObj) => dispatch => {
     axiosWithAuth()
         .post(`/trips/trip`, flightObj)
         .then(res => dispatch({ type: ADD_FLIGHT_SUCCESS, payload: res.data }))
-        .catch(err => dispatch({ type: ERROR, payload: err }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
 }
 
 
@@ -145,7 +145,7 @@ export const editFlight = (flightObj) => dispatch => {
     axiosWithAuth()
         .put(`/trip/${flightObj.id}`, flightObj)
         .then(res => dispatch({ type: EDIT_FLIGHT_SUCCESS, payload: res.data }))
-        .catch(err => dispatch({ type: ERROR, payload: err }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
 }
 
 
@@ -159,7 +159,7 @@ export const deleteFlight = (flightObj) => dispatch => {
     axiosWithAuth()
         .delete(`/trip/${flightObj.id}`, flightObj)
         .then(res => dispatch({ type: DELETE_FLIGHT_SUCCESS, payload: res.data }))
-        .catch(err => dispatch({ type: ERROR, payload: err }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
 }
 
 export const getAiportByCoords = (position) => dispatch => {
@@ -167,6 +167,6 @@ export const getAiportByCoords = (position) => dispatch => {
     axios
         .get(`https://aerodatabox.p.rapidapi.com/airports/search/location/${position.coords.latitude}/${position.coords.longitude}/mi/50/16`)
         .then(res => dispatch({ type: GETAIRPORTBYCOORDS_SUCCESS, payload: res.data }))
-        .catch(err => dispatch({ type: ERROR, payload: err }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
 
 }

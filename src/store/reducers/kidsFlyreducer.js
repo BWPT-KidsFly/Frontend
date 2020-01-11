@@ -97,19 +97,19 @@ const kidsFlyreducer = (state = initialState, action) => {
             }
         }
         case 'LOGIN_USER_SUCCESS': {
-            window.localStorage.setItem("token",action.payload.token)
             console.log("action.payload",action.payload)
+            window.localStorage.setItem("token",action.payload.token)
             return {
-                ...state,isLoading:false,currentUser:action.id,token:action.payload.token
+                ...state,isLoading:false,token:action.payload.token,currentUser:action.payload.id
                 
             }
         }
         case 'LOGOUT': {
-            window.localStorage.removeItem("token")
             console.log("action.payload",action.payload)
+            window.localStorage.removeItem(`token`)
         
             return {
-                ...state,isLoading:false,currentUser:null,token:null
+                ...state,isLoading:false,currentUser:null,token:null,
                 
             }
         }
@@ -122,14 +122,15 @@ const kidsFlyreducer = (state = initialState, action) => {
         case 'REGISTER_USER_SUCCESS': {
             window.localStorage.setItem("token",action.payload)
             return {
-                ...state,isLoading:false,currentUser:action.id||action.username,
+                ...state,isLoading:false,currentUser:action.payload.id||"noneyet",token:action.payload.token, 
 
             }
         }
         case 'REGISTER_STAFF_SUCCESS': {
+        
             window.localStorage.setItem("token",action.payload)
             return {
-                ...state,isLoading:false,currentUser:action.id||action.username
+                ...state,isLoading:false,currentUser:action.payload.id||"noneyet",token:action.payload.token, 
             }
         }
         default: return { ...state }
