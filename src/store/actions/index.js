@@ -32,7 +32,7 @@ export const loginUser = (credentials,history) => dispatch => {
         .post(`/auth/login/user`, credentials)
         .then(res => dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data }))
         .then(_ => history.push("/dashboard"))
-        .catch(err => dispatch({ type: ERROR, payload: err }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message}))
 }
 {/**Login Existing Admin
 POST to https://bw-kids-fly.herokuapp.com/api/adminauth/login/admin
@@ -41,11 +41,12 @@ Input{  "username": "LambdaStudent5000",  "password": "password"}
 Example Output:
 
 { "message": "Welcome admin LambdaStudent5000!", "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbmlkIjoxLCJ1c2VybmFtZSI6IkxhbWJkYVN0dWRlbnQ1MDAwIiwicm9sZXMiOiJhZG1pbiIsImlhdCI6MTU3ODM3MTQwMywiZXhwIjoxNTc4NDU3ODAzfQ.BLegBiUvih24THUB7LgzEFOnErW69vNXpfrMo9xfn50" } */}
-export const loginSTAFF = (credentials) => dispatch => {
+export const loginSTAFF = (credentials,history) => dispatch => {
     dispatch({ type: START })
     axiosWithAuth()
         .post(`/adminauth/login/admin`, credentials)
         .then(res => dispatch({ type: LOGIN_STAFF_SUCCESS, payload: res.data }))
+        .then(_ => history.push("/dashboard"))
         .catch(err => dispatch({ type: ERROR, payload: err }))
 }
 
@@ -59,11 +60,12 @@ Input  {  "username": "LambdaStudent247",    "password": "password",    "confirm
 Example Output:
 
 { "id": 1, "username": "LambdaStudent247", "password": "$2a$10$6NrOGH/43.iC.t8gndaGV.N3ZNRnaaoln44K.urxOCsgmdwp67EeK", "first_name": "Heather", "last_name": "Ridgill", "street_address": "123 Lambda Court", "city": "LambdaVille", "state": "CA", "zip": "92831", "phone_number": "555-555-5555", "home_airport": "LAX", "admin": 0 } */}
-export const registerUser = (credentials) => dispatch => {
+export const registerUser = (credentials,history) => dispatch => {
     dispatch({ type: START })
     axiosWithAuth()
-        .post(`//auth/register/user`, credentials)
+        .post(`/auth/register/user`, credentials)
         .then(res => dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data }))
+        .then(_ => history.push("/dashboard"))
         .catch(err => dispatch({ type: ERROR, payload: err }))
 }
 {/**Register New Admin
@@ -73,11 +75,12 @@ Input{    "username": "LambdaStudent5000",    "password": "password"}
 Example Output:
 
 { "id": 1, "username": "LambdaStudent5000", "password": "$2a$10$X58bC9c2vZxnG6mgvf16uexgaaiyIDcyxRwLEw/34G54DF8r3mCaK" } */}
-export const registerSTAFF = (credentials) => dispatch => {
+export const registerSTAFF = (credentials,history) => dispatch => {
     dispatch({ type: START })
     axiosWithAuth()
         .post(`/adminauth/register/admin`, credentials)
         .then(res => dispatch({ type: REGISTER_STAFF_SUCCESS, payload: res.data }))
+        .then(_ => history.push("/dashboard"))
         .catch(err => dispatch({ type: ERROR, payload: err }))
 }
 

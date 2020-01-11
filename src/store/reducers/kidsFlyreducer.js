@@ -40,15 +40,17 @@ const initialState = {
 const kidsFlyreducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case START: {
-        console.log("case:START in reducer fired")
+        case "START": {
+        console.log("case:'START' in reducer fired")
         
             return { ...state, isLoading: true }
         }
-        case ERROR: {
+        case 'ERROR': {
+           
+            console.error("payload.response",action.payload)
             return { ...state, isLoading: false, isError: true, error: action.payload }
         }
-        case APPLY_STAFF_SUCCESS: {
+        case 'APPLY_STAFF_SUCCESS': {
             return {
                 ...state,
                 isLoading: false,
@@ -56,7 +58,7 @@ const kidsFlyreducer = (state = initialState, action) => {
 
             }
         }
-        case ADD_FLIGHT_SUCCESS: {
+        case 'ADD_FLIGHT_SUCCESS': {
             return {
                 ...state,
                 isLoading: false,
@@ -64,7 +66,7 @@ const kidsFlyreducer = (state = initialState, action) => {
 
             }
         }
-        case EDIT_FLIGHT_SUCCESS: {
+        case 'EDIT_FLIGHT_SUCCESS': {
             return {
                 ...state,
                 isLoading: false,
@@ -72,7 +74,7 @@ const kidsFlyreducer = (state = initialState, action) => {
 
             }
         }
-        case DELETE_FLIGHT_SUCCESS: {
+        case 'DELETE_FLIGHT_SUCCESS': {
             return {
                 ...state,
                 isLoading: false,
@@ -80,21 +82,21 @@ const kidsFlyreducer = (state = initialState, action) => {
 
             }
         }
-        case GETALLTRIPS_SUCCESS: {
+        case 'GETALLTRIPS_SUCCESS': {
             return {
                 ...state,
                 isLoading: false,
                 upcomingFlightsList: [...state.upcomingFlightsList, action.payload],
             }
         }
-        case GETAIRPORTBYCOORDS_SUCCESS: {
+        case 'GETAIRPORTBYCOORDS_SUCCESS': {
             return {
                 ...state,
                 isLoading: false,
                 closestAirport: [action.payload],
             }
         }
-        case LOGIN_USER_SUCCESS: {
+        case 'LOGIN_USER_SUCCESS': {
             window.localStorage.setItem("token",action.payload.token)
             console.log("action.payload",action.payload)
             return {
@@ -102,7 +104,7 @@ const kidsFlyreducer = (state = initialState, action) => {
                 
             }
         }
-        case LOGOUT: {
+        case 'LOGOUT': {
             window.localStorage.removeItem("token")
             console.log("action.payload",action.payload)
         
@@ -111,20 +113,20 @@ const kidsFlyreducer = (state = initialState, action) => {
                 
             }
         }
-        case LOGIN_STAFF_SUCCESS: {
+        case 'LOGIN_STAFF_SUCCESS': {
             window.localStorage.setItem("token",action.payload.token)
             return {
                 ...state,isLoading:false,currentUser:action.id||action.username
             }
         }
-        case REGISTER_USER_SUCCESS: {
+        case 'REGISTER_USER_SUCCESS': {
             window.localStorage.setItem("token",action.payload)
             return {
                 ...state,isLoading:false,currentUser:action.id||action.username,
 
             }
         }
-        case REGISTER_STAFF_SUCCESS: {
+        case 'REGISTER_STAFF_SUCCESS': {
             window.localStorage.setItem("token",action.payload)
             return {
                 ...state,isLoading:false,currentUser:action.id||action.username

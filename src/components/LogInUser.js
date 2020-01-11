@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {  useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { loginUser } from "../store/actions"
 import { Link, useHistory } from 'react-router-dom';
 import { withFormik, Form, Field } from "formik";
@@ -24,13 +24,7 @@ const LogIn = ({ values, errors, touched, status, setStatus, resetForm }, props)
    const handleSubmit = (e) => {
       e.preventDefault();
       console.log('submitting', values);
-      // axiosWithAuth()
-      //   .post(`/auth/login/user`, values)
-      //   .catch(err=>console.error(err))
-     dispatch(loginUser(values,history))
-      //   .then(_ => history.push('/dashboard'))
-
-
+      dispatch(loginUser(values, history))
    }
 
    return (
