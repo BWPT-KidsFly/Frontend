@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Styled from "styled-components";
 
-import { Logout } from './Logout'
+import Logout  from './Logout'
 
 
 import logo from '../assets/kidsfly-logo.png'

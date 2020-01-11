@@ -106,10 +106,10 @@ const FormikStaffSignUp = withFormik({
    handleSubmit(values, { setStatus, resetForm }) {
       console.log('submitting', values);
 
-     
-
+     const {first_name,last_name,email,password}=values
+//testing the object.shape required for a successful admin signup wihtt his destructure of values
       axiosWithAuth()
-      .post('adminauth/register/admin', values)
+      .post('adminauth/register/admin',{first_name,last_name,email,password} )
 
       .then(res => {
          console.log('success', res);
@@ -117,7 +117,7 @@ const FormikStaffSignUp = withFormik({
          setStatus(res.data);
          resetForm();
       })
-      .catch(err => console.log('NOOOOO!!!', err.response));
+      .catch(err => console.error('NOOOOO!!!', err.response));
    },
 })(StaffSignUp);
 
