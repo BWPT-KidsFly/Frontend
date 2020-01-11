@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {  useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { loginUser } from "../store/actions"
 import { Link, useHistory } from 'react-router-dom';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
-import axios from 'axios';
 import { LogInWrapper, fullWidth, formFlex, LogInBtn, RedirectWrap } from './styles';
 import LogInAs from "./LogInAs";
-import { axiosWithAuth } from "../utils";
+
 
 
 const LogIn = ({ values, errors, touched, status, setStatus, resetForm }, props) => {
@@ -22,16 +21,10 @@ const LogIn = ({ values, errors, touched, status, setStatus, resetForm }, props)
    }, [status]);
 
 
-   const handleSubmit = async (e) => {
+   const handleSubmit = (e) => {
       e.preventDefault();
       console.log('submitting', values);
-      // axiosWithAuth()
-      //   .post(`/auth/login/user`, values)
-      //   .catch(err=>console.error(err))
-    await   dispatch(loginUser(values,history))
-      //   .then(_ => history.push('/dashboard'))
-
-
+      dispatch(loginUser(values, history))
    }
 
    return (
@@ -57,14 +50,6 @@ const LogIn = ({ values, errors, touched, status, setStatus, resetForm }, props)
             <div>If you don't already have an account, please <Link to='/sign-up'>Sign Up here</Link></div>
          </RedirectWrap>
 
-         {member.map(member => {
-            return (
-               <ul key={member.lname}>
-                  <li>{member.username}</li>
-                  <li>{member.password}</li>
-               </ul>
-            );
-         })}
       </div>
    );
 };

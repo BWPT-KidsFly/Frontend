@@ -4,6 +4,7 @@ import {
     EDIT_FLIGHT_SUCCESS, 
     DELETE_FLIGHT_SUCCESS, 
     LOGIN_USER_SUCCESS, 
+    LOGOUT, 
     LOGIN_STAFF_SUCCESS, 
     APPLY_STAFF_SUCCESS,
     REGISTER_STAFF_SUCCESS, 
@@ -12,6 +13,7 @@ import {
     START,
     ERROR, 
      } from '../actions'
+import { Redirect } from 'react-router-dom'
 
 
 const initialState = {
@@ -38,15 +40,17 @@ const initialState = {
 const kidsFlyreducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case START: {
-        console.log("case:START in reducer fired")
+        case "START": {
+        console.log("case:'START' in reducer fired")
         
             return { ...state, isLoading: true }
         }
-        case ERROR: {
+        case 'ERROR': {
+           
+            console.error("payload.response",action.payload)
             return { ...state, isLoading: false, isError: true, error: action.payload }
         }
-        case APPLY_STAFF_SUCCESS: {
+        case 'APPLY_STAFF_SUCCESS': {
             return {
                 ...state,
                 isLoading: false,
@@ -54,7 +58,7 @@ const kidsFlyreducer = (state = initialState, action) => {
 
             }
         }
-        case ADD_FLIGHT_SUCCESS: {
+        case 'ADD_FLIGHT_SUCCESS': {
             return {
                 ...state,
                 isLoading: false,
@@ -62,7 +66,7 @@ const kidsFlyreducer = (state = initialState, action) => {
 
             }
         }
-        case EDIT_FLIGHT_SUCCESS: {
+        case 'EDIT_FLIGHT_SUCCESS': {
             return {
                 ...state,
                 isLoading: false,
@@ -70,7 +74,7 @@ const kidsFlyreducer = (state = initialState, action) => {
 
             }
         }
-        case DELETE_FLIGHT_SUCCESS: {
+        case 'DELETE_FLIGHT_SUCCESS': {
             return {
                 ...state,
                 isLoading: false,
@@ -78,45 +82,55 @@ const kidsFlyreducer = (state = initialState, action) => {
 
             }
         }
-        case GETALLTRIPS_SUCCESS: {
+        case 'GETALLTRIPS_SUCCESS': {
             return {
                 ...state,
                 isLoading: false,
                 upcomingFlightsList: [...state.upcomingFlightsList, action.payload],
             }
         }
-        case GETAIRPORTBYCOORDS_SUCCESS: {
+        case 'GETAIRPORTBYCOORDS_SUCCESS': {
             return {
                 ...state,
                 isLoading: false,
                 closestAirport: [action.payload],
             }
         }
-        case LOGIN_USER_SUCCESS: {
-            window.localStorage.setItem("token",action.payload.token)
+        case 'LOGIN_USER_SUCCESS': {
             console.log("action.payload",action.payload)
+            window.localStorage.setItem("token",action.payload.token)
             return {
-                ...state,isLoading:false,currentUser:action.id,token:action.payload.token
+                ...state,isLoading:false,token:action.payload.token,currentUser:action.payload.id
                 
             }
         }
-        case LOGIN_STAFF_SUCCESS: {
+        case 'LOGOUT': {
+            console.log("action.payload",action.payload)
+            window.localStorage.removeItem(`token`)
+        
+            return {
+                ...state,isLoading:false,currentUser:null,token:null,
+                
+            }
+        }
+        case 'LOGIN_STAFF_SUCCESS': {
             window.localStorage.setItem("token",action.payload.token)
             return {
                 ...state,isLoading:false,currentUser:action.id||action.username
             }
         }
-        case REGISTER_USER_SUCCESS: {
+        case 'REGISTER_USER_SUCCESS': {
             window.localStorage.setItem("token",action.payload)
             return {
-                ...state,isLoading:false,currentUser:action.id||action.username,
+                ...state,isLoading:false,currentUser:action.payload.id||"noneyet",token:action.payload.token, 
 
             }
         }
-        case REGISTER_STAFF_SUCCESS: {
+        case 'REGISTER_STAFF_SUCCESS': {
+        
             window.localStorage.setItem("token",action.payload)
             return {
-                ...state,isLoading:false,currentUser:action.id||action.username
+                ...state,isLoading:false,currentUser:action.payload.id||"noneyet",token:action.payload.token, 
             }
         }
         default: return { ...state }
