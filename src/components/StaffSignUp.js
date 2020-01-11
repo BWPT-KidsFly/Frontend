@@ -109,7 +109,7 @@ const FormikStaffSignUp = withFormik({
      const {first_name,last_name,email,password}=values
 //testing the object.shape required for a successful admin signup wihtt his destructure of values
       axiosWithAuth()
-      .post('adminauth/register/admin',{first_name,last_name,email,password} )
+      .post('https://bw-kids-fly.herokuapp.com/api/apps', values)
 
       .then(res => {
          console.log('success', res);
