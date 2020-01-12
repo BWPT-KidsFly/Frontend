@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux'
-import { loginUser } from "../store/actions"
+import { loginUser } from "../../store/actions"
 import { Link, useHistory } from 'react-router-dom';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
-import { LogInWrapper, fullWidth, formFlex, LogInBtn, RedirectWrap } from './styles';
+import { LogInWrapper, fullWidth, formFlex, LogInBtn, RedirectWrap } from '../styles';
 import LogInAs from "./LogInAs";
 
 

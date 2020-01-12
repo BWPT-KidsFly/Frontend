@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TripForm from './TripForm';
+import TripForm from './Trips/TripForm';
 
 export default class Toggle extends Component {
   state = {

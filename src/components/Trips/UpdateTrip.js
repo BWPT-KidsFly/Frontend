@@ -1,32 +1,42 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom'
 import { connect } from "react-redux";
 import { editFlight } from "../../store/actions";
 import axios from 'axios'
 import { bindActionCreators } from "redux"
 import { axiosWithAuth } from "../../utils";
 
-const UpdateTrip = props => {
+const UpdateTrip = (props,{dispatch}) => {
+  const history = useHistory()
   const initialTrip = {
-       airport_name: "SFO",        airline: "1255",        flight_number: "25",        departure_time: "12PM",
-    carryon_items: "3",        checked_items: "1",        children: "10",        special_needs: "We have a stroller",
-    user_id:Number(window.localStoarage.getItem('user_id'))
+    airport_name: "SFO", airline: "1255", flight_number: "25", departure_time: "12PM",
+    carryon_items: "3", checked_items: "1", children: "10", special_needs: "We have a stroller",
+    user_id: Number(window.localStoarage.getItem('user_id'))
   };
 
   const [trip, setTrip] = useState(initialTrip);
 
+  useEffect(() => {const itemToEdit=props.item.find(e=>`${e.id}`===props.match.params.id)
+itemToEdit&&setTrip(itemToEdit)
+}, [props.item,props.match.params.id])
+
   const handleChange = event => {
+
     setTrip({ ...trip, [event.target.name]: event.target.value });
   };
- 
+
   const handleSubmit = e => {
     e.preventDefault();
-    props.editFlight(trip);
-    setTrip(initialTrip);
+    dispatch(editFlight(trip, history))
+
   };
+
+
+
 
   return (
     <div>
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <input
           name="airport_name"
           value={trip.airport_name}
@@ -36,18 +46,18 @@ const UpdateTrip = props => {
         />
         <input
           name=" airline"
-          value={trip. airline}
+          value={trip.airline}
           placholder=" airline"
           onChange={handleChange}
           type="text"
         />
-          <input
-            name="flight_number"
-            value={trip.flight_number}
-            placholder="flight number"
-            onChange={handleChange}
-            type="text"
-          />
+        <input
+          name="flight_number"
+          value={trip.flight_number}
+          placholder="flight number"
+          onChange={handleChange}
+          type="text"
+        />
         <input
           name="departure_time"
           value={trip.departure_time}
@@ -62,13 +72,13 @@ const UpdateTrip = props => {
           onChange={handleChange}
           type="text"
         />
-          <input
-            name="checked_items"
-            value={trip.checked_items}
-            placholder="checked items"
-            onChange={handleChange}
-            type="text"
-          />
+        <input
+          name="checked_items"
+          value={trip.checked_items}
+          placholder="checked items"
+          onChange={handleChange}
+          type="text"
+        />
         <input
           name="children"
           value={trip.children}
@@ -95,4 +105,4 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps, {  editFlight })(UpdateTrip)
+export default connect(mapStateToProps, { editFlight })(UpdateTrip)

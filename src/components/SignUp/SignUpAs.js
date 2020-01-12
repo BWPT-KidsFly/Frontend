@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
-import { SignUpWrapper, btnFlex, SignUpHeader } from './styles';
+import { SignUpWrapper, btnFlex, SignUpHeader } from '.././styles';
 
 const SignUpAs = () => {
    return (

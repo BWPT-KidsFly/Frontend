@@ -3,20 +3,18 @@ import { Link ,useHistory} from 'react-router-dom';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
-import { LogInWrapper, fullWidth, formFlex, LogInBtn, RedirectWrap } from './styles';
+import { LogInWrapper, fullWidth, formFlex, LogInBtn, RedirectWrap } from '../styles';
 import LogInAs from "./LogInAs";
-import { axiosWithAuth } from "../utils";
+import { axiosWithAuth } from "../../utils";
 
 
 const LogIn = ({ values, errors, touched, status,setStatus,resetForm },props) => {
    const [member, setMember] = useState([]);
    const history=useHistory()
-// console.log("props",props)
-// console.log("values",values)
-// console.log("props.email",props.email)
+
 console.log("history",history,)
 useEffect(() => {
-   // console.log('status has changed', status);
+ 
    status && setMember(member => [...member, status]);
 }, [status]);
 
@@ -42,16 +40,13 @@ return (
    <div>
          <LogInAs />
          <LogInWrapper>
-
             <Form onSubmit={(e)=>handleSubmit(e)} style={formFlex}>  
-    
-               <Field style={fullWidth} id='username' type='email' name='username' placeholder='Username (Email)' />
-               {touched.username && errors.username && (
-                  <p className='errors'>{errors.username}</p>
-               )}
-
+               <Field style={fullWidth} type='email' name='email' placeholder='Username (Email)' />
+               {touched.email && errors.email && (
+                  <p className='errors'>{errors.email}</p>
+                  )}
                        
-               <Field style={fullWidth} id='password' type='password' name='password' placeholder='Password' />
+               <Field style={fullWidth} type='password' name='password' placeholder='Password' />
                {touched.password && errors.password && (
                   <p className='errors'>{errors.password}</p>
                   )}
@@ -62,17 +57,16 @@ return (
 
          <RedirectWrap>
             <div>If you don't already have an account, please <Link to='/sign-up'>Sign Up here</Link></div>
-            <div className='admin-redirect'>ADMIN, please <Link to='/log-in/admin'>Log-In here</Link></div>
          </RedirectWrap>
 
-         {/* {member.map(member => {
+         {member.map(member => {
             return (
                <ul key={member.lname}>
-                  <li>{member.username}</li>
+                  <li>{member.email}</li>
                   <li>{member.password}</li>
                </ul>
             );
-         })} */}
+         })}
       </div>
    );
 };
@@ -80,8 +74,7 @@ return (
 const FormikLogIn = withFormik({
    mapPropsToValues(props) {
       return {
-
-         username: props.username || '',
+         email: props.email || '',
          password: props.password || '',
       };
    },
@@ -95,7 +88,8 @@ const FormikLogIn = withFormik({
       .min(6, 'your password must be 6 characters or longer')
       .required('please enter a password'),
    }),
-
+   
+  
 })(LogIn);
 
 export default FormikLogIn;

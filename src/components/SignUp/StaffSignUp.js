@@ -4,9 +4,9 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
 import { SignUpWrapper, SubmitBtn, SubmitWrapper,
-   halfWidth, fullWidth, formFlex, RedirectWrap } from './styles';
+   halfWidth, fullWidth, formFlex, RedirectWrap } from '.././styles';
 import SignUpAs from "./SignUpAs";
-import { axiosWithAuth } from "../utils";
+import { axiosWithAuth } from "../../utils";
 
 
 const StaffSignUp = ({ values, errors, touched, status }) => {

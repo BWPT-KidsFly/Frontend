@@ -1,22 +1,16 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import { Route } from 'react-router-dom';
 import Navigation from './Navigation';
-import TravelerSignUp from './TravelerSignUp';
-import StaffSignUp from './StaffSignUp';
-import SignUpAs from './SignUpAs';
-import LogInStaff from './LogInStaff';
-import LogInUser from './LogInUser';
-import LogInAs from './LogInAs';
-import AdminSignUp from './AdminSignUp';
-import MyTrips from './Trips/MyTrips';
+import { SignUpAs, StaffSignUp, AdminSignUp, TravelerSignUp } from './SignUp';
+import { LogInAs, LogIn, LogInStaff, AdminLogIn, LogInUser } from './Login';
+import { Trip, MyTrips, TripForm, UpdateTrip, CreateTrip } from './Trips'
 import { PrivateRoute } from '../utils';
-import LogIn from "./LogIn";
-import AdminLogIn from './AdminLogIn';
 import Dash from './Dashboard';
-
 
 function App() {
   return (
+
     <div className="App">
       <Navigation />
       <Route exact path='/' />
@@ -35,8 +29,9 @@ function App() {
       <Route path='/log-in/staff' component={LogInStaff} />
       <Route path='/log-in/traveler' component={LogInUser} />
       <PrivateRoute exact path='/dashboard' component={Dash} />
-      <PrivateRoute path='/dashboard/mytrips' component={MyTrips} />
-      <PrivateRoute path='/dashboard/:tripid/edit' component={Dash} />
+      <PrivateRoute exact path='/dashboard/mytrips' component={MyTrips} />
+      <PrivateRoute exact path='/dashboard/mytrips/:id' component={Trip} />
+      <PrivateRoute exact path='dashboard/mytrips/edit/:id' component={UpdateTrip} />
 
 
 
@@ -44,4 +39,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect()(App);
