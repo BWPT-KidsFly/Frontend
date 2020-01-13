@@ -32,7 +32,7 @@ export const loginUser = (credentials,history) => dispatch => {
         .post(`/auth/login/user`, credentials)
         .then(res => dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data }))
         .then(_ => history.push("/dashboard"))
-        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message}))
+        .catch(err => dispatch({ type: ERROR, payload: err.response}))
 }
 {/**Login Existing Admin
 POST to https://bw-kids-fly.herokuapp.com/api/adminauth/login/admin
@@ -47,7 +47,7 @@ export const loginSTAFF = (credentials,history) => dispatch => {
         .post(`/adminauth/login/admin`, credentials)
         .then(res => dispatch({ type: LOGIN_STAFF_SUCCESS, payload: res.data }))
         .then(_ => history.push("/dashboard"))
-        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response }))
 }
 
 
@@ -66,7 +66,7 @@ export const registerUser = (credentials,history) => dispatch => {
         .post(`/auth/register/user`, credentials)
         .then(res => dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data }))
         .then(_ => history.push("/dashboard"))
-        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response }))
 }
 {/**Register New Admin
 POST to https://bw-kids-fly.herokuapp.com/api/adminauth/register/admin
@@ -81,7 +81,7 @@ export const registerSTAFF = (credentials,history) => dispatch => {
         .post(`/adminauth/register/admin`, credentials)
         .then(res => dispatch({ type: REGISTER_STAFF_SUCCESS, payload: res.data }))
         .then(_ => history.push("/dashboard"))
-        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response }))
 }
 
 {/**Submitting an application
@@ -101,7 +101,7 @@ export const applySTAFF = (credentials) => dispatch => {
     axiosWithAuth()
         .post(`/apps`, credentials)
         .then(res => dispatch({ type: APPLY_STAFF_SUCCESS, payload: { ...res.data, ...credentials } }))
-        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response }))
 }
 
 
@@ -109,13 +109,13 @@ export const applySTAFF = (credentials) => dispatch => {
     Output: [  {"airport name": 'LAX', airline: 'Southwest',"flight_number": '1544', "departure_time": '2:30PM',"carryon_items": '5', children: '3', "special_needs": 'We have a stroller'}, ]
     GET to https://bw-kids-fly.herokuapp.com/api/trips
      */}
-export const gettrips = (user) => dispatch => {
+export const fetchTrips = () => dispatch => {
     dispatch({ type: START })
-    axiosWithAuth()()
-        .get(`trips`)
-        .then(res => dispatch({ type: GETALLTRIPS_SUCCESS, payload: res.data }) && console.log(res))
+    axiosWithAuth()
+    .get('/trips')
+        .then(res => dispatch({ type: GETALLTRIPS_SUCCESS, payload: res.data }))
 
-        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response }))
 
 }
 
@@ -127,38 +127,41 @@ export const gettrips = (user) => dispatch => {
     POST to https://bw-kids-fly.herokuapp.com/api/trips/trip
 */}
 
-export const addFlight = (flightObj) => dispatch => {
+export const addFlight = (flightObj,history) => dispatch => {
     dispatch({ type: START })
     axiosWithAuth()
         .post(`/trips/trip`, flightObj)
-        .then(res => dispatch({ type: ADD_FLIGHT_SUCCESS, payload: res.data }))
-        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
+        .then(res => dispatch({ type: ADD_FLIGHT_SUCCESS, payload: [res.data,...flightObj] }))
+        .then(_ => history.push("/dashboard"))
+        .catch(err => dispatch({ type: ERROR, payload: err.response }))
 }
 
 
 {/**Update trip
     Takes a JWT and updated trip properties  
-PUT to https://bw-kids-fly.herokuapp.com/api/trip/:id //where id is trip's ID*/}
+PUT to https://bw-kids-fly.herokuapp.com/api/trips/:id //where id is trip's ID*/}
 
-export const editFlight = (flightObj) => dispatch => {
+export const editFlight = (flightObj,history) => dispatch => {
     dispatch({ type: START })
     axiosWithAuth()
-        .put(`/trip/${flightObj.id}`, flightObj)
+        .put(`/trips/${flightObj.id}`, flightObj)
         .then(res => dispatch({ type: EDIT_FLIGHT_SUCCESS, payload: res.data }))
-        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
+        .then(_ => history.push("/dashboard"))
+        .catch(err => dispatch({ type: ERROR, payload: err.response }))
 }
 
 
 {/**Delete Trip.id
     //where id is trip's ID
     Takes a JWT
-DELETE to https://bw-kids-fly.herokuapp.com/api/trip/:id 
+DELETE to https://bw-kids-fly.herokuapp.com/api/trips/:id 
  */}
-export const deleteFlight = (flightObj) => dispatch => {
+export const deleteFlight = (flightObj,history) => dispatch => {
     dispatch({ type: START })
     axiosWithAuth()
-        .delete(`/trip/${flightObj.id}`, flightObj)
+        .delete(`/trips/${flightObj.id}`, flightObj)
         .then(res => dispatch({ type: DELETE_FLIGHT_SUCCESS, payload: res.data }))
+        .then(_ => history.push("/dashboard"))
         .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
 }
 

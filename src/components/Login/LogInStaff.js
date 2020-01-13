@@ -3,9 +3,9 @@ import { Link ,useHistory} from 'react-router-dom';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
-import { LogInWrapper, fullWidth, formFlex, LogInBtn, RedirectWrap } from './styles';
+import { LogInWrapper, fullWidth, formFlex, LogInBtn, RedirectWrap } from '../styles';
 import LogInAs from "./LogInAs";
-import { axiosWithAuth } from "../utils";
+import { axiosWithAuth } from "../../utils";
 
 
 const LogIn = ({ values, errors, touched, status,setStatus,resetForm },props) => {

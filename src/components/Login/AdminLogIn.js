@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { withFormik, Form, Field } from "formik";
 import * as Yup from 'yup';
 import axios from 'axios';
-import { SignUpWrapper, SubmitBtn, SubmitWrapper,
-   SignUpHeader, fullWidth, formFlex, RedirectWrap } from './styles';
+import { LogInWrapper, fullWidth, formFlex, LogInBtn, RedirectWrap, SignUpHeader } from '../styles';
 
 
-const AdminSignUp = ({ values, errors, touched, status }) => {
+
+const LogIn = ({ values, errors, touched, status }) => {
    const [admin, setAdmin] = useState([]);
 
    useEffect(() => {
@@ -18,11 +18,11 @@ const AdminSignUp = ({ values, errors, touched, status }) => {
    return (
       <div>
          <SignUpHeader>
-            <h3>Please register for an ADMIN account below</h3>
+            <h3>Please log into your ADMIN account below</h3>
          </SignUpHeader>
-         <SignUpWrapper>
+         <LogInWrapper>
             <Form style={formFlex}>  
-               <Field style={fullWidth} id='username' type='email' name='username' placeholder='Email' />
+               <Field style={fullWidth} id='username' type='email' name='username' placeholder='Username (Email)' />
                {touched.username && errors.username && (
                   <p className='errors'>{errors.username}</p>
                )}
@@ -32,23 +32,19 @@ const AdminSignUp = ({ values, errors, touched, status }) => {
                   <p className='errors'>{errors.password}</p>
                )}
 
-               <SubmitWrapper>
-                  <SubmitBtn type='submit'>Register</SubmitBtn>
-               </SubmitWrapper>
+               <LogInBtn style={fullWidth} type='submit'>Log In</LogInBtn>
             </Form>
-         </SignUpWrapper>
+         </LogInWrapper>
 
          <RedirectWrap>
-            <div>If you already have an ADMIN account, please <Link to='/log-in/admin'>Log-In here</Link></div>
+            <div>If you don't already have an ADMIN account, please <Link to='/sign-up/admin'>register here</Link></div>
          </RedirectWrap>
 
-         {/* {admin.map(employee => {
+         {/* {admin.map(admin => {
             return (
-               <ul key={employee.last_name}>
-                  <li>{employee.first_name}</li>
-                  <li>{employee.last_name}</li>
-                  <li>{employee.username}</li>
-                  <li>{employee.password}</li>
+               <ul key={admin.lname}>
+                  <li>{admin.username}</li>
+                  <li>{admin.password}</li>
                </ul>
             );
          })} */}
@@ -56,7 +52,7 @@ const AdminSignUp = ({ values, errors, touched, status }) => {
    );
 };
 
-const FormikAdminSignUp = withFormik({
+const FormikLogIn = withFormik({
    mapPropsToValues(props) {
       return {
          username: props.username || '',
@@ -77,7 +73,7 @@ const FormikAdminSignUp = withFormik({
    handleSubmit(values, { setStatus, resetForm }) {
       console.log('submitting', values);
       axios
-      .post('https://bw-kids-fly.herokuapp.com/api/adminauth/register/admin', values)
+      .post('https://bw-kids-fly.herokuapp.com/api/adminauth/login/admin', values)
       .then(res => {
          console.log('success', res);
          setStatus(res.data);
@@ -85,6 +81,6 @@ const FormikAdminSignUp = withFormik({
       })
       .catch(err => console.log('NOOOOO!!!', err.response));
    },
-})(AdminSignUp);
+})(LogIn);
 
-export default FormikAdminSignUp;
+export default FormikLogIn;

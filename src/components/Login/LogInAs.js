@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
-import { LogInWrapper, logInAsFlex, SignUpHeader } from './styles';
+import { LogInWrapper, logInAsFlex, SignUpHeader } from '../styles';
 
 const LogInAs = () => {
    return (

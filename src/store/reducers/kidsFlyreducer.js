@@ -59,10 +59,11 @@ const kidsFlyreducer = (state = initialState, action) => {
             }
         }
         case 'ADD_FLIGHT_SUCCESS': {
+            console.log("action.payload.flightObj",action.payload.flightObj)
             return {
                 ...state,
                 isLoading: false,
-                upcomingFlightsList: [...state.upcomingFlightsList, action.payload],
+                upcomingFlightsList: [...state.upcomingFlightsList, action.payload.flightObj],
 
             }
         }
@@ -83,10 +84,11 @@ const kidsFlyreducer = (state = initialState, action) => {
             }
         }
         case 'GETALLTRIPS_SUCCESS': {
+            console.log("****theflightslist",action.payload)
             return {
                 ...state,
                 isLoading: false,
-                upcomingFlightsList: [...state.upcomingFlightsList, action.payload],
+                upcomingFlightsList: [ ...action.payload],
             }
         }
         case 'GETAIRPORTBYCOORDS_SUCCESS': {
@@ -100,7 +102,7 @@ const kidsFlyreducer = (state = initialState, action) => {
             console.log("action.payload",action.payload)
             window.localStorage.setItem("token",action.payload.token)
             return {
-                ...state,isLoading:false,token:action.payload.token,currentUser:action.payload.id
+                ...state,isLoading:false,token:action.payload.token,currentUser:action.payload.userid
                 
             }
         }
@@ -120,17 +122,21 @@ const kidsFlyreducer = (state = initialState, action) => {
             }
         }
         case 'REGISTER_USER_SUCCESS': {
-            window.localStorage.setItem("token",action.payload)
+           
+            const {token}=action.payload;
+            window.localStorage.setItem("token",token);
             return {
-                ...state,isLoading:false,currentUser:action.payload.id||"noneyet",token:action.payload.token, 
+                ...state,isLoading:false,token:action.payload.token,currentUser:action.payload.saved.id||"noneyet", 
 
             }
         }
         case 'REGISTER_STAFF_SUCCESS': {
         
-            window.localStorage.setItem("token",action.payload)
+            const {token}=action.payload;
+            window.localStorage.setItem("token",token);
+            
             return {
-                ...state,isLoading:false,currentUser:action.payload.id||"noneyet",token:action.payload.token, 
+                ...state,isLoading:false,token:action.payload.token,currentUser:action.payload.id, 
             }
         }
         default: return { ...state }

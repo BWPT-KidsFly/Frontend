@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
+import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import * as Yup from "yup";
 import axios from "axios";
+import { addFlight } from "../../store/actions";
 
 const TripForm = ({ values, errors, touched, status }) => {
-  console.log("Values: ", values);
-  console.log("Errors: ", errors);
-  console.log("Touched: ", touched);
-
+  console.log("Values: ", values,"Errors: ", errors,"Touched: ", touched);
+  const history = useHistory()
+  const dispatch = useDispatch()
   const [trip, setTrip] = useState([]);
 
   useEffect(() => {
@@ -15,10 +17,13 @@ const TripForm = ({ values, errors, touched, status }) => {
 
     status && setTrip(trip => [...trip, status]);
   }, [status]);
-
+const handleSubmit=(e)=>{
+  e.preventDefault();
+  dispatch(addFlight(values,history))
+}
   return (
     <div className="formBox">
-      <Form className="formContainer">
+      <Form className="formContainer" onSubmit={(e)=>handleSubmit(e)} >
         <label htmlFor="airport_name">
           Airport
           {touched.airport_name && errors.airport_name && (
@@ -154,17 +159,7 @@ const FormikTripForm = withFormik({
     children: Yup.string().required("How many kids will be joining you?")
   }),
 
-  handleSubmit(values, { setStatus, resetForm }) {
-    console.log("Submitting... ", values);
-    axios
-      .post("https://bw-kids-fly.herokuapp.com/api/trips/trip", values)
-      .then(res => {
-        console.log("Success: ", res);
-        setStatus(res.data);
-        resetForm();
-      })
-      .catch(err => console.log("Error: ", err.response));
-  }
+  
 })(TripForm);
 
 export default FormikTripForm;
