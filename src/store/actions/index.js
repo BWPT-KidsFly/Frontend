@@ -144,7 +144,7 @@ PUT to https://bw-kids-fly.herokuapp.com/api/trips/:id //where id is trip's ID*/
 export const editFlight = (flightObj,history) => dispatch => {
     dispatch({ type: START })
     axiosWithAuth()
-        .put(`/trip/${flightObj.id}`, flightObj)
+        .put(`/trips/${flightObj.id}`, flightObj)
         .then(res => dispatch({ type: EDIT_FLIGHT_SUCCESS, payload: res.data }))
         .then(_ => history.push("/dashboard"))
         .catch(err => dispatch({ type: ERROR, payload: err.response }))
@@ -159,7 +159,7 @@ DELETE to https://bw-kids-fly.herokuapp.com/api/trips/:id
 export const deleteFlight = (flightObj,history) => dispatch => {
     dispatch({ type: START })
     axiosWithAuth()
-        .delete(`/trip/${flightObj.id}`, flightObj)
+        .delete(`/trips/${flightObj.id}`, flightObj)
         .then(res => dispatch({ type: DELETE_FLIGHT_SUCCESS, payload: res.data }))
         .then(_ => history.push("/dashboard"))
         .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))

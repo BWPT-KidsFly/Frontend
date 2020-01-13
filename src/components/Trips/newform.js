@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter,useHistory } from 'react-router-dom';
 import { connect } from 'react-redux'
 import {editFlight} from "../../store/actions"
 import Avatar from '@material-ui/core/Avatar';
@@ -62,8 +62,8 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function UpdateTripForm(props,{dispatch,history}) {
-
+function UpdateTripForm(props) {
+const history=useHistory()
     const classes = useStyles();
     const initialTripState = {
         airport_name: '',
@@ -76,7 +76,7 @@ function UpdateTripForm(props,{dispatch,history}) {
         special_needs: 1,
     };
     const [trip, setTrip] = useState(initialTripState);
-
+console.log("historyline79 newFOrm edittrip",history)
     const handleChange = event => {
         setTrip({ ...trip, [event.target.name]: event.target.value });
     };
@@ -88,9 +88,8 @@ function UpdateTripForm(props,{dispatch,history}) {
 
     const handleSubmit = event => {
         event.preventDefault();
-        dispatch(editFlight(trip, history))
-        reset();
-        history.push('/dashboard');
+       props.editFlight(trip, history);    
+    //    <Redirect to='/dashboard'/>
     };
 
     const reset = () => {
@@ -245,11 +244,11 @@ function UpdateTripForm(props,{dispatch,history}) {
     );
 }
 
-const UpdateTrip = withRouter(UpdateTripForm);
+
 
 const mapStateToProps = state => {
     return { flights: state.upcomingFlightsList };
 };
 
 
-export default connect(mapStateToProps, { editFlight })(UpdateTrip)
+export default connect(mapStateToProps, { editFlight })(UpdateTripForm)
