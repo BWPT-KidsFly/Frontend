@@ -57,6 +57,7 @@ return (
 
          <RedirectWrap>
             <div>If you don't already have an account, please <Link to='/sign-up'>Sign Up here</Link></div>
+            <div className='admin-redirect'>ADMIN, please <Link to='/log-in/admin'>log in here</Link></div>
          </RedirectWrap>
 
          {member.map(member => {
