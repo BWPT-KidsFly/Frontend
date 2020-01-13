@@ -8,8 +8,8 @@ export const PrivateRoute = ({ component: Component, ...rest }) => {
         return (
     <Route {...rest}
         render={props =>
-            localStorage.getItem("token")=== currentToken?
-                (<Component {...props} />) : (<Redirect to="/login" />)
+            localStorage.getItem("token")&&localStorage.getItem("token")=== currentToken?
+                (<Component {...props} />) : (<Redirect to="/log-in" />)
         } />
 )}
 
