@@ -1,6 +1,7 @@
 import React from 'react'
 import { deleteFlight } from '../../store/actions'
 import { connect } from 'react-redux'
+import {DeleteButton} from '../../utils/buttons'
 
 function Trip(props, { dispatch, history }) {
 
@@ -14,7 +15,8 @@ function Trip(props, { dispatch, history }) {
     }
     const handleDeleteTrip = e => {
         e.preventDefault();
-        dispatch(deleteFlight(trip, history))
+        props.deleteFlight(trip, history)
+        props.history.push(`/dashboard`)
 
     }
     if (!props.trips.length || !trip) {
@@ -32,10 +34,13 @@ function Trip(props, { dispatch, history }) {
                     <h3>Airport: {trip.airport_name} <br /> Airline: {trip.airline}</h3>
                     <p>Date: {trip.departure_time}</p>
                     <p>Flight Number: {trip.flight_number}</p>
+<div className="updateButtons">
 
+    
+                <button onClick={e => handleEditClick(e)}>edit 🤏 </button>
+                <DeleteButton onClick={e => handleDeleteTrip(e, trip)}/>
+</div>
                 </ul>
-                <button onClick={e => handleEditClick(e)}>edit</button>
-                <button onClick={e => handleDeleteTrip(e, trip)}>delete</button>
             </div>
 
             }
@@ -52,4 +57,4 @@ const mapStateToProps = state => {
         trips: state.upcomingFlightsList
     }
 }
-export default connect(mapStateToProps)(Trip)
+export default connect(mapStateToProps,{deleteFlight})(Trip)

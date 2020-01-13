@@ -33,30 +33,42 @@ const NearestAirport = props => {
     const browserCoordsII = () => {
         navigator.geolocation.getCurrentPosition(success, error, options);
         //returns the browser coordinates for the airport by distance api as object position{}
-    }
-position&&answer()
-    const answer = async () => {
-        // const position = await browserCoordsII()
-        const airport = await getnearestAirport(position)
-        setAirport(airport)
-        console.log("airport", airport)
+     }
+     browserCoordsII();
 
+
+
+     const getAiportByCoords = (position) =>  {
+       
+        axios
+            .get(`https://aerodatabox.p.rapidapi.com/airports/search/location/${position.latitude}/${position.longitude}/mi/50/16`)
+            .then(res =>setAirport(res.data))
+            .catch(err => console.error( err.response))
+    
     }
+// position&&answer()
+//     const answer = async () => {
+//         // const position = await browserCoordsII()
+//         const airport = await getnearestAirport(position)
+//         setAirport(airport)
+//         console.log("airport", airport)
+
+//     }
  
-    const getnearestAirport = (position) => {
-        const { latitude, longitude } = position;
-        const getAirportByCoords = (latitude, longitude) => {
-            (localStorage.getItem("token")) ?
-                (axios
-                    .get(`https://aerodatabox.p.rapidapi.com/airports/search/location/${longitude}/${latitude}/km/100/16`)
-                    .then(res => console.log(res))
-                    .catch(err => console.error(err))) : (Redirect("/login"))
-        };
-        return getAirportByCoords(latitude, longitude);
-    };
+//     const getnearestAirport = (position) => {
+//         const { latitude, longitude } = position;
+//         const getAirportByCoords = (latitude, longitude) => {
+//             (localStorage.getItem("token")) ?
+//                 (axios
+//                     .get(`https://aerodatabox.p.rapidapi.com/airports/search/location/${longitude}/${latitude}/km/100/16`)
+//                     .then(res => console.log(res))
+//                     .catch(err => console.error(err))) : (Redirect("/login"))
+//         };
+//         return getAirportByCoords(latitude, longitude);
+//     };
     return (
         <>
-            <div>nearest Airport{props.nearestAirport}</div>
+            <div>nearest Airport{airport[0]}</div>
         </>
 
     );

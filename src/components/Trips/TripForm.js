@@ -3,7 +3,6 @@ import { withFormik, Form, Field } from "formik";
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import * as Yup from "yup";
-import axios from "axios";
 import { addFlight } from "../../store/actions";
 
 const TripForm = ({ values, errors, touched, status }) => {
@@ -68,7 +67,7 @@ const handleSubmit=(e)=>{
           {touched.departure_time && errors.departure_time && (
             <p className="errorMssg">{errors.departure_time}</p>
           )}
-          <Field
+          <Field defaultValue={Date.now()}
             className="formFields"
             id="departure_time"
             type="datetime-local"
@@ -76,7 +75,7 @@ const handleSubmit=(e)=>{
           />
         </label>
         <Field className="formFields" as="select" name="carryon_items">
-          <option selected disabled>
+        <option  defaultValue >
             Number of Carry-On Items
           </option>
           <option value="1">1</option>
@@ -91,7 +90,7 @@ const handleSubmit=(e)=>{
           <option value="10">10+</option>
         </Field>
         <Field className="formFields" as="select" name="checked_items">
-          <option selected disabled>
+          <option defaultValue>
             Checked Items
           </option>
           <option value="1">1</option>
@@ -106,7 +105,7 @@ const handleSubmit=(e)=>{
           <option value="10">10+</option>
         </Field>
         <Field className="formFields" as="select" name="children">
-          <option selected disabled>
+        <option defaultValue >
             Number of Kids
           </option>
           <option value="1">1</option>
