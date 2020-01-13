@@ -3,7 +3,6 @@ import { withFormik, Form, Field } from "formik";
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import * as Yup from "yup";
-import axios from "axios";
 import { addFlight } from "../../store/actions";
 
 const TripForm = ({ values, errors, touched, status }) => {

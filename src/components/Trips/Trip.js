@@ -14,7 +14,7 @@ function Trip(props, { dispatch, history }) {
     }
     const handleDeleteTrip = e => {
         e.preventDefault();
-        dispatch(deleteFlight(trip, history))
+        props.deleteFlight(trip, history)
 
     }
     if (!props.trips.length || !trip) {
@@ -52,4 +52,4 @@ const mapStateToProps = state => {
         trips: state.upcomingFlightsList
     }
 }
-export default connect(mapStateToProps)(Trip)
+export default connect(mapStateToProps,{deleteFlight})(Trip)

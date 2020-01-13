@@ -160,9 +160,9 @@ export const deleteFlight = (flightObj,history) => dispatch => {
     dispatch({ type: START })
     axiosWithAuth()
         .delete(`/trips/${flightObj.id}`, flightObj)
-        .then(res => dispatch({ type: DELETE_FLIGHT_SUCCESS, payload: res.data }))
+        .then(res => dispatch({ type: DELETE_FLIGHT_SUCCESS,  payload: [res.data,...flightObj] }))
         .then(_ => history.push("/dashboard"))
-        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response }))
 }
 
 export const getAiportByCoords = (position) => dispatch => {
@@ -170,6 +170,6 @@ export const getAiportByCoords = (position) => dispatch => {
     axios
         .get(`https://aerodatabox.p.rapidapi.com/airports/search/location/${position.coords.latitude}/${position.coords.longitude}/mi/50/16`)
         .then(res => dispatch({ type: GETAIRPORTBYCOORDS_SUCCESS, payload: res.data }))
-        .catch(err => dispatch({ type: ERROR, payload: err.response.data.message }))
+        .catch(err => dispatch({ type: ERROR, payload: err.response }))
 
 }

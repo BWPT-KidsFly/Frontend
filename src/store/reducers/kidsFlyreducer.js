@@ -76,10 +76,13 @@ const kidsFlyreducer = (state = initialState, action) => {
             }
         }
         case 'DELETE_FLIGHT_SUCCESS': {
+            const {flightObj}=action.payload;
+
+            
             return {
                 ...state,
                 isLoading: false,
-                upcomingFlightsList: [...state.upcomingFlightsList, action.payload],
+                upcomingFlightsList: [...state.upcomingFlightsList.filter(trip=>trip!==flightObj)],
 
             }
         }
