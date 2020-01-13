@@ -5,6 +5,7 @@ import { fetchTrips, editFlight, deleteFlight } from "../../store/actions"
 
 const MyTrips = ({ dispatch, upcomingFlightsList,history
 ,match,params }, props) => {
+
   function routeToItem(e, trip) {
     e.preventDefault()
    history.push(`/dashboard/mytrips/${trip.id}`);

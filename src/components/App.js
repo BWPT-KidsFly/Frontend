@@ -7,6 +7,7 @@ import { LogInAs, LogIn, LogInStaff, AdminLogIn, LogInUser } from './Login';
 import { Trip, MyTrips, TripForm, UpdateTrip, CreateTrip } from './Trips'
 import { PrivateRoute } from '../utils';
 import Dash from './Dashboard';
+import newform from './Trips/newform';
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
       <PrivateRoute exact path='/dashboard' component={Dash} />
       <PrivateRoute exact path='/dashboard/mytrips' component={MyTrips} />
       <PrivateRoute exact path='/dashboard/mytrips/:id' component={Trip} />
-      <PrivateRoute exact path='dashboard/mytrips/edit/:id' component={UpdateTrip} />
+      <PrivateRoute exact path='/dashboard/mytrips/edit/:id' component={newform} />
 
 
 

@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from 'react-router-dom'
+import {Form} from "formik"
+
 import { connect } from "react-redux";
 import { editFlight } from "../../store/actions";
-import axios from 'axios'
-import { bindActionCreators } from "redux"
-import { axiosWithAuth } from "../../utils";
 
-const UpdateTrip = (props,{dispatch}) => {
-  const history = useHistory()
+
+const UpdateTrip = (props, { dispatch, history, match, params }) => {
+
   const initialTrip = {
-    airport_name: "SFO", airline: "1255", flight_number: "25", departure_time: "12PM",
-    carryon_items: "3", checked_items: "1", children: "10", special_needs: "We have a stroller",
-    user_id: Number(window.localStoarage.getItem('user_id'))
+    airport_name: "", airline: "", flight_number: "", departure_time: "",
+    carryon_items: "", checked_items: "", children: "", special_needs: "",
+
   };
 
   const [trip, setTrip] = useState(initialTrip);
-
-  useEffect(() => {const itemToEdit=props.item.find(e=>`${e.id}`===props.match.params.id)
-itemToEdit&&setTrip(itemToEdit)
-}, [props.item,props.match.params.id])
+  console.log("line10 MyTrips props", props, "history", history, "match", match, "params", params)
+  useEffect(() => {
+    const itemToEdit = props.flights.find(e => `${e.id}` === props.match.params.id)
+    itemToEdit && setTrip(itemToEdit)
+  }, [props.flights, props.match.params.id])
 
   const handleChange = event => {
 
@@ -36,7 +36,7 @@ itemToEdit&&setTrip(itemToEdit)
 
   return (
     <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <Form onSubmit={(e) => handleSubmit(e)}>
         <input
           name="airport_name"
           value={trip.airport_name}
@@ -96,7 +96,7 @@ itemToEdit&&setTrip(itemToEdit)
         <button onClick={handleSubmit}>
           create trip
         </button>
-      </form>
+      </Form>
     </div>
   );
 };
