@@ -168,8 +168,29 @@ export const deleteFlight = (flightObj,history) => dispatch => {
 export const getAiportByCoords = (position) => dispatch => {
     dispatch({ type: START })
     axios
-        .get(`https://aerodatabox.p.rapidapi.com/airports/search/location/${position.coords.latitude}/${position.coords.longitude}/mi/50/16`)
+        .get(`https://${process.env.REACT_APP_RAPID_API_}/airports/search/location/${position.latitude}/${position.longitude}/mi/50/16`, {	"headers": {
+            "x-rapidapi-host": `${process.env.REACT_APP_RAPID_API_}`,
+            "x-rapidapi-key": `${process.env.REACT_APP_RAPIDAPI_KEY}`
+        }})
         .then(res => dispatch({ type: GETAIRPORTBYCOORDS_SUCCESS, payload: res.data }))
         .catch(err => dispatch({ type: ERROR, payload: err.response }))
 
 }
+
+
+
+  export const findFlights = (endAirport, startAirport, startDate, endDate) => {
+    return async (dispatch) => {
+      try {
+        const flights = await axios({
+          url: `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/US/USD/en-US/${startAirport}/${endAirport}/${startDate}/${endDate}`,
+          method: 'GET',
+          headers: {"X-RapidAPI-Key": "Your api key"}
+        })
+        // dispatch(getFlights(flights.data))
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+  
