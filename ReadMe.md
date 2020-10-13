@@ -1,6 +1,20 @@
 
-## Sitemap Component Route Tree 
+# KidsFly  
+
+##### frontend-- single page application
+#### techstack
+React | Redux | ReactRouter V4 | Netlify | Formik | Yup | Axios | JWT | Material UI | Styled-Componenets
+
+
+#### Contributors
+
+
+### Sitemap Component Route Tree 
 <img width="75%" src="https://i.imgur.com/6tezMaB.png"/>
+
+### User Flows 
+<img src="https://i.imgur.com/4HhymHi.png"/> 
+
 
 
 
