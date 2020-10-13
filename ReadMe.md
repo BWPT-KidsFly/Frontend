@@ -1,3 +1,12 @@
+
+## Sitemap Component Route Tree 
+<img width="75%" src="https://i.imgur.com/6tezMaB.png"/>
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
