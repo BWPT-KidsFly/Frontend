@@ -8,7 +8,8 @@ React | Redux | ReactRouter V4 | Netlify | Formik | Yup | Axios | JWT | Material
 
 #### Contributors
 
-
+https://github.com/Adrian-Guadalupe
+https://github.com/jtwray
 ### Sitemap Component Route Tree 
 <img width="75%" src="https://i.imgur.com/6tezMaB.png"/>
 
