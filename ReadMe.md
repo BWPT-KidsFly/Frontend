@@ -8,6 +8,19 @@ React | Redux | ReactRouter V4 | Netlify | Formik | Yup | Axios | JWT | Material
 
 #### Contributors
  
+##  Contributors
+
+
+
+|[Adrian Guadalupe](https://github.com/adrian-guadalupe)  |  [Tucker Wray](https://github.com/jtwray)   |  [Raudel Flores](https://github.com/raudelf)  | 
+| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | 
+|  [<img src="https://avatars2.githubusercontent.com/u/54679236?s=460&u=41478c1e229be136bd7c139c259d53f03673b935&v=4" width = "300" />](https://github.com/Adrian-Guadalupe)|   [<img src="https://avatars3.githubusercontent.com/u/42871401?s=460&u=35f925b378034e977975950f46de33aaff941bf4&v=4" width = "300" />](https://tuckerwray.me)                       | [<img width="300" src="https://avatars3.githubusercontent.com/u/55217618?s=460&u=b1abf94b101cd5559285571ab6552dd74ce645fc&v=4" />](https://github.com/raudelf) |                       |
+|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/CourtneyJa)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jtwray)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/hisnameisjimmy)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/panamajake86)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jimmique-parsons)             |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/courtney-jackson-609/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jtwray/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jamesharrisonhookerjr/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jake-gifford-4516251a/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jimmiqueparsons/) |
+
+<br>
+<br>
+
  <table width="100%">   
   <div> <a href="https://github.com/Adrian-Guadalupe"><img width="30%" src="https://avatars2.githubusercontent.com/u/54679236?s=460&u=41478c1e229be136bd7c139c259d53f03673b935&v=4" /> </a><div>Adrian Guadalupe</div></div> <div><a href="https://github.com/jtwray"><img width="30%" src="https://avatars3.githubusercontent.com/u/42871401?s=460&u=35f925b378034e977975950f46de33aaff941bf4&v=4"/> </a> <div>Tucker Wray </div></div> <div> <a href="https://github.com/raudelf"><img width="30%" src="https://avatars3.githubusercontent.com/u/55217618?s=460&u=b1abf94b101cd5559285571ab6552dd74ce645fc&v=4" /></a><div>Raudel Flores </div></div>
  </table>
