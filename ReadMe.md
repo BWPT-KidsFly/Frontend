@@ -5,9 +5,6 @@
 #### techstack
 React | Redux | ReactRouter V4 | Netlify | Formik | Yup | Axios | JWT | Material UI | Styled-Componenets
 
-
-#### Contributors
- 
 ##  Contributors
 
 
