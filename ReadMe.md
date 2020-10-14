@@ -37,15 +37,6 @@ KidsFly offers a mobile app for end users, and Three Dashboard views accessible 
  - making pre and inflight arrangements for meals snacks and any other specialty services requests
  
 
-
-
-### Sitemap Component Route Tree 
-<img width="75%" src="https://i.imgur.com/6tezMaB.png"/>
-
-### User Flows 
-<img src="https://i.imgur.com/4HhymHi.png"/> 
-
-
 ## Tech Stack
 React | Redux | ReactRouter V4 | Netlify | Formik | Yup | Axios | JWT | Material UI | Styled-Componenets
 ### Front end built using:
@@ -137,6 +128,17 @@ REACT_APP_RAPIDAPI_KEY:<your registered access key with rapidapi platform>
 * eject - ***"react-scripts eject",*** copy the configuration files and dependencies into the project so you have full control over them
 * coverage - ***"CI=true yarn test --coverage --watchAll=false || true"*** refers to how much of your app code is covered by unit tests
 
+##  Contributors
+
+|[Adrian Guadalupe](https://github.com/adrian-guadalupe)  |  [Tucker Wray](https://github.com/jtwray)   |  [Raudel Flores](https://github.com/raudelf)  | 
+| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | 
+|  [<img src="https://avatars2.githubusercontent.com/u/54679236?s=460&u=41478c1e229be136bd7c139c259d53f03673b935&v=4" width = "300" />](https://github.com/Adrian-Guadalupe)|   [<img src="https://avatars3.githubusercontent.com/u/42871401?s=460&u=35f925b378034e977975950f46de33aaff941bf4&v=4" width = "300" />](https://tuckerwray.me)                       | [<img width="300" src="https://avatars3.githubusercontent.com/u/55217618?s=460&u=b1abf94b101cd5559285571ab6552dd74ce645fc&v=4" />](https://github.com/raudelf) |                       |
+|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/adrian-guadalupe)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jtwray)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jtwray/)  [<img src="https://twitter.com/favicon.ico" width="15"> ](https://twitter.com/tuckerwray)  [<img src="https://dev.to/favicon.ico" width="15"> ](https://dev.to/tuckerwray)   [<img src="https://tuckerwray.me/favicon.ico" width="15"> ](https://tuckerwray.me) [<img src="https://codesandbox.io/favicon.ico" width="15"> ](https://codesandbox.io/u/jtwray)  [<img src="https://codepen.io/favicon.ico" width="15"> ](https://codepen.io/jtwray) [<img src="https://stackoverflow.com/favicon.ico" width="15"> ](https://stackoverflow.com/users/10765227/tucker-wray)   |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/raudelf)            |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/adrianguadalupe/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jtwray/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/raudelf/) |
+
+<br>
+<br>
+
 # Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
@@ -182,14 +184,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 
-##  Contributors
-
-|[Adrian Guadalupe](https://github.com/adrian-guadalupe)  |  [Tucker Wray](https://github.com/jtwray)   |  [Raudel Flores](https://github.com/raudelf)  | 
-| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | 
-|  [<img src="https://avatars2.githubusercontent.com/u/54679236?s=460&u=41478c1e229be136bd7c139c259d53f03673b935&v=4" width = "300" />](https://github.com/Adrian-Guadalupe)|   [<img src="https://avatars3.githubusercontent.com/u/42871401?s=460&u=35f925b378034e977975950f46de33aaff941bf4&v=4" width = "300" />](https://tuckerwray.me)                       | [<img width="300" src="https://avatars3.githubusercontent.com/u/55217618?s=460&u=b1abf94b101cd5559285571ab6552dd74ce645fc&v=4" />](https://github.com/raudelf) |                       |
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/adrian-guadalupe)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jtwray)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jtwray/)  [<img src="https://twitter.com/favicon.ico" width="15"> ](https://twitter.com/tuckerwray)  [<img src="https://dev.to/favicon.ico" width="15"> ](https://dev.to/tuckerwray)   [<img src="https://tuckerwray.me/favicon.ico" width="15"> ](https://tuckerwray.me) [<img src="https://codesandbox.io/favicon.ico" width="15"> ](https://codesandbox.io/u/jtwray)  [<img src="https://codepen.io/favicon.ico" width="15"> ](https://codepen.io/jtwray) [<img src="https://stackoverflow.com/favicon.ico" width="15"> ](https://stackoverflow.com/users/10765227/tucker-wray)   |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/raudelf)            |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/adrianguadalupe/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jtwray/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/raudelf/) |
-
-<br>
-<br>
 
