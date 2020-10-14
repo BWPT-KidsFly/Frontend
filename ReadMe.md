@@ -76,6 +76,12 @@ The Artificial Artist is a brand new music visualization experience. Combining m
 
 # APIs
 
+## 1️⃣ https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/
+
+The API gives users access to the site's data making it available for use in third party web sites and applications. This data includes airport locations, Abbreviations, flight departure and arrival times, flight availablity etc. The API uses HTTP calls and responses are formatted in XML, JSON and PHP.
+## 2️⃣ BOM Browser Object Model & geolocation api 
+  This api integrates with the skyscanner-flight-search allowing the user to find and store their home airport by latitude and longitude coordinates available through the current browser session on the user's device. 
+
 # Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
