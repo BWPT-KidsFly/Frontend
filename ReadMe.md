@@ -4,45 +4,50 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5a502ca580cc32e02669/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/artificial-artist-fe/test_coverage)
 
 
-
-
-
-
 #  KIDSFLY2
 
- You can find the deployed project at [theartificialartist.com](https://www.theartificialartist.com/).
+ You can find the deployed project at [kidsfly.netlify.app](https://www.kidsfly.netlify.app).
 
-##  Contributors
-
-
-
-|                                       [Courtney Jackson](https://github.com/CourtneyJa)                                        |                                       [Tucker Wray](https://github.com/jtwray)                                        |                                       [Jimmy Hooker](https://github.com/hisnameisjimmy)                                        |                                       [Jake Gifford](https://github.com/panamajake86)                                        |                                       [Jimmique Parsons](https://github.com/jimmique-parsons)                                        |
-| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-|                      [<img src="https://avatars2.githubusercontent.com/u/52590162?s=460&u=c1e321f74ee3bc5b1d1136ee3f32ba8db50c7ee3&v=4" width = "200" />](https://github.com/CourtneyJa)                       |                      [<img src="https://avatars3.githubusercontent.com/u/42871401?s=460&u=35f925b378034e977975950f46de33aaff941bf4&v=4" width = "200" />](https://tuckerwray.me)                       |                      [<img src="https://avatars3.githubusercontent.com/u/740373?s=460&v=4" width = "200" />](https://github.com/hisnameisjimmy)                       |                      [<img src="https://avatars0.githubusercontent.com/u/52115641?s=460&u=dde87e5c826904c67825c4b733701b8f44106d25&v=4" width = "200" />](https://github.com/panamajake86)                       |                      [<img src="https://ca.slack-edge.com/ESZCHB482-W012X6PE61X-482e0a7d5334-512" width = "200" />](https://github.com/jimmique-parsons)                       |
-|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/CourtneyJa)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jtwray)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/hisnameisjimmy)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/panamajake86)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jimmique-parsons)             |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/courtney-jackson-609/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jtwray/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jamesharrisonhookerjr/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jake-gifford-4516251a/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jimmiqueparsons/) |
-
-<br>
-<br>
 
 
 ## Project Overview
 
-1️⃣ [Trello Board](https://trello.com/b/48TmCzIE/labs-pt9-artificial-artist)
+1️⃣ [Trello Board](https://trello.com/b/QHXgGVlP/bw-pt-kidsfly)
 
 2️⃣ [Product Canvas](https://www.notion.so/Artificial-Artist-1934140bf39c4f2ba1b8910de0ee0d41)
 
-The Artificial Artist is a brand new music visualization experience. Combining music with generative adversarial network (GAN) images, users can create unique music visualization videos. 
+
+KidsFly is an airline vendor offering consierge services for the modern family. Alerted by your mobile app's 5minutes our button; The KidsFly crewmember will greet you at the entrance wish an itinerary predetermined snacks for you children, take control of your luggage, checkin and boarding passes, allowing you expedited entrance through security and through the onboarding procedure with your main concern being you kids. Kids Fly Connection staff takes care of the rest.
 
 ## Key Features
+KidsFly offers a mobile app for end users, and Three Dashboard views accessible by authenticated and authorized users. 
+#### The admin board 
+ - allows control and birds eye view of all incoming patrons,
+ - the KidsConnection staff members on premises for today,
+ - pairings of KidsConnection staff members and patrons 
+ - access to incoming HR applications for new KidsConnection team members.
+#### The Staff Dashboard
+ - features a queue of incoming patrons
+ - your current and next assignment details viewable
+#### The Patron Dashboard
+ - 5 minutes out button
+ - displays Home airport
+ - passed and upcoming flights
+ - menus for declaring luggage
+ - making pre and inflight arrangements for meals snacks and any other specialty services requests
+ 
 
--   Create your own music visualization videos
--   Browse other user's videos
--   Advance settings give users the ability to customize their videos
+
+
+### Sitemap Component Route Tree 
+<img width="75%" src="https://i.imgur.com/6tezMaB.png"/>
+
+### User Flows 
+<img src="https://i.imgur.com/4HhymHi.png"/> 
 
 
 ## Tech Stack
-
+React | Redux | ReactRouter V4 | Netlify | Formik | Yup | Axios | JWT | Material UI | Styled-Componenets
 ### Front end built using:
 
 #### 1️⃣ [Reactjs](https://reactjs.org/) ![React](https://img.shields.io/badge/react-v16.13.1-blue.svg)
@@ -57,9 +62,9 @@ The Artificial Artist is a brand new music visualization experience. Combining m
 -   Ease of Testing
 -   Global Store of App State
 
-#### Front end deployed to `AWS Amplify`
+#### Front end deployed to `Netlify`
 
-#### [Back end](https://github.com/Lambda-School-Labs/artificial-artist-be) built using:
+#### [Back end](https://github.com/BWPT-KidsFly/Backend) built using:
 
 #### 1️⃣ [Node Express](https://expressjs.com/) ![Express](https://img.shields.io/badge/express-v4.17.1-lightgrey.svg)
 
@@ -174,4 +179,17 @@ See [Backend Documentation](https://github.com/BWPT-KidsFly/Frontend/blob/master
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+
+##  Contributors
+
+|[Adrian Guadalupe](https://github.com/adrian-guadalupe)  |  [Tucker Wray](https://github.com/jtwray)   |  [Raudel Flores](https://github.com/raudelf)  | 
+| :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: | 
+|  [<img src="https://avatars2.githubusercontent.com/u/54679236?s=460&u=41478c1e229be136bd7c139c259d53f03673b935&v=4" width = "300" />](https://github.com/Adrian-Guadalupe)|   [<img src="https://avatars3.githubusercontent.com/u/42871401?s=460&u=35f925b378034e977975950f46de33aaff941bf4&v=4" width = "300" />](https://tuckerwray.me)                       | [<img width="300" src="https://avatars3.githubusercontent.com/u/55217618?s=460&u=b1abf94b101cd5559285571ab6552dd74ce645fc&v=4" />](https://github.com/raudelf) |                       |
+|                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/adrian-guadalupe)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/jtwray)   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jtwray/)  [<img src="https://twitter.com/favicon.ico" width="15"> ](https://twitter.com/tuckerwray)  [<img src="https://dev.to/favicon.ico" width="15"> ](https://dev.to/tuckerwray)   [<img src="https://tuckerwray.me/favicon.ico" width="15"> ](https://tuckerwray.me) [<img src="https://codesandbox.io/favicon.ico" width="15"> ](https://codesandbox.io/u/jtwray)  [<img src="https://codepen.io/favicon.ico" width="15"> ](https://codepen.io/jtwray) [<img src="https://stackoverflow.com/favicon.ico" width="15"> ](https://stackoverflow.com/users/10765227/tucker-wray)   |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/raudelf)            |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/adrianguadalupe/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/jtwray/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/raudelf/) |
+
+<br>
+<br>
 
