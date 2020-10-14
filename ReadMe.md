@@ -8,7 +8,7 @@
 
 
 
-#  The Artificial Artist
+#  KIDSFLY2
 
  You can find the deployed project at [theartificialartist.com](https://www.theartificialartist.com/).
 
@@ -75,19 +75,41 @@ The Artificial Artist is a brand new music visualization experience. Combining m
 
 
 # APIs
+## 1️⃣ https://docs.rapidapi.com/docs/keys
+#### You'll need to register with rapidapi to get a user key.
+- Its free to signup with rapidapi and they have thousands of apis you can test and access on their platform.
+- Read the documentation for any apis that you register a secondary key. 
+### Most are free, some are freemium.
+- You might need a credit card to register in case the api is abused or accessed milions of times in a row.
+ 
+ #### An example rate is 
+- free access to the first 500 attempted calls from your verifed IP address to the" Airline Server" per day
+- then $.01 per call for any calls after 30 in an hour
+- Verify this before making any backend endpoint calls
 
-## 1️⃣ https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/
 
-The API gives users access to the site's data making it available for use in third party web sites and applications. This data includes airport locations, Abbreviations, flight departure and arrival times, flight availablity etc. The API uses HTTP calls and responses are formatted in XML, JSON and PHP.
-## 2️⃣ BOM Browser Object Model & geolocation api 
+## 2️⃣ https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/
+The API gives users access to the site's data making it available for use in third party web sites and applications. 
+This data includes: airport locations, Abbreviations, flight departure and arrival times, flight availablity etc.
+The API uses HTTP calls and responses are formatted in XML, JSON and PHP.
+
+
+## 3️⃣ BOM Browser Object Model & geolocation api 
   This api integrates with the skyscanner-flight-search allowing the user to find and store their home airport by latitude and longitude coordinates available through the current browser session on the user's device. 
 
 # Environment Variables
 
-In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
+In order for the app to function correctly, the user must set up their own environment variables; 
+Either in their local path
+- on the path of the container
+- image spun up
+- accessible through a custom 3rd party server
+- or in a .env file at the root of the project
 
-    *  REACT_APP_SERVER_URL - for your local development server
-   
+The .env file could contain the following ( no spaces | no <>'s | no "quotes" ):
+REACT_APP_RAPID_API_:<the url of the skyscanner most recent endpoint>
+REACT_APP_RAPIDAPI_KEY:<your registered access key with rapidapi platform>
+
 
 # Testing
 
